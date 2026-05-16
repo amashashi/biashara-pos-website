@@ -1,0 +1,173 @@
+---
+const appUrl = 'https://biashara-pos-production.up.railway.app';
+
+const tiers = [
+  {
+    name: 'Free',
+    price: 'TZS 0',
+    period: '/month',
+    highlight: false,
+    badge: null,
+    users: '1 user',
+    devices: '1 device',
+    features: [
+      'Basic POS',
+      'Sales tracking',
+      'Cash payments',
+      'Daily sales report',
+    ],
+    cta: 'Get started free',
+    ctaSw: 'Anza bila malipo',
+  },
+  {
+    name: 'Pro',
+    price: 'TZS 35,000',
+    period: '/month',
+    highlight: true,
+    badge: 'Most Popular ⭐',
+    users: '3 users',
+    devices: '2 devices',
+    features: [
+      'Everything in Free',
+      'Real-time profit dashboard',
+      'TRA audit PDF reports',
+      'VFD fiscal receipts',
+      'Inventory alerts',
+      'M-Pesa, Tigo, Airtel',
+      'Visa & Mastercard',
+    ],
+    cta: 'Start Pro trial',
+    ctaSw: 'Jaribu Pro',
+  },
+  {
+    name: 'Business',
+    price: 'TZS 85,000',
+    period: '/month',
+    highlight: false,
+    badge: null,
+    users: '10 users',
+    devices: '5 devices',
+    features: [
+      'Everything in Pro',
+      'Expiry date tracking',
+      'Purchase orders',
+      'Multi-category inventory',
+      'Priority support',
+      'Pharmacy & restaurant mode',
+      'Advanced analytics',
+    ],
+    cta: 'Start Business trial',
+    ctaSw: 'Jaribu Business',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: ' pricing',
+    highlight: false,
+    badge: null,
+    users: 'Unlimited users',
+    devices: 'Unlimited devices',
+    features: [
+      'Everything in Business',
+      'Multi-branch management',
+      'White-label branding',
+      'Dedicated support',
+      'Custom integrations',
+      'SLA guarantee',
+    ],
+    cta: 'Contact us',
+    ctaSw: 'Wasiliana nasi',
+  },
+];
+
+const addons = [
+  { name: 'TRA auto-submission', price: 'TZS 15,000/month', nameSw: 'Uwasilishaji wa TRA kiotomatiki' },
+  { name: 'Extra device', price: 'TZS 12,000/month', nameSw: 'Kifaa cha ziada' },
+  { name: 'AI demand forecasting', price: 'TZS 20,000/month', nameSw: 'Utabiri wa mahitaji wa AI' },
+  { name: 'Onboarding & training', price: 'TZS 50,000 one-time', nameSw: 'Mafunzo ya mwanzo' },
+];
+---
+<section id="pricing" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Title -->
+    <div class="text-center mb-16 fade-in">
+      <p class="text-[#1D9E75] font-700 text-sm uppercase tracking-widest mb-3">Transparent pricing</p>
+      <h2 class="text-3xl sm:text-4xl font-800 text-[#1C1C1A]">
+        <span data-en="Simple pricing. Big value." data-sw="Bei rahisi. Thamani kubwa.">Simple pricing. Big value.</span>
+      </h2>
+      <p class="mt-3 text-gray-500 font-600 text-lg">Bei rahisi. Thamani kubwa.</p>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-16">
+      {tiers.map((tier, i) => (
+        <div
+          class={`fade-in relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1
+            ${tier.highlight
+              ? 'border-2 border-[#1A56A0] shadow-lg shadow-blue-100'
+              : 'border border-gray-200'
+            }`}
+          style={`transition-delay: ${i * 0.1}s`}
+        >
+          {tier.badge && (
+            <div class="bg-[#1A56A0] text-white text-xs font-800 text-center py-2 uppercase tracking-wide">
+              {tier.badge}
+            </div>
+          )}
+
+          <div class={`flex flex-col flex-1 p-6 ${tier.highlight ? 'bg-[#EFF6FF]' : 'bg-white'}`}>
+            <!-- Tier name -->
+            <h3 class="text-xl font-800 text-[#1C1C1A] mb-1">{tier.name}</h3>
+            <div class="flex items-baseline gap-0.5 mb-1">
+              <span class="text-3xl font-800 text-[#1A56A0]">{tier.price}</span>
+              <span class="text-sm text-gray-500 font-600">{tier.period}</span>
+            </div>
+            <div class="flex items-center gap-3 mb-5 text-xs text-gray-500 font-600">
+              <span>👤 {tier.users}</span>
+              <span>📱 {tier.devices}</span>
+            </div>
+
+            <!-- Features -->
+            <ul class="flex-1 space-y-2.5 mb-6">
+              {tier.features.map((f) => (
+                <li class="flex items-start gap-2 text-sm text-gray-700">
+                  <span class="text-[#1D9E75] font-700 mt-0.5 flex-shrink-0">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <!-- CTA -->
+            <a
+              href={appUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`block text-center py-3 px-5 rounded-xl font-700 text-sm transition-all duration-200
+                ${tier.highlight
+                  ? 'bg-[#1A56A0] text-white hover:bg-[#154a8a] hover:shadow-md'
+                  : 'bg-white border-2 border-[#1A56A0] text-[#1A56A0] hover:bg-[#EFF6FF]'
+                }`}
+            >
+              <span data-en={tier.cta} data-sw={tier.ctaSw}>{tier.cta}</span>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Add-ons -->
+    <div class="fade-in bg-[#F8FAFC] rounded-2xl p-8 border border-gray-200">
+      <h3 class="text-xl font-800 text-[#1C1C1A] mb-6" data-en="Add-ons" data-sw="Vongeza">Add-ons</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {addons.map((addon) => (
+          <div class="bg-white rounded-xl p-4 border border-gray-200">
+            <p class="text-sm font-700 text-[#1C1C1A] mb-1">
+              <span data-en={addon.name} data-sw={addon.nameSw}>{addon.name}</span>
+            </p>
+            <p class="text-[#1D9E75] font-800 text-sm">{addon.price}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

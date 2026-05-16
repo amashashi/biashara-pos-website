@@ -1,0 +1,91 @@
+---
+const features = [
+  {
+    emoji: '📊',
+    titleEn: 'Real-time Profit',
+    titleSw: 'Faida ya Wakati Huu Huu',
+    descEn: 'Net profit after COGS, expenses & VAT shown after every sale. Tanzania\'s ONLY POS with this feature.',
+    descSw: 'Faida halisi baada ya gharama na VAT inaonyeshwa baada ya kila uuzaji. POS PEKEE Tanzania yenye kipengele hiki.',
+    badge: "Tanzania's ONLY",
+  },
+  {
+    emoji: '📶',
+    titleEn: 'Works Offline',
+    titleSw: 'Inafanya Kazi Bila Intaneti',
+    descEn: 'Sell without internet. Transactions queue locally and auto-sync when connection returns.',
+    descSw: 'Uza bila intaneti. Miamala inawekwa ndani na kusawazishwa kiotomatiki intaneti inarudi.',
+    badge: null,
+  },
+  {
+    emoji: '🏛️',
+    titleEn: 'TRA-Native Compliance',
+    titleSw: 'Utiifu wa TRA',
+    descEn: 'One-click TRA PDF audit report. VFD fiscal receipt numbers on every sale. Saves TZS 200,000–800,000/year in accountant fees.',
+    descSw: 'Ripoti ya ukaguzi ya TRA PDF kwa kubonyeza mara moja. Nambari za risiti za VFD kila uuzaji. Okoa TZS 200,000–800,000/mwaka.',
+    badge: null,
+  },
+  {
+    emoji: '💳',
+    titleEn: 'Universal Payments',
+    titleSw: 'Malipo ya Aina Zote',
+    descEn: 'M-Pesa, Tigo Pesa, Airtel Money, Visa, Mastercard — all at a flat monthly fee. No per-transaction charges.',
+    descSw: 'M-Pesa, Tigo Pesa, Airtel Money, Visa, Mastercard — ada ya mwezi tu. Hakuna ada kwa kila muamala.',
+    badge: null,
+  },
+  {
+    emoji: '📦',
+    titleEn: 'Smart Inventory',
+    titleSw: 'Hesabu za Akiba Nadhifu',
+    descEn: 'Stock tracking, low-stock alerts, expiry date monitoring, purchase orders. Supports pharmacies, restaurants, supermarkets.',
+    descSw: 'Ufuatiliaji wa hisa, arifa za hisa chache, ufuatiliaji wa tarehe ya mwisho, maagizo ya ununuzi.',
+    badge: null,
+  },
+  {
+    emoji: '👥',
+    titleEn: 'Multi-User Roles',
+    titleSw: 'Majukumu ya Watumiaji Wengi',
+    descEn: 'Admin, Manager, Cashier roles with PIN-based login, full audit trail, and session controls.',
+    descSw: 'Majukumu ya Msimamizi, Meneja, Mkaguzi wa Pesa na PIN, rekodi kamili ya ukaguzi.',
+    badge: null,
+  },
+];
+---
+<section id="features" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Title -->
+    <div class="text-center mb-16 fade-in">
+      <p class="text-[#1D9E75] font-700 text-sm uppercase tracking-widest mb-3">Why choose us</p>
+      <h2 class="text-3xl sm:text-4xl font-800 text-[#1C1C1A]">
+        <span data-en="Why BiasharaPOS?" data-sw="Kwa nini Biashara POS?">Why BiasharaPOS?</span>
+      </h2>
+      <p class="mt-3 text-gray-500 font-600 text-lg">Kwa nini Biashara POS?</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((f, i) => (
+        <div
+          class="fade-in group relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+          style={`transition-delay: ${i * 0.08}s`}
+        >
+          <!-- Green top border on hover -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-[#1D9E75] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-2xl"></div>
+
+          {f.badge && (
+            <div class="absolute top-4 right-4 bg-[#FFD700] text-[#1C1C1A] text-[10px] font-800 px-2 py-0.5 rounded-full uppercase tracking-wide">
+              {f.badge}
+            </div>
+          )}
+
+          <div class="text-4xl mb-4">{f.emoji}</div>
+          <h3 class="text-lg font-800 text-[#1C1C1A] mb-2">
+            <span data-en={f.titleEn} data-sw={f.titleSw}>{f.titleEn}</span>
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            <span data-en={f.descEn} data-sw={f.descSw}>{f.descEn}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+const badges = [
+  {
+    icon: '✅',
+    name: 'TRA VFD Integrated',
+    status: 'Active',
+    statusColor: 'text-[#1D9E75]',
+    desc: 'Automatic fiscal receipt numbers (RCTVNUM) on every sale.',
+    descSw: 'Nambari za risiti za kifedha (RCTVNUM) kwa kila uuzaji.',
+  },
+  {
+    icon: '✅',
+    name: 'NF525 Receipt Chain',
+    status: 'Active',
+    statusColor: 'text-[#1D9E75]',
+    desc: 'Tamper-proof cryptographic receipt chain for audit integrity.',
+    descSw: 'Mnyororo wa risiti uliohifadhiwa kwa nguvu za kiufundi.',
+  },
+  {
+    icon: '🔄',
+    name: 'ISO 27001',
+    status: 'In Progress',
+    statusColor: 'text-[#FFD700]',
+    desc: 'Audit log, access control, and incident response framework.',
+    descSw: 'Kumbukumbu ya ukaguzi, udhibiti wa ufikiaji, na mfumo wa majibu ya matukio.',
+  },
+  {
+    icon: '✅',
+    name: 'PCI DSS Aligned',
+    status: 'Active',
+    statusColor: 'text-[#1D9E75]',
+    desc: 'No card data stored. TLS encryption. Tokenised payments.',
+    descSw: 'Hakuna data ya kadi iliyohifadhiwa. Usimbaji wa TLS. Malipo ya tokeni.',
+  },
+];
+---
+<section id="compliance" class="py-20 bg-[#0B3D2E]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Title -->
+    <div class="text-center mb-14 fade-in">
+      <p class="text-[#1D9E75] font-700 text-sm uppercase tracking-widest mb-3">Built-in compliance</p>
+      <h2 class="text-3xl sm:text-4xl font-800 text-white mb-4">Compliant by design</h2>
+      <p class="text-green-200 text-lg max-w-2xl mx-auto font-400 leading-relaxed" data-en="Tanzania's only POS built for TRA, ISO 27001, NF525, and PCI DSS from day one." data-sw="POS pekee Tanzania iliyojengwa kwa TRA, ISO 27001, NF525, na PCI DSS tangu mwanzo.">
+        Tanzania's only POS built for TRA, ISO 27001, NF525, and PCI DSS from day one.
+      </p>
+    </div>
+
+    <!-- Badges grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+      {badges.map((b, i) => (
+        <div class="fade-in bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors duration-200" style={`transition-delay: ${i * 0.1}s`}>
+          <div class="flex items-start gap-4">
+            <div class="text-3xl mt-0.5">{b.icon}</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <h3 class="text-white font-800 text-base">{b.name}</h3>
+                <span class={`text-xs font-700 ${b.statusColor}`}>{b.status}</span>
+              </div>
+              <p class="text-green-200/70 text-sm leading-relaxed">
+                <span data-en={b.desc} data-sw={b.descSw}>{b.desc}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Learn more link -->
+    <div class="text-center fade-in">
+      <a href="#faq" class="inline-flex items-center gap-2 text-[#1D9E75] font-700 text-sm hover:text-green-300 transition-colors">
+        <span data-en="Learn more about compliance →" data-sw="Jifunze zaidi kuhusu utiifu →">Learn more about compliance →</span>
+      </a>
+    </div>
+  </div>
+</section>
