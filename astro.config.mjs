@@ -5,5 +5,5 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   site: 'https://amashashi.github.io',
-  base: '/biashara-pos-website',
+  base: '/biashara-pos-website/',
 });
