@@ -1,16 +1,17 @@
 import express, { Request, Response } from 'express';
-import { extractTextMessage, markAsRead, sendMessage, WhatsAppWebhookBody } from './whatsapp.js';
+import { extractTwilioMessage, sendTwilioMessage, TwilioWebhookBody, validateTwilioSignature } from './whatsapp.js';
 import { handleMessage, streamMessage } from './agent.js';
 
 const {
-  WHATSAPP_VERIFY_TOKEN,
-  WHATSAPP_ACCESS_TOKEN,
-  WHATSAPP_PHONE_NUMBER_ID,
+  TWILIO_ACCOUNT_SID,
+  TWILIO_AUTH_TOKEN,
+  TWILIO_WHATSAPP_NUMBER,  // e.g. "whatsapp:+14155238886"
   PORT = '3000',
 } = process.env;
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // Twilio sends form-encoded bodies
 
 // CORS — allow the website and local dev to call the chat endpoint
 app.use((req, res, next) => {
@@ -25,7 +26,6 @@ app.use((req, res, next) => {
 
 // ── Web Chat ──────────────────────────────────────────────────────────────────
 
-// Streaming SSE endpoint consumed by the chat widget on the website
 app.post('/chat/stream', async (req: Request, res: Response) => {
   const { sessionId, message } = req.body as { sessionId?: string; message?: string };
 
@@ -52,45 +52,42 @@ app.post('/chat/stream', async (req: Request, res: Response) => {
   }
 });
 
-// ── WhatsApp Webhook ──────────────────────────────────────────────────────────
+// ── Twilio WhatsApp Webhook ───────────────────────────────────────────────────
 
-app.get('/webhook', (req: Request, res: Response) => {
-  if (!WHATSAPP_VERIFY_TOKEN) { res.sendStatus(503); return; }
-  const mode = req.query['hub.mode'];
-  const token = req.query['hub.verify_token'];
-  const challenge = req.query['hub.challenge'];
-  if (mode === 'subscribe' && token === WHATSAPP_VERIFY_TOKEN) {
-    console.log('Webhook verified by Meta');
-    res.status(200).send(challenge);
-  } else {
-    res.sendStatus(403);
+app.post('/webhook/twilio', (req: Request, res: Response) => {
+  // Validate Twilio signature if auth token is configured
+  if (TWILIO_AUTH_TOKEN) {
+    const signature = req.headers['x-twilio-signature'] as string ?? '';
+    const url = `https://${req.headers.host}${req.originalUrl}`;
+    const valid = validateTwilioSignature(TWILIO_AUTH_TOKEN, url, req.body, signature);
+    if (!valid) {
+      console.warn('Invalid Twilio signature — request rejected');
+      res.sendStatus(403);
+      return;
+    }
   }
-});
 
-app.post('/webhook', (req: Request, res: Response) => {
-  const body = req.body as WhatsAppWebhookBody;
-  if (body.object !== 'whatsapp_business_account') { res.sendStatus(404); return; }
+  // Respond to Twilio immediately with empty TwiML (avoids 15-second timeout)
+  res.set('Content-Type', 'text/xml');
+  res.send('<Response></Response>');
 
-  res.sendStatus(200);
-
-  const incoming = extractTextMessage(body);
-  if (!incoming || !WHATSAPP_ACCESS_TOKEN || !WHATSAPP_PHONE_NUMBER_ID) return;
-
-  void markAsRead(WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_ACCESS_TOKEN, incoming.messageId);
+  const incoming = extractTwilioMessage(req.body as TwilioWebhookBody);
+  if (!incoming || !TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_WHATSAPP_NUMBER) return;
 
   void (async () => {
     try {
       console.log(`[WA ${incoming.from}] ${incoming.text}`);
       const reply = await handleMessage(incoming.from, incoming.text);
-      await sendMessage(WHATSAPP_PHONE_NUMBER_ID, WHATSAPP_ACCESS_TOKEN, incoming.from, reply);
-    } catch (err) {
-      console.error('WhatsApp handler error:', err);
-      await sendMessage(
-        WHATSAPP_PHONE_NUMBER_ID!,
-        WHATSAPP_ACCESS_TOKEN!,
+      console.log(`[bot → ${incoming.from}] ${reply.slice(0, 80)}…`);
+      await sendTwilioMessage(
+        TWILIO_ACCOUNT_SID!,
+        TWILIO_AUTH_TOKEN!,
+        TWILIO_WHATSAPP_NUMBER!,
         incoming.from,
-        'Sorry, I ran into an issue. Please try again or email hello@biasharapos.com',
-      ).catch(() => {});
+        reply,
+      );
+    } catch (err) {
+      console.error('Twilio handler error:', err);
     }
   })();
 });
@@ -101,5 +98,5 @@ app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
 app.listen(parseInt(PORT), () => {
   console.log(`Biashara POS agent listening on port ${PORT}`);
-  if (!WHATSAPP_VERIFY_TOKEN) console.log('  ⚠  WhatsApp vars not set — webhook disabled');
+  if (!TWILIO_ACCOUNT_SID) console.log('  ⚠  Twilio vars not set — WhatsApp webhook disabled');
 });
