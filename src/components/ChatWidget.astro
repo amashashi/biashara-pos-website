@@ -340,6 +340,7 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
       const reader  = res.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '';
+      let gotText = false;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -352,10 +353,22 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
           const payload = line.slice(6);
           if (payload === '[DONE]') break;
           try {
-            const { text: chunk } = JSON.parse(payload);
-            if (chunk) { botDiv.textContent += chunk; scrollBottom(); }
+            const parsed = JSON.parse(payload);
+            if (parsed.text) {
+              botDiv.textContent += parsed.text;
+              gotText = true;
+              scrollBottom();
+            } else if (parsed.error) {
+              botDiv.textContent = 'Something went wrong on my end. Please try again or email hello@biasharapos.com';
+              gotText = true;
+            }
           } catch { /* ignore malformed chunks */ }
         }
+      }
+
+      // Empty response — server-side issue (e.g. missing API key)
+      if (!gotText) {
+        botDiv.textContent = 'I didn\'t get a response. The service may be misconfigured — please email hello@biasharapos.com';
       }
     } catch (err) {
       hideTyping();
