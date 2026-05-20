@@ -3,34 +3,36 @@ import { SYSTEM_PROMPT } from './knowledge.js';
 
 const client = new Anthropic();
 
-// Per-user conversation history keyed by WhatsApp phone number
 const conversations = new Map<string, Anthropic.MessageParam[]>();
-const MAX_HISTORY = 20; // keep last 20 turns to bound token usage
+const MAX_HISTORY = 20;
 
-export async function handleMessage(phoneNumber: string, userText: string): Promise<string> {
-  if (!conversations.has(phoneNumber)) {
-    conversations.set(phoneNumber, []);
-  }
-  const history = conversations.get(phoneNumber)!;
+const systemBlock: Anthropic.Messages.TextBlockParam[] = [
+  {
+    type: 'text',
+    text: SYSTEM_PROMPT,
+    cache_control: { type: 'ephemeral' }, // cached — saves tokens on every repeated call
+  },
+];
 
+function getHistory(id: string): Anthropic.MessageParam[] {
+  if (!conversations.has(id)) conversations.set(id, []);
+  return conversations.get(id)!;
+}
+
+function trimHistory(history: Anthropic.MessageParam[]): void {
+  if (history.length > MAX_HISTORY) history.splice(0, history.length - MAX_HISTORY);
+}
+
+// Used by WhatsApp webhook — returns full reply at once
+export async function handleMessage(id: string, userText: string): Promise<string> {
+  const history = getHistory(id);
   history.push({ role: 'user', content: userText });
-
-  // Trim oldest turns when limit is exceeded (keep context bounded)
-  if (history.length > MAX_HISTORY) {
-    history.splice(0, history.length - MAX_HISTORY);
-  }
+  trimHistory(history);
 
   const response = await client.messages.create({
     model: 'claude-opus-4-7',
     max_tokens: 1024,
-    // Stable system prompt is cached — saves tokens on every repeated call
-    system: [
-      {
-        type: 'text',
-        text: SYSTEM_PROMPT,
-        cache_control: { type: 'ephemeral' },
-      },
-    ],
+    system: systemBlock,
     messages: history,
   });
 
@@ -40,11 +42,37 @@ export async function handleMessage(phoneNumber: string, userText: string): Prom
     .join('');
 
   history.push({ role: 'assistant', content: reply });
-
   return reply;
 }
 
-// Clear conversation history for a user (e.g., after inactivity)
-export function clearHistory(phoneNumber: string): void {
-  conversations.delete(phoneNumber);
+// Used by web chat widget — yields text chunks as they stream
+export async function* streamMessage(id: string, userText: string): AsyncGenerator<string> {
+  const history = getHistory(id);
+  history.push({ role: 'user', content: userText });
+  trimHistory(history);
+
+  const stream = client.messages.stream({
+    model: 'claude-opus-4-7',
+    max_tokens: 1024,
+    system: systemBlock,
+    messages: history,
+  });
+
+  let fullText = '';
+
+  for await (const event of stream) {
+    if (
+      event.type === 'content_block_delta' &&
+      event.delta.type === 'text_delta'
+    ) {
+      fullText += event.delta.text;
+      yield event.delta.text;
+    }
+  }
+
+  history.push({ role: 'assistant', content: fullText });
+}
+
+export function clearHistory(id: string): void {
+  conversations.delete(id);
 }

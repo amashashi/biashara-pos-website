@@ -1,4 +1,6 @@
 ---
+import ChatWidget from '../components/ChatWidget.astro';
+
 export interface Props {
   title?: string;
   description?: string;
@@ -64,6 +66,7 @@ const siteUrl = 'https://biashara-pos-production.up.railway.app';
   </head>
   <body>
     <slot />
+    <ChatWidget />
 
     <!-- WhatsApp Floating Button -->
     <a
