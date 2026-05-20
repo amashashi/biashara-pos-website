@@ -27,6 +27,8 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+        env:
+          PUBLIC_CHAT_API_URL: https://sparkling-simplicity-production-ca0b.up.railway.app
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
