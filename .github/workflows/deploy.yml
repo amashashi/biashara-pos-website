@@ -28,7 +28,7 @@ jobs:
       - name: Build website
         run: npm run build
         env:
-          PUBLIC_CHAT_API_URL: https://sparkling-simplicity-production-ca0b.up.railway.app
+          PUBLIC_CHAT_API_URL: https://app.biashara-pos.com/api/v1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
