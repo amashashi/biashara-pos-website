@@ -4,6 +4,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  site: 'https://amashashi.github.io',
-  base: '/biashara-pos-website/',
+  site: 'https://biashara-pos.com',
 });
