@@ -264,6 +264,14 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
     }
   }
 
+  // Auto-open with welcome message on first visit (once per session)
+  if (!sessionStorage.getItem('bpos-greeted')) {
+    setTimeout(() => {
+      toggle();
+      sessionStorage.setItem('bpos-greeted', '1');
+    }, 3000);
+  }
+
   function greet() {
     addBot('👋 Hi! I\'m the Biashara POS assistant.\n\nAsk me anything about features, pricing, TRA compliance, offline mode, or how to get started — in English or Swahili!');
   }
