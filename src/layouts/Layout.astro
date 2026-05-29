@@ -17,6 +17,14 @@ const siteUrl = 'https://biashara-pos.com';
 <html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-74MCNRL92X"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-74MCNRL92X');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
@@ -120,6 +128,37 @@ const siteUrl = 'https://biashara-pos.com';
 
       const saved = localStorage.getItem('biashara-lang');
       if (saved && saved !== 'en') applyLang(saved);
+    </script>
+
+    <!-- Conversion event tracking (GA4) -->
+    <script is:inline>
+      (function () {
+        function track(name, params) {
+          if (typeof window.gtag === 'function') window.gtag('event', name, params);
+        }
+
+        function nearestText(el) {
+          var node = el.closest('a, button');
+          return node ? (node.textContent || '').trim().slice(0, 80) : '';
+        }
+
+        document.addEventListener('click', function (e) {
+          var link = e.target.closest('a, button');
+          if (!link) return;
+
+          var href = link.getAttribute('href') || '';
+
+          if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
+            track('whatsapp_click', { link_url: href, link_text: nearestText(link) });
+          } else if (href.indexOf('app.biashara-pos.com') !== -1) {
+            track('app_cta_click', { link_url: href, link_text: nearestText(link) });
+          } else if (href.indexOf('mailto:') === 0) {
+            track('contact_email_click', { link_url: href });
+          } else if (link.id === 'chat-btn') {
+            track('chat_widget_open', {});
+          }
+        });
+      })();
     </script>
   </body>
 </html>
