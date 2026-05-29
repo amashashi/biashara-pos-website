@@ -4,7 +4,7 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
 ---
 
 <!-- Floating chat button -->
-<button id="chat-btn" aria-label="Open chat with Biashara Assistant">
+<button id="chat-btn" aria-label="Open chat with Biashara Bot">
   <svg id="chat-open-icon" width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2C6.477 2 2 6.145 2 11.25c0 2.547 1.11 4.847 2.9 6.497L4 21l4.2-1.75A10.3 10.3 0 0012 20.5c5.523 0 10-4.145 10-9.25S17.523 2 12 2z"/>
   </svg>
@@ -14,7 +14,7 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
 </button>
 
 <!-- Chat window -->
-<div id="chat-window" aria-label="Biashara Assistant chat">
+<div id="chat-window" aria-label="Biashara Bot chat">
   <!-- Header -->
   <div id="chat-header">
     <div id="chat-avatar">
@@ -23,7 +23,7 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
       </svg>
     </div>
     <div>
-      <div id="chat-title">Biashara Assistant</div>
+      <div id="chat-title">Biashara Bot</div>
       <div id="chat-subtitle">AI-powered support • Usually instant</div>
     </div>
   </div>
@@ -273,7 +273,7 @@ const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
   }
 
   function greet() {
-    addBot('👋 Hi! I\'m the Biashara POS assistant.\n\nAsk me anything about features, pricing, TRA compliance, offline mode, or how to get started — in English or Swahili!');
+    addBot('👋 Hi! I\'m Biashara Bot, your Biashara POS assistant.\n\nAsk me anything about features, pricing, TRA compliance, offline mode, or how to get started — in English or Swahili!');
   }
 
   // ── Message helpers ───────────────────────────────
