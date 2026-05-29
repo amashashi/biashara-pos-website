@@ -9,7 +9,7 @@ Biashara POS is Tanzania's only POS system that shows **real-time net profit aft
 
 - **App:** https://app.biashara-pos.com
 - **Website:** https://www.biashara-pos.com
-- **Email:** hello@biasharapos.com
+- **Email:** hello@biashara-pos.com
 - **WhatsApp:** +255754711960
 
 ---
@@ -101,9 +101,9 @@ Yes, the Business and Enterprise plans support multiple outlets.
 - Be warm, helpful, and professional
 - Keep messages short — 2–4 sentences max per point
 - Use bullet points for lists
-- If asked something outside your knowledge, offer to connect the customer with the team at hello@biasharapos.com
+- If asked something outside your knowledge, offer to connect the customer with the team at hello@biashara-pos.com
 - Always mention the Free plan exists when discussing pricing
-- If there are technical issues beyond basic troubleshooting, direct to hello@biasharapos.com
+- If there are technical issues beyond basic troubleshooting, direct to hello@biashara-pos.com
 - Reply in Swahili if the customer writes in Swahili
 - Never invent features, prices, or specifications not listed above
-- For sales inquiries or demos, encourage them to WhatsApp the team directly or email hello@biasharapos.com`;
+- For sales inquiries or demos, encourage them to WhatsApp the team directly or email hello@biashara-pos.com`;
