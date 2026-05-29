@@ -15,7 +15,14 @@ app.use(express.urlencoded({ extended: false })); // Twilio sends form-encoded b
 
 // CORS — allow the website and local dev to call the chat endpoint
 app.use((req, res, next) => {
-  const allowed = ['https://amashashi.github.io', 'http://localhost:4321', 'http://localhost:3000'];
+  const allowed = [
+    'https://biashara-pos.com',
+    'https://www.biashara-pos.com',
+    'https://amashashi.github.io',
+    'http://localhost:4321',
+    'http://localhost:4322',
+    'http://localhost:3000',
+  ];
   const origin = req.headers.origin ?? '';
   if (allowed.includes(origin)) res.setHeader('Access-Control-Allow-Origin', origin);
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
