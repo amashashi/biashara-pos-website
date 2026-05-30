@@ -77,13 +77,13 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       { icon: '<path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/>', title: 'Sizes, colours & variants', desc: 'Unlimited variant options per product — XS to XXXL, every shade, every fit.' },
       { icon: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6v12M11 6v12M15 6v12"/>', title: 'Barcode label printing', desc: 'Print your own barcode labels at the counter, or scan existing manufacturer barcodes.' },
       { icon: '<path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/>', title: 'Dead-stock report', desc: 'See which items are not moving so you can run promotions or return to suppliers.' },
-      { icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>', title: 'M-Pesa, card & cash', desc: 'One receipt, every method — M-Pesa, Tigo Pesa, Airtel Money, Visa, Mastercard, cash.' },
+      { icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>', title: 'M-Pesa, card & cash', desc: 'One receipt, every method — M-Pesa, Mixx by Yas, Airtel Money, Visa, Mastercard, cash.' },
     ],
     faqs: [
       { q: 'Can I track sizes and colours of each item?', a: 'Yes — every product can have unlimited variant options (size, colour, fit, fabric). Each variant has its own stock count and SKU.' },
       { q: 'Do you print barcode labels?', a: 'Yes — print barcode labels directly from BiasharaPOS, or scan existing manufacturer barcodes. Works with any USB or Bluetooth scanner.' },
       { q: 'Can I see which items are not selling?', a: 'Yes — the dead-stock report shows slow-moving items by category, so you can run promotions or return to suppliers.' },
-      { q: 'Does it accept M-Pesa for boutique sales?', a: 'Yes — M-Pesa, Tigo Pesa, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
+      { q: 'Does it accept M-Pesa for boutique sales?', a: 'Yes — M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
     ],
   },
 
@@ -147,7 +147,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       { q: 'Can I manage tables and split bills at the end?', a: 'Yes — assign every order to a table. At the end, split by item, by share or by guest — and merge tables if needed.' },
       { q: 'Do orders print at the kitchen automatically?', a: 'Yes — connect a kitchen printer (or multiple stations) and tickets print the moment the waiter sends the order.' },
       { q: 'Can I track the cost of ingredients per dish?', a: 'Yes — recipe costing lets you log ingredients per menu item, so you see your real profit margin per plate.' },
-      { q: 'Does it support M-Pesa Lipa Namba for orders?', a: 'Yes — M-Pesa, Tigo Pesa, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
+      { q: 'Does it support M-Pesa Lipa Namba for orders?', a: 'Yes — M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
     ],
   },
 

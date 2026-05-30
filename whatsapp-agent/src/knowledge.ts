@@ -22,7 +22,7 @@ Biashara POS is Tanzania's only POS system that shows **real-time net profit aft
 
 3. **TRA Compliance** — Fully integrated with Tanzania Revenue Authority (TRA) Virtual Fiscal Device (VFD). Automatically issues compliant fiscal receipts accepted by TRA.
 
-4. **Universal Payments** — Accepts M-Pesa, Tigo Pesa, Airtel Money, Halotel, cash, and card payments in one system with automatic reconciliation.
+4. **Universal Payments** — Accepts M-Pesa, Mixx by Yas, Airtel Money, Halotel, cash, and card payments in one system with automatic reconciliation.
 
 5. **Smart Inventory** — Track stock levels, low-stock alerts, supplier management, and purchase orders.
 
@@ -70,7 +70,7 @@ Biashara POS is web-based and works on any device (phone, tablet, computer). No 
 Any retail or service business: boutiques, pharmacies, electronics shops, supermarkets, restaurants, hotels, hardware stores, beauty salons, pharmacies, and more.
 
 **Q: What payment methods are supported?**
-Cash, M-Pesa, Tigo Pesa, Airtel Money, Halotel, and card — all in one system.
+Cash, M-Pesa, Mixx by Yas, Airtel Money, Halotel, and card — all in one system.
 
 **Q: How do I get started?**
 Visit https://app.biashara-pos.com and create a free account. No credit card required for the Free plan.
