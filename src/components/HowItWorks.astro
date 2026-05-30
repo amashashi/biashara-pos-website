@@ -1,61 +1,25 @@
 ---
 const steps = [
-  {
-    num: '01',
-    titleEn: 'Sign up in 2 minutes',
-    titleSw: 'Jiandikishe ndani ya dakika 2',
-    descEn: 'Create your account, add your business details, set your PIN. No hardware needed.',
-    descSw: 'Fungua akaunti yako, ongeza maelezo ya biashara yako, weka PIN yako. Hakuna vifaa vinavyohitajika.',
-  },
-  {
-    num: '02',
-    titleEn: 'Add your products',
-    titleSw: 'Ongeza bidhaa zako',
-    descEn: 'Type products manually or scan existing barcodes. Import bulk via spreadsheet.',
-    descSw: 'Andika bidhaa kwa mkono au skani barcodes zilizopo. Ingiza kwa wingi kupitia spreadsheet.',
-  },
-  {
-    num: '03',
-    titleEn: 'Sell & see your profit',
-    titleSw: 'Uza na uone faida yako',
-    descEn: 'Every sale shows real-time net profit. TRA-compliant receipt printed or sent automatically.',
-    descSw: 'Kila uuzaji unaonyesha faida halisi ya wakati huu huu. Risiti inayotii TRA inachapishwa au kutumwa kiotomatiki.',
-  },
+  { n: 'STEP 01', en: { title: 'Sign up in 2 minutes', desc: 'Create your account, add business details and set your PIN. No hardware needed.' }, sw: { title: 'Jisajili kwa dakika 2', desc: 'Fungua akaunti yako, ongeza taarifa za biashara na weka PIN. Hakuna vifaa vinavyohitajika.' } },
+  { n: 'STEP 02', en: { title: 'Add your products', desc: 'Type products, scan existing barcodes, or import in bulk via spreadsheet.' }, sw: { title: 'Ongeza bidhaa zako', desc: 'Andika bidhaa, skani misimbo iliyopo, au ingiza kwa wingi kupitia lahajedwali.' } },
+  { n: 'STEP 03', en: { title: 'Sell & see your profit', desc: 'Every sale shows real-time net profit. TRA receipt printed or sent automatically.' }, sw: { title: 'Uza na uone faida yako', desc: 'Kila mauzo yanaonyesha faida halisi ya wakati huo. Risiti ya TRA inachapwa au kutumwa moja kwa moja.' } },
 ];
 ---
-<section class="py-20 bg-[#F8FAFC]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Title -->
-    <div class="text-center mb-16 fade-in">
-      <p class="text-[#1D9E75] font-700 text-sm uppercase tracking-widest mb-3">Simple process</p>
-      <h2 class="text-3xl sm:text-4xl font-800 text-[#1C1C1A]">
-        <span data-en="How It Works" data-sw="Inatumika Vipi?">How It Works</span>
-      </h2>
-      <p class="mt-3 text-gray-500 font-600 text-lg">Inatumika vipi?</p>
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow center" data-en="Inatumika vipi?" data-sw="Inatumika vipi?">Inatumika vipi?</span>
+      <h2 data-en="Live in 3 steps" data-sw="Anza katika hatua 3">Live in 3 steps</h2>
+      <p data-en="From sign-up to your first profitable sale — in minutes, no hardware required." data-sw="Kuanzia kujisajili hadi mauzo yako ya kwanza yenye faida — kwa dakika chache, bila vifaa.">From sign-up to your first profitable sale — in minutes, no hardware required.</p>
     </div>
-
-    <!-- Steps -->
-    <div class="relative">
-      <!-- Connecting line (desktop) -->
-      <div class="hidden lg:block absolute top-12 left-[16.666%] right-[16.666%] h-0.5 bg-gradient-to-r from-[#1D9E75] via-[#1A56A0] to-[#1D9E75]" style="z-index:0;"></div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 relative">
-        {steps.map((step, i) => (
-          <div class="fade-in flex flex-col items-center text-center relative" style={`transition-delay: ${i * 0.15}s`}>
-            <!-- Number circle -->
-            <div class="relative z-10 w-24 h-24 rounded-full bg-[#1D9E75] flex items-center justify-center mb-6 shadow-lg">
-              <span class="text-3xl font-800 text-white">{step.num}</span>
-            </div>
-            <!-- Content -->
-            <h3 class="text-xl font-800 text-[#1C1C1A] mb-3">
-              <span data-en={step.titleEn} data-sw={step.titleSw}>{step.titleEn}</span>
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              <span data-en={step.descEn} data-sw={step.descSw}>{step.descEn}</span>
-            </p>
-          </div>
-        ))}
-      </div>
+    <div class="steps">
+      {steps.map((s) => (
+        <div class="step reveal">
+          <div class="n">{s.n}</div>
+          <h3 data-en={s.en.title} data-sw={s.sw.title}>{s.en.title}</h3>
+          <p data-en={s.en.desc} data-sw={s.sw.desc}>{s.en.desc}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>

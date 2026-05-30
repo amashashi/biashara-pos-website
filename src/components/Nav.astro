@@ -1,110 +1,32 @@
 ---
 const appUrl = 'https://app.biashara-pos.com';
 ---
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-40 bg-white transition-shadow duration-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 text-xl font-800">
-        <img src={import.meta.env.BASE_URL + "logo.png"} alt="BiasharaPOS" class="h-12 object-contain" id="nav-logo" />
-        <span class="text-[#1D9E75] font-extrabold">Biashara</span><span class="text-[#1A56A0] font-extrabold"> POS</span>
-      </a>
-
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#features" class="text-sm font-600 text-gray-600 hover:text-[#1A56A0] transition-colors">Features</a>
-        <a href="#pricing" class="text-sm font-600 text-gray-600 hover:text-[#1A56A0] transition-colors">Pricing</a>
-        <a href="#compliance" class="text-sm font-600 text-gray-600 hover:text-[#1A56A0] transition-colors">Compliance</a>
-        <a href="#demo" class="text-sm font-600 text-gray-600 hover:text-[#1A56A0] transition-colors">Demo</a>
-      </div>
-
-      <!-- Right side -->
-      <div class="hidden md:flex items-center gap-3">
-        <button
-          data-lang-toggle
-          class="px-3 py-1.5 text-xs font-700 border-2 border-[#1A56A0] text-[#1A56A0] rounded-full hover:bg-[#1A56A0] hover:text-white transition-all duration-200"
-          aria-label="Switch language"
-        >SW</button>
-        <a
-          href={appUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="px-5 py-2 bg-[#1D9E75] text-white text-sm font-700 rounded-full hover:bg-[#178a64] transition-all duration-200 hover:shadow-md"
-        >
-          <span data-en="Start Free" data-sw="Anza Bure">Start Free</span>
-        </a>
-      </div>
-
-      <!-- Mobile hamburger -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Open menu">
-        <svg id="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-        <svg id="close-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="BiasharaPOS home">
+      <img src={import.meta.env.BASE_URL + "biashara-logo-trim.png"} alt="BiasharaPOS" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#industries" data-en="Industries" data-sw="Sekta">Industries</a>
+      <a href="#devices" data-en="Devices" data-sw="Vifaa">Devices</a>
+      <a href="#why" data-en="Features" data-sw="Vipengele">Features</a>
+      <a href="#pricing" data-en="Pricing" data-sw="Bei">Pricing</a>
+      <a href="#compliance" data-en="Compliance" data-sw="Utii">Compliance</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="lang-toggle" data-lang-toggle aria-label="Switch language">SW</button>
+      <a class="signin" href={appUrl} data-en="Sign in" data-sw="Ingia">Sign in</a>
+      <a class="btn btn-primary" href={appUrl} data-en="Start Free →" data-sw="Anza Bila Malipo →">Start Free →</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
-    <div class="px-4 py-4 flex flex-col gap-4">
-      <a href="#features" class="text-sm font-600 text-gray-700 hover:text-[#1A56A0]">Features</a>
-      <a href="#pricing" class="text-sm font-600 text-gray-700 hover:text-[#1A56A0]">Pricing</a>
-      <a href="#compliance" class="text-sm font-600 text-gray-700 hover:text-[#1A56A0]">Compliance</a>
-      <a href="#demo" class="text-sm font-600 text-gray-700 hover:text-[#1A56A0]">Demo</a>
-      <div class="flex items-center gap-3 pt-2 border-t border-gray-100">
-        <button
-          data-lang-toggle
-          class="px-3 py-1.5 text-xs font-700 border-2 border-[#1A56A0] text-[#1A56A0] rounded-full"
-        >SW</button>
-        <a
-          href={appUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex-1 text-center px-5 py-2 bg-[#1D9E75] text-white text-sm font-700 rounded-full"
-        >
-          <span data-en="Start Free" data-sw="Anza Bure">Start Free</span>
-        </a>
-      </div>
-    </div>
+  <div class="nav-menu" id="navMenu">
+    <a href="#industries" data-en="Industries" data-sw="Sekta">Industries</a>
+    <a href="#devices" data-en="Devices" data-sw="Vifaa">Devices</a>
+    <a href="#why" data-en="Features" data-sw="Vipengele">Features</a>
+    <a href="#pricing" data-en="Pricing" data-sw="Bei">Pricing</a>
+    <a href="#compliance" data-en="Compliance" data-sw="Utii">Compliance</a>
+    <a class="menu-signin" href={appUrl} data-en="Sign in" data-sw="Ingia">Sign in</a>
+    <a class="btn btn-primary" href={appUrl} data-en="Start Free →" data-sw="Anza Bila Malipo →">Start Free →</a>
   </div>
-</nav>
-
-<script>
-  // Sticky shadow
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      navbar?.classList.add('shadow-md');
-    } else {
-      navbar?.classList.remove('shadow-md');
-    }
-  });
-
-  // Mobile menu toggle
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.getElementById('hamburger-icon');
-  const closeIcon = document.getElementById('close-icon');
-
-  btn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden', isOpen);
-    hamburger?.classList.toggle('hidden', !isOpen);
-    closeIcon?.classList.toggle('hidden', isOpen);
-  });
-
-  // Close mobile menu on link click
-  menu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      hamburger?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    });
-  });
-</script>
+</header>

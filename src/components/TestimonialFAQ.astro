@@ -1,0 +1,57 @@
+---
+const faqs = [
+  {
+    en: { q: 'Do I need internet to use BiasharaPOS?', a: 'No. BiasharaPOS works fully offline — sales queue locally and auto-sync the moment you\'re back online.' },
+    sw: { q: 'Je, nahitaji intaneti kutumia BiasharaPOS?', a: 'Hapana. BiasharaPOS inafanya kazi bila intaneti kabisa — mauzo yanahifadhiwa ndani na yanasawazishwa moja kwa moja unaporejea mtandaoni.' },
+  },
+  {
+    en: { q: 'Is BiasharaPOS accepted by TRA?', a: 'Yes. We issue VFD fiscal receipt numbers (RCTVNUM) on every sale and generate one-click TRA audit PDF reports.' },
+    sw: { q: 'Je, BiasharaPOS inakubaliwa na TRA?', a: 'Ndio. Tunatoa namba za risiti za kodi VFD (RCTVNUM) kwa kila mauzo na kuzalisha ripoti za ukaguzi wa TRA PDF kwa mguso mmoja.' },
+  },
+  {
+    en: { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
+    sw: { q: 'Je, kuna app ya simu?', a: 'Ndio — BiasharaPOS inafanya kazi kwenye simu yoyote, kompyuta ndogo au kompyuta, bila vifaa maalumu.' },
+  },
+  {
+    en: { q: 'Can I use it for my pharmacy / restaurant / supermarket?', a: 'Absolutely. Dedicated modes handle expiry & batches for pharmacies, tables & kitchen tickets for restaurants, and barcodes & bulk for retail.' },
+    sw: { q: 'Je, naweza kuitumia kwa duka langu la dawa / mgahawa / soko?', a: 'Bila shaka. Hali maalumu zinashughulikia mwisho wa muda na bechi kwa maduka ya dawa, meza na tiketi za jikoni kwa migahawa, na misimbo na bulk kwa rejareja.' },
+  },
+  {
+    en: { q: 'What payment methods are supported?', a: 'M-Pesa, Tigo Pesa, Airtel Money, Visa and Mastercard — all at a flat monthly fee with no per-transaction charges.' },
+    sw: { q: 'Ni njia gani za malipo zinazoungwa mkono?', a: 'M-Pesa, Tigo Pesa, Airtel Money, Visa na Mastercard — yote kwa ada ya kawaida ya mwezi bila ada za kila muamala.' },
+  },
+];
+---
+<section class="sec sec-white" id="faq">
+  <div class="wrap tf">
+    <div class="quote reveal">
+      <div class="qm">"</div>
+      <div class="qt" data-en="I see my profit instantly after every sale — I've never had this before." data-sw="Naona faida yangu mara moja baada ya kila mauzo — sijawahi kuwa na hii kabla.">I see my profit instantly after every sale — I've never had this before.</div>
+      <div class="muted sw" style="color:rgba(255,255,255,.85);font-size:15px;margin:-12px 0 22px;">Naona faida yangu mara moja baada ya kila uuzaji — sijawahi kuwa na hii kabla.</div>
+      <div class="qa">
+        <div class="qav">F</div>
+        <div class="qn">
+          <b>Fdhyler Collection</b>
+          <span data-en="Dar es Salaam, Tanzania · ★★★★★" data-sw="Dar es Salaam, Tanzania · ★★★★★">Dar es Salaam, Tanzania · ★★★★★</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow" data-en="Got questions?" data-sw="Una maswali?">Got questions?</span>
+      <h2 style="font-size:30px;margin:14px 0 22px;" data-en="Frequently asked" data-sw="Maswali yanayoulizwa mara kwa mara">Frequently asked</h2>
+      <div class="faq-list" id="faqList">
+        {faqs.map((f) => (
+          <div class="faq">
+            <button>
+              <span data-en={f.en.q} data-sw={f.sw.q}>{f.en.q}</span>
+              <span class="pls">+</span>
+            </button>
+            <div class="ans">
+              <p data-en={f.en.a} data-sw={f.sw.a}>{f.en.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

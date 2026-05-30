@@ -1,0 +1,84 @@
+---
+const appUrl = 'https://app.biashara-pos.com';
+---
+<section class="sec sec-white" id="preview">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow center" data-en="See it in action" data-sw="Iangalie ikifanya kazi">See it in action</span>
+      <h2 data-en="One system, tuned to your trade" data-sw="Mfumo mmoja, umewekwa kwa biashara yako">One system, tuned to your trade</h2>
+      <p
+        data-en='Pick your industry and watch the POS adapt — products, profit and receipts update live. <span class="sw">Chagua biashara yako.</span>'
+        data-sw='Chagua sekta yako uone POS ikibadilika — bidhaa, faida na risiti zinasasishwa moja kwa moja. <span class="sw">Chagua biashara yako.</span>'
+      >Pick your industry and watch the POS adapt — products, profit and receipts update live. <span class="sw">Chagua biashara yako.</span></p>
+    </div>
+
+    <div class="switch reveal" style="margin-top:0;">
+      <div class="preview-tabs">
+        <div class="switch-tabs" id="switchTabs">
+          <button class="switch-tab" data-v="clothing">
+            <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/></svg>
+            <span data-en="Clothing" data-sw="Nguo">Clothing</span>
+          </button>
+          <button class="switch-tab active" data-v="retail">
+            <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+            <span data-en="Retail" data-sw="Rejareja">Retail</span>
+          </button>
+          <button class="switch-tab" data-v="restaurant">
+            <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/></svg>
+            <span data-en="Restaurant" data-sw="Mgahawa">Restaurant</span>
+          </button>
+          <button class="switch-tab" data-v="hospital">
+            <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
+            <span data-en="Hospital" data-sw="Hospitali">Hospital</span>
+          </button>
+          <button class="switch-tab" data-v="pharmacy">
+            <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/></svg>
+            <span data-en="Pharmacy" data-sw="Duka la Dawa">Pharmacy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- POS dashboard mock -->
+      <div class="pos">
+        <div class="pos-bar">
+          <div class="pos-dots"><i style="background:#ec6a5e"></i><i style="background:#f4bf4f"></i><i style="background:#61c454"></i></div>
+          <div class="pos-title">BiasharaPOS · Point of Sale</div>
+          <div class="pos-status"><span class="live"></span> <span data-en="TRA VFD synced" data-sw="TRA VFD imeunganishwa">TRA VFD synced</span></div>
+        </div>
+        <div class="pos-body">
+          <div class="pos-main">
+            <div class="pos-mhead">
+              <div class="pos-cat" id="posCat">Retail · POS<small id="posMode">General store</small></div>
+              <div class="pos-tag" id="posTag">Barcodes &amp; bulk</div>
+            </div>
+            <div class="prod-grid" id="prodGrid"></div>
+          </div>
+          <div class="pos-side">
+            <div class="profit-card">
+              <div class="lbl" data-en="Net profit · this sale" data-sw="Faida halisi · mauzo haya">Net profit · this sale</div>
+              <div class="amt" id="netAmt">+TZS 4,200</div>
+              <div class="sub" data-en="after COGS · expenses · VAT" data-sw="baada ya gharama · matumizi · VAT">after COGS · expenses · VAT</div>
+              <div class="spark"><i style="height:40%"></i><i style="height:60%"></i><i style="height:48%"></i><i style="height:75%"></i><i style="height:62%"></i><i class="hi" style="height:92%"></i></div>
+            </div>
+            <div class="sum-card">
+              <div class="sum-row"><span class="sum-k" data-en="Sales today" data-sw="Mauzo ya leo">Sales today</span><span class="sum-v" id="sumSales">TZS 847,500</span></div>
+              <div class="sum-row"><span class="sum-k" data-en="Transactions" data-sw="Miamala">Transactions</span><span class="sum-v" id="sumTx">24</span></div>
+            </div>
+            <div class="sum-card"><div class="vfd"><span class="c">✓</span> <span data-en="Fiscal receipt · RCTVNUM issued" data-sw="Risiti ya kodi · RCTVNUM imetolewa">Fiscal receipt · RCTVNUM issued</span></div></div>
+            <a class="btn btn-primary charge-btn" href={appUrl} data-en="Charge sale" data-sw="Toza mauzo">Charge sale</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- payment strip -->
+    <div class="pay-strip reveal">
+      <span class="pl" data-en="Accepts" data-sw="Inakubali">Accepts</span>
+      <span class="pay">M-Pesa</span>
+      <span class="pay">Tigo Pesa</span>
+      <span class="pay">Airtel Money</span>
+      <span class="pay">Visa</span>
+      <span class="pay">Mastercard</span>
+    </div>
+  </div>
+</section>

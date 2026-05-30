@@ -1,37 +1,19 @@
 ---
 const appUrl = 'https://app.biashara-pos.com';
+const WA = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
 ---
-<section class="py-24 bg-[#1A56A0] relative overflow-hidden">
-  <!-- Background decoration -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-white blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-[#1D9E75] blur-3xl"></div>
-  </div>
-
-  <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="fade-in">
-      <h2 class="text-4xl sm:text-5xl font-800 text-white mb-4">
-        <span data-en="Start today. For free." data-sw="Anza leo. Bila malipo.">Start today. For free.</span>
-      </h2>
-      <p class="text-xl text-blue-200 font-600 mb-3">Anza leo. Bila malipo.</p>
-      <p class="text-blue-200 text-base mb-10 max-w-lg mx-auto" data-en="Join merchants across Tanzania who see their profit in real time." data-sw="Jiunge na wafanyabiashara kote Tanzania wanaona faida yao wakati huu huu.">
-        Join merchants across Tanzania who see their profit in real time.
-      </p>
-
-      <a
-        href={appUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-10 py-4 bg-[#1D9E75] text-white font-800 text-lg rounded-2xl hover:bg-[#178a64] transition-all duration-200 hover:shadow-2xl hover:-translate-y-1 mb-6"
-      >
-        <span data-en="Create Free Account →" data-sw="Fungua Akaunti Bure →">Create Free Account →</span>
-      </a>
-
-      <p class="text-blue-300 text-sm font-600">
-        <span data-en="No credit card required · Cancel anytime · Works on any phone" data-sw="Hakuna kadi ya mkopo · Acha wakati wowote · Inafanya kazi kwenye simu yoyote">
-          No credit card required · Cancel anytime · Works on any phone
-        </span>
-      </p>
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 data-en="Start today. For free." data-sw="Anza leo. Bila malipo.">Start today. For free.</h2>
+      <p
+        data-en='<span class="sw" style="color:#fff;font-style:normal;font-weight:700;">Anza leo. Bila malipo.</span> · No card required · Works on any phone.'
+        data-sw='<span class="sw" style="color:#fff;font-style:normal;font-weight:700;">Anza leo. Bila malipo.</span> · Hakuna kadi inayohitajika · Inafanya kazi kwenye simu yoyote.'
+      ><span class="sw" style="color:#fff;font-style:normal;font-weight:700;">Anza leo. Bila malipo.</span> · No card required · Works on any phone.</p>
+      <div class="hero-cta">
+        <a class="btn btn-white btn-lg" href={appUrl} data-en="Create Free Account →" data-sw="Fungua Akaunti Bila Malipo →">Create Free Account →</a>
+        <a class="btn btn-light btn-lg" href={WA} data-en="Chat on WhatsApp" data-sw="Ongea kwenye WhatsApp">Chat on WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>

@@ -1,57 +1,44 @@
 ---
 const rows = [
-  { sales: 'TZS 1,000,000', competitor: 'TZS 35,000', biashara: 'TZS 35,000', saving: 'Break even', highlight: false },
-  { sales: 'TZS 2,000,000', competitor: 'TZS 70,000', biashara: 'TZS 35,000', saving: 'TZS 35,000 saved', highlight: false },
-  { sales: 'TZS 5,000,000', competitor: 'TZS 175,000', biashara: 'TZS 35,000', saving: 'TZS 140,000 saved', highlight: true },
-  { sales: 'TZS 10,000,000', competitor: 'TZS 350,000', biashara: 'TZS 35,000', saving: 'TZS 315,000 saved', highlight: false },
-  { sales: 'TZS 20,000,000', competitor: 'TZS 700,000', biashara: 'TZS 35,000', saving: 'TZS 665,000 saved', highlight: false },
+  { sales: 'TZS 1,000,000', label: '', comp: '35,000', us: '35,000', save: 'Break even', save_sw: 'Sawa', hl: false },
+  { sales: 'TZS 2,000,000', label: '', comp: '70,000', us: '35,000', save: '+35,000', save_sw: '+35,000', hl: false },
+  { sales: 'TZS 5,000,000', label: 'TYPICAL SME', label_sw: 'SME YA KAWAIDA', comp: '175,000', us: '35,000', save: '+140,000', save_sw: '+140,000', hl: true },
+  { sales: 'TZS 10,000,000', label: '', comp: '350,000', us: '35,000', save: '+315,000', save_sw: '+315,000', hl: false },
+  { sales: 'TZS 20,000,000', label: '', comp: '700,000', us: '35,000', save: '+665,000', save_sw: '+665,000', hl: false },
 ];
 ---
-<section class="py-20 bg-[#F8FAFC]">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12 fade-in">
-      <p class="text-[#1D9E75] font-700 text-sm uppercase tracking-widest mb-3">Cost comparison</p>
-      <h2 class="text-3xl sm:text-4xl font-800 text-[#1C1C1A]">
-        <span data-en="Compare the cost" data-sw="Linganisha gharama">Compare the cost</span>
-      </h2>
-      <p class="mt-3 text-gray-500 font-600 text-lg">Linganisha gharama</p>
-      <p class="mt-3 text-gray-500">Competitors charge up to <strong>3.5% per transaction</strong>. BiasharaPOS charges a flat monthly fee — no surprises.</p>
+<section class="sec sec-tint">
+  <div class="wrap cmp">
+    <div class="reveal">
+      <span class="eyebrow" data-en="Compare the cost" data-sw="Linganisha gharama">Compare the cost</span>
+      <h2 data-en="Competitors take 3.5% per sale. We charge a flat fee." data-sw="Washindani wanatoza 3.5% kwa kila mauzo. Sisi tunatoza ada ya kawaida.">Competitors take 3.5% per sale. We charge a flat fee.</h2>
+      <p class="lead" data-en="No per-transaction charges, no surprises — one predictable monthly price as your sales grow." data-sw="Hakuna ada za kila muamala, hakuna mshangao — bei moja ya kila mwezi inayoweza kutabiriwa biashara yako ikikua.">No per-transaction charges, no surprises — one predictable monthly price as your sales grow.</p>
+      <div class="save-chip"><b>~TZS 1.68M</b><span data-en="saved per year at TZS 5M monthly sales" data-sw="zinazookolewa kwa mwaka kwa mauzo ya TZS 5M kwa mwezi">saved per year at TZS 5M monthly sales</span></div>
     </div>
-
-    <div class="fade-in overflow-x-auto rounded-2xl shadow-lg border border-gray-200">
-      <table class="w-full border-collapse bg-white">
+    <div class="cmp-table reveal">
+      <table>
         <thead>
-          <tr class="bg-[#1A56A0]">
-            <th class="px-6 py-4 text-left text-sm font-700 text-white">Monthly Sales</th>
-            <th class="px-6 py-4 text-center text-sm font-700 text-white">Competitors (3.5%)</th>
-            <th class="px-6 py-4 text-center text-sm font-700 text-[#1D9E75] bg-[#0B3D2E]">BiasharaPOS Pro</th>
-            <th class="px-6 py-4 text-center text-sm font-700 text-white">Monthly Saving</th>
+          <tr>
+            <th data-en="Monthly sales" data-sw="Mauzo kwa mwezi">Monthly sales</th>
+            <th data-en="Competitors (3.5%)" data-sw="Washindani (3.5%)">Competitors (3.5%)</th>
+            <th>BiasharaPOS</th>
+            <th data-en="You save" data-sw="Unaokoa">You save</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
-            <tr class={`border-t border-gray-100 ${row.highlight ? 'bg-[#F0FDF4]' : 'hover:bg-gray-50'} transition-colors`}>
-              <td class="px-6 py-4 text-sm font-600 text-[#1C1C1A]">
-                {row.sales}
-                {row.highlight && (
-                  <span class="ml-2 text-[10px] bg-[#1D9E75] text-white px-2 py-0.5 rounded-full font-700 uppercase">Typical SME</span>
-                )}
+          {rows.map((r) => (
+            <tr class={r.hl ? 'hl' : ''}>
+              <td class="rowlab">
+                {r.sales}
+                {r.label && (<small data-en={r.label} data-sw={r.label_sw}>{r.label}</small>)}
               </td>
-              <td class="px-6 py-4 text-center text-sm font-600 text-red-600">{row.competitor}</td>
-              <td class="px-6 py-4 text-center text-sm font-800 text-[#1D9E75] bg-[#F0FDF4]">{row.biashara}</td>
-              <td class={`px-6 py-4 text-center text-sm font-700 ${row.saving === 'Break even' ? 'text-gray-500' : 'text-[#1D9E75]'}`}>
-                {row.saving}
-              </td>
+              <td class="comp">{r.comp}</td>
+              <td class="us">{r.us}</td>
+              <td class="save" data-en={r.save} data-sw={r.save_sw}>{r.save}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
-
-    <div class="mt-6 text-center fade-in">
-      <p class="inline-block bg-[#1D9E75] text-white font-700 px-6 py-3 rounded-xl text-sm shadow-md">
-        💰 At TZS 5M monthly sales, you save <strong>TZS 1,680,000/year</strong> with BiasharaPOS
-      </p>
     </div>
   </div>
 </section>

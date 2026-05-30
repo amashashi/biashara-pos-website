@@ -1,161 +1,25 @@
 ---
 const appUrl = 'https://app.biashara-pos.com';
 ---
-<section id="demo" class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-white">
-  <!-- Background gradient -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[#EFF6FF] via-white to-white pointer-events-none"></div>
-  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1D9E75] via-[#1A56A0] to-[#1D9E75]"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-      <!-- Left: copy -->
-      <div class="fade-in">
-        <!-- Eyebrow -->
-        <div class="inline-flex items-center gap-2 bg-[#EFF6FF] border border-[#BFDBFE] text-[#1A56A0] text-xs font-700 px-3 py-1.5 rounded-full mb-6">
-          <span class="w-2 h-2 rounded-full bg-[#1D9E75] animate-pulse"></span>
-          Tanzania's #1 Real-Time Profit POS
-        </div>
-
-        <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-800 leading-tight text-[#1C1C1A] mb-4">
-          <span data-en="Smart Business." data-sw="Biashara Yako.">Smart Business.</span><br />
-          <span class="text-[#1A56A0]" data-en="Seamless Sales." data-sw="Mauzo Rahisi.">Seamless Sales.</span>
-        </h1>
-
-        <!-- Swahili subtagline -->
-        <p class="text-lg text-[#1D9E75] font-700 mb-4" data-en="Faida yako — wakati huu huu" data-sw="Faida yako — wakati huu huu">Faida yako — wakati huu huu</p>
-
-        <!-- Subheadline -->
-        <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-8" data-en="The only POS in Tanzania that shows your real net profit after every sale — after COGS, expenses, and VAT. Works offline. TRA-compliant. Flat monthly fee, no transaction charges." data-sw="POS pekee Tanzania inayoonyesha faida yako halisi baada ya kila uuzaji — baada ya gharama na VAT. Inafanya kazi bila intaneti. Inatii TRA. Ada ya mwezi tu, bila ada za miamala.">
-          The only POS in Tanzania that shows your <strong>real net profit</strong> after every sale — after COGS, expenses, and VAT. Works offline. TRA-compliant. Flat monthly fee, no transaction charges.
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-          <a
-            href={appUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#1D9E75] text-white font-700 text-base rounded-xl hover:bg-[#178a64] transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
-          >
-            <span data-en="Start for Free →" data-sw="Anza Bure →">Start for Free →</span>
-          </a>
-          <a
-            href="#features"
-            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-[#1A56A0] text-[#1A56A0] font-700 text-base rounded-xl hover:bg-[#EFF6FF] transition-all duration-200"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <span data-en="See Features" data-sw="Ona Vipengele">See Features</span>
-          </a>
-        </div>
-
-        <!-- Social proof chips -->
-        <div class="flex flex-wrap gap-3">
-          <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-600 shadow-sm">
-            <span class="text-[#1D9E75]">✓</span>
-            <span data-en="Affordable flat monthly price" data-sw="Bei nafuu ya mwezi">Affordable flat monthly price</span>
-          </div>
-          <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-600 shadow-sm">
-            <span class="text-[#1D9E75]">✓</span>
-            <span data-en="Works offline" data-sw="Inafanya kazi bila intaneti">Works offline</span>
-          </div>
-          <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-600 shadow-sm">
-            <span class="text-[#1D9E75]">✓</span>
-            <span data-en="TRA-compliant receipts" data-sw="Risiti zinazotii TRA">TRA-compliant receipts</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Phone mockup -->
-      <div class="fade-in flex justify-center lg:justify-end" style="transition-delay: 0.2s">
-        <div class="relative">
-          <!-- Phone frame -->
-          <div class="relative w-[280px] sm:w-[300px] bg-[#1C1C1A] rounded-[3rem] shadow-2xl p-3" style="box-shadow: 0 40px 80px rgba(26,86,160,0.25), 0 0 0 1px rgba(255,255,255,0.1);">
-            <!-- Notch -->
-            <div class="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#0a0a0a] rounded-full z-10"></div>
-            <!-- Screen -->
-            <div class="bg-[#F8FAFC] rounded-[2.5rem] overflow-hidden" style="min-height: 520px;">
-              <!-- Status bar -->
-              <div class="bg-[#1A56A0] px-5 pt-8 pb-4">
-                <div class="flex justify-between items-center mb-3">
-                  <span class="text-white text-xs font-600 opacity-80">9:41</span>
-                  <span class="text-white text-xs opacity-80">●●●</span>
-                </div>
-                <p class="text-white/70 text-xs font-600 mb-1">Today's Summary</p>
-                <p class="text-white text-2xl font-800">TZS 847,500</p>
-                <div class="flex items-center gap-1 mt-1">
-                  <span class="text-[#1D9E75] text-sm font-700">▲ Net Profit: TZS 312,400</span>
-                </div>
-              </div>
-
-              <!-- Dashboard cards -->
-              <div class="p-4 space-y-3">
-                <!-- Sales card -->
-                <div class="bg-white rounded-xl p-3 shadow-sm flex justify-between items-center">
-                  <div>
-                    <p class="text-xs text-gray-500 font-600">Sales Today</p>
-                    <p class="text-base font-800 text-[#1C1C1A]">24 transactions</p>
-                  </div>
-                  <div class="w-9 h-9 rounded-full bg-[#EFF6FF] flex items-center justify-center">
-                    <span class="text-lg">🛒</span>
-                  </div>
-                </div>
-
-                <!-- Profit card -->
-                <div class="bg-[#1D9E75] rounded-xl p-3 shadow-sm flex justify-between items-center">
-                  <div>
-                    <p class="text-xs text-white/70 font-600">Net Profit</p>
-                    <p class="text-base font-800 text-white">TZS 312,400</p>
-                  </div>
-                  <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-                    <span class="text-lg">📈</span>
-                  </div>
-                </div>
-
-                <!-- TRA card -->
-                <div class="bg-white rounded-xl p-3 shadow-sm flex justify-between items-center">
-                  <div>
-                    <p class="text-xs text-gray-500 font-600">TRA Status</p>
-                    <p class="text-sm font-700 text-[#1D9E75]">✓ VFD Synced</p>
-                  </div>
-                  <div class="w-9 h-9 rounded-full bg-[#F0FDF4] flex items-center justify-center">
-                    <span class="text-lg">🏛️</span>
-                  </div>
-                </div>
-
-                <!-- Payment method chips -->
-                <div class="flex flex-wrap gap-2 pt-1">
-                  <span class="text-xs bg-[#EFF6FF] text-[#1A56A0] font-700 px-2.5 py-1 rounded-full">M-Pesa</span>
-                  <span class="text-xs bg-[#EFF6FF] text-[#1A56A0] font-700 px-2.5 py-1 rounded-full">Tigo</span>
-                  <span class="text-xs bg-[#EFF6FF] text-[#1A56A0] font-700 px-2.5 py-1 rounded-full">Airtel</span>
-                  <span class="text-xs bg-[#EFF6FF] text-[#1A56A0] font-700 px-2.5 py-1 rounded-full">Visa</span>
-                </div>
-
-                <!-- CTA bar -->
-                <div class="bg-[#1A56A0] rounded-xl p-3 text-center">
-                  <p class="text-white text-xs font-700">New Sale</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating badge -->
-          <div class="absolute -right-4 top-16 bg-white border border-gray-200 rounded-xl px-3 py-2 shadow-lg text-center">
-            <p class="text-xs text-gray-500">Net Profit</p>
-            <p class="text-sm font-800 text-[#1D9E75]">+TZS 4,200</p>
-            <p class="text-[10px] text-gray-400">this sale</p>
-          </div>
-
-          <!-- Floating TRA badge -->
-          <div class="absolute -left-4 bottom-20 bg-[#0B3D2E] rounded-xl px-3 py-2 shadow-lg">
-            <p class="text-[10px] text-white/70">TRA Receipt</p>
-            <p class="text-xs font-700 text-[#1D9E75]">RCTVNUM ✓</p>
-          </div>
-        </div>
-      </div>
+<section class="hero hero-vision">
+  <div class="wrap hero-center">
+    <div class="brand-lockup reveal"><b>Biashara</b><i>POS</i></div>
+    <div class="tagline reveal" data-en="Smart Business · Seamless Sales" data-sw="Biashara Bora · Mauzo Rahisi">Smart Business · Seamless Sales</div>
+    <h1 class="reveal" data-en='One POS. <span class="grad">Every business.</span>' data-sw='POS moja. <span class="grad">Kila biashara.</span>'>One POS. <span class="grad">Every business.</span></h1>
+    <p
+      class="hero-sub reveal"
+      data-en='Sell, manage stock and see your <b>real net profit</b> after every sale — built for clothing, retail, restaurants, hospitals &amp; pharmacies. <span class="sw">Biashara zako, mfumo mmoja.</span>'
+      data-sw='Uza, simamia stoki na uone <b>faida halisi</b> baada ya kila mauzo — imejengwa kwa nguo, rejareja, migahawa, hospitali na maduka ya dawa. <span class="sw">Biashara zako, mfumo mmoja.</span>'
+    >Sell, manage stock and see your <b>real net profit</b> after every sale — built for clothing, retail, restaurants, hospitals &amp; pharmacies. <span class="sw">Biashara zako, mfumo mmoja.</span></p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary btn-lg" href={appUrl} data-en="Start for Free →" data-sw="Anza Bila Malipo →">Start for Free →</a>
+      <a class="btn btn-ghost btn-lg" href="#preview" data-en="See it in action" data-sw="Iangalie ikifanya kazi">See it in action</a>
+    </div>
+    <div class="hero-ticks reveal">
+      <span class="tick"><span class="ic">✓</span><span data-en="Phone, POS terminal & computer" data-sw="Simu, terminal ya POS &amp; kompyuta">Phone, POS terminal &amp; computer</span></span>
+      <span class="tick"><span class="ic">✓</span><span data-en="Works offline" data-sw="Inafanya kazi bila intaneti">Works offline</span></span>
+      <span class="tick"><span class="ic">✓</span><span data-en="TRA-compliant receipts" data-sw="Risiti zinazokubalika TRA">TRA-compliant receipts</span></span>
+      <span class="tick"><span class="ic">✓</span><span data-en="Flat monthly fee" data-sw="Ada ya mwezi tu">Flat monthly fee</span></span>
     </div>
   </div>
 </section>
