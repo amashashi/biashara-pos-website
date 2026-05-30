@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/biashara-logo-trim.png';
+
 const appUrl = 'https://app.biashara-pos.com';
 const WA = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
 const ROOT = '/';
@@ -8,7 +11,7 @@ const ROOT = '/';
     <div class="footer-top">
       <div>
         <a class="brand" href="#top" aria-label="BiasharaPOS home">
-          <img src={import.meta.env.BASE_URL + "biashara-logo-trim.png"} alt="BiasharaPOS" />
+          <Image src={logo} alt="BiasharaPOS" width={128} height={128} loading="lazy" />
         </a>
         <p
           class="fdesc"
