@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://biashara-pos.com/sitemap-index.xml

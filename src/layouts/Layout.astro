@@ -5,15 +5,72 @@ import ChatWidget from '../components/ChatWidget.astro';
 export interface Props {
   title?: string;
   description?: string;
+  /** Path of the current page used for canonical + og:url. Defaults to "/". */
+  path?: string;
 }
 
 const {
   title = 'BiasharaPOS — One POS for every business',
   description = "One POS for every business vertical — clothing, retail, restaurants, hospitals & pharmacies. Real-time net profit after every sale, works offline, TRA-compliant, flat monthly fee.",
+  path = '/',
 } = Astro.props;
 
 const siteUrl = 'https://biashara-pos.com';
+const canonical = new URL(path, siteUrl).toString();
+const ogImage = new URL('/og-image.png', siteUrl).toString();
 const WA_URL = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
+
+// FAQ items kept in sync with TestimonialFAQ.astro for FAQPage JSON-LD
+const faqsForSchema = [
+  { q: 'Do I need internet to use BiasharaPOS?', a: 'No. BiasharaPOS works fully offline — sales queue locally and auto-sync the moment you\'re back online.' },
+  { q: 'Is BiasharaPOS accepted by TRA?', a: 'Yes. We issue VFD fiscal receipt numbers (RCTVNUM) on every sale and generate one-click TRA audit PDF reports.' },
+  { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
+  { q: 'Can I use it for my pharmacy / restaurant / supermarket?', a: 'Absolutely. Dedicated modes handle expiry & batches for pharmacies, tables & kitchen tickets for restaurants, and barcodes & bulk for retail.' },
+  { q: 'What payment methods are supported?', a: 'M-Pesa, Tigo Pesa, Airtel Money, Visa and Mastercard — all at a flat monthly fee with no per-transaction charges.' },
+];
+
+const softwareApplicationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'BiasharaPOS',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web, iOS, Android',
+  description,
+  url: siteUrl,
+  inLanguage: ['en', 'sw'],
+  offers: [
+    { '@type': 'Offer', name: 'Free',     price: '0',     priceCurrency: 'TZS', priceSpecification: { '@type': 'UnitPriceSpecification', price: '0', priceCurrency: 'TZS', billingDuration: 'P1M' } },
+    { '@type': 'Offer', name: 'Pro',      price: '35000', priceCurrency: 'TZS', priceSpecification: { '@type': 'UnitPriceSpecification', price: '35000', priceCurrency: 'TZS', billingDuration: 'P1M' } },
+    { '@type': 'Offer', name: 'Business', price: '85000', priceCurrency: 'TZS', priceSpecification: { '@type': 'UnitPriceSpecification', price: '85000', priceCurrency: 'TZS', billingDuration: 'P1M' } },
+  ],
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'BiasharaPOS',
+  url: siteUrl,
+  logo: new URL('/biashara-logo-trim.png', siteUrl).toString(),
+  areaServed: { '@type': 'Country', name: 'Tanzania' },
+  contactPoint: [{
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    telephone: '+255754711960',
+    email: 'hello@biashara-pos.com',
+    availableLanguage: ['en', 'sw'],
+  }],
+  sameAs: [],
+};
+
+const faqPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqsForSchema.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -30,19 +87,26 @@ const WA_URL = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#239b46" />
+    <link rel="canonical" href={canonical} />
 
     <!-- OG -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="BiasharaPOS" />
     <meta property="og:locale" content="en_TZ" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BiasharaPOS — One POS for every business" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/png" href={import.meta.env.BASE_URL + "favicon.png"} />
     <link rel="apple-touch-icon" href={import.meta.env.BASE_URL + "biashara-logo-trim.png"} />
@@ -53,6 +117,11 @@ const WA_URL = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20
       rel="stylesheet"
     />
     <title>{title}</title>
+
+    <!-- Structured data: SoftwareApplication, Organization, FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd)} />
   </head>
   <body>
     <slot />
