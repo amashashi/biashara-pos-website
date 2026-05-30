@@ -29,7 +29,15 @@ const faqs = [
       <div class="qt" data-en="I see my profit instantly after every sale — I've never had this before." data-sw="Naona faida yangu mara moja baada ya kila mauzo — sijawahi kuwa na hii kabla.">I see my profit instantly after every sale — I've never had this before.</div>
       <div class="muted sw" style="color:rgba(255,255,255,.85);font-size:15px;margin:-12px 0 22px;">Naona faida yangu mara moja baada ya kila uuzaji — sijawahi kuwa na hii kabla.</div>
       <div class="qa">
-        <div class="qav">F</div>
+        <div class="qav">
+          <img
+            src={import.meta.env.BASE_URL + "testimonial-fdhyler.png"}
+            alt="Fdhyler Collection"
+            loading="lazy"
+            onerror="this.remove()"
+          />
+          <span class="qav-fallback">F</span>
+        </div>
         <div class="qn">
           <b>Fdhyler Collection</b>
           <span data-en="Dar es Salaam, Tanzania · ★★★★★" data-sw="Dar es Salaam, Tanzania · ★★★★★">Dar es Salaam, Tanzania · ★★★★★</span>

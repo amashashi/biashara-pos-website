@@ -406,7 +406,9 @@ section { position: relative; }
 .quote .qm { font-size: 60px; line-height: .5; font-weight: 800; opacity: .5; }
 .quote .qt { font-size: 24px; font-weight: 700; line-height: 1.32; margin: 14px 0 24px; letter-spacing: -0.01em; }
 .quote .qa { display: flex; align-items: center; gap: 12px; }
-.quote .qav { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.22); display: grid; place-items: center; font-weight: 800; font-size: 18px; }
+.quote .qav { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.22); display: grid; place-items: center; font-weight: 800; font-size: 18px; position: relative; overflow: hidden; flex: none; }
+.quote .qav img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.quote .qav .qav-fallback { position: relative; z-index: 0; }
 .quote .qn b { font-size: 15px; } .quote .qn span { font-size: 13px; opacity: .85; display: block; }
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 .faq { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
