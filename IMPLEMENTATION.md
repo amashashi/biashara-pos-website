@@ -21,7 +21,7 @@
 | | |
 |---|---|
 | Framework | Astro 4 (static, zero JS by default) |
-| Styling | Plain CSS — design tokens as CSS custom properties in `src/styles/landing.css` |
+| Styling | Plain CSS — design tokens as CSS custom properties in `src/styles/landing.css`. **All CSS is inlined into each HTML page** (`build.inlineStylesheets: 'always'`) to defeat stale-hash FOUC on GitHub Pages. |
 | Images | `astro:assets` `<Image />` → responsive WebP with srcset/sizes |
 | Fonts | Google Fonts `<link>` — Plus Jakarta Sans (400/500/600/700/800 + italic 500/600) |
 | SEO | `@astrojs/sitemap` (3.2.1), JSON-LD in `Layout.astro`, canonical per page |
@@ -90,6 +90,8 @@ Each has a unique `<title>`, meta description, canonical, vertical-tailored feat
 - **OG image:** Auto-generated from a temporary `/og-preview` route via headless Chrome. Has a tiny dev-toolbar sliver at the bottom — should be replaced with a designer-made asset.
 - **Payments rebrand:** "Tigo Pesa" / "Tigo" replaced everywhere with **"Mixx by Yas"** (homepage chip, Features, Pricing, FAQ + JSON-LD, all 5 vertical pages, WhatsApp agent knowledge base).
 - **Profit Spotlight chart:** Latent CSS bug fixed — bars were rendering at 0 px because their `height: %` had no resolved parent. Wrapped each `.bar` in a fixed-height `.bar-track`, and added per-day TZS values (Mon 138k → Sat 312k) below the day labels.
+- **Payment chip brand badges:** small brand-color icon prepended to each name in the Accepts strip (red "M" for M-Pesa, navy "Y" for Mixx by Yas, red italic "a" for Airtel, blue "VISA" mini-wordmark for Visa, iconic two-circle SVG for Mastercard). Pure CSS + inline SVG — no image assets.
+- **Stale-hash FOUC fix:** GitHub Pages caches HTML for 10 min (`Cache-Control: max-age=600`). After a deploy, browsers re-used cached HTML referencing a now-deleted `/_astro/index.<oldhash>.css` → 404 → unstyled page until forced refresh. Fix: `build.inlineStylesheets: 'always'` bakes all CSS into the HTML (no external CSS to 404 against), and Google Fonts is loaded non-blocking via `media="print" onload="this.media='all'"` so it never blocks first paint. Trade-off: +~38 KB per HTML page.
 - **Tweaks panel:** Dropped (designer-only tool, not shipped).
 
 ## Still pending
@@ -101,6 +103,7 @@ Each has a unique `<title>`, meta description, canonical, vertical-tailored feat
 - Pursue local backlinks / directory listings
 
 ### Nice-to-have code work (low priority)
+- **Compliance card brand badges** — same treatment as the payment chips for TRA, NF525, ISO and PCI DSS in the Compliance section. Postponed by request.
 - Replace the auto-generated `public/og-image.png` with a designer-made 1200×630 asset
 - Add `AggregateRating` / `Review` JSON-LD **only** with real verifiable customer reviews (the handoff explicitly warns against fake ones)
 - Optional blog under `/blog/` for long-tail content ("how to calculate net profit per sale", "TRA VFD explained")
