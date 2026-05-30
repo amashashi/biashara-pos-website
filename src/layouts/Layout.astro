@@ -2,32 +2,39 @@
 import '../styles/landing.css';
 import ChatWidget from '../components/ChatWidget.astro';
 
+export interface FAQItem { q: string; a: string; }
+
 export interface Props {
   title?: string;
   description?: string;
   /** Path of the current page used for canonical + og:url. Defaults to "/". */
   path?: string;
+  /** Per-page FAQ items rendered as FAQPage JSON-LD. Defaults to homepage FAQs. */
+  faqs?: FAQItem[];
+  /** Additional JSON-LD blocks to inject (e.g. BreadcrumbList on sub-pages). */
+  extraJsonLd?: Record<string, unknown>[];
 }
 
-const {
-  title = 'BiasharaPOS — One POS for every business',
-  description = "One POS for every business vertical — clothing, retail, restaurants, hospitals & pharmacies. Real-time net profit after every sale, works offline, TRA-compliant, flat monthly fee.",
-  path = '/',
-} = Astro.props;
-
-const siteUrl = 'https://biashara-pos.com';
-const canonical = new URL(path, siteUrl).toString();
-const ogImage = new URL('/og-image.png', siteUrl).toString();
-const WA_URL = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
-
-// FAQ items kept in sync with TestimonialFAQ.astro for FAQPage JSON-LD
-const faqsForSchema = [
+const homepageFaqs: FAQItem[] = [
   { q: 'Do I need internet to use BiasharaPOS?', a: 'No. BiasharaPOS works fully offline — sales queue locally and auto-sync the moment you\'re back online.' },
   { q: 'Is BiasharaPOS accepted by TRA?', a: 'Yes. We issue VFD fiscal receipt numbers (RCTVNUM) on every sale and generate one-click TRA audit PDF reports.' },
   { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
   { q: 'Can I use it for my pharmacy / restaurant / supermarket?', a: 'Absolutely. Dedicated modes handle expiry & batches for pharmacies, tables & kitchen tickets for restaurants, and barcodes & bulk for retail.' },
   { q: 'What payment methods are supported?', a: 'M-Pesa, Tigo Pesa, Airtel Money, Visa and Mastercard — all at a flat monthly fee with no per-transaction charges.' },
 ];
+
+const {
+  title = 'BiasharaPOS — One POS for every business',
+  description = "One POS for every business vertical — clothing, retail, restaurants, hospitals & pharmacies. Real-time net profit after every sale, works offline, TRA-compliant, flat monthly fee.",
+  path = '/',
+  faqs = homepageFaqs,
+  extraJsonLd = [],
+} = Astro.props;
+
+const siteUrl = 'https://biashara-pos.com';
+const canonical = new URL(path, siteUrl).toString();
+const ogImage = new URL('/og-image.png', siteUrl).toString();
+const WA_URL = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
 
 const softwareApplicationJsonLd = {
   '@context': 'https://schema.org',
@@ -65,7 +72,7 @@ const organizationJsonLd = {
 const faqPageJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqsForSchema.map((f) => ({
+  mainEntity: faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -118,10 +125,13 @@ const faqPageJsonLd = {
     />
     <title>{title}</title>
 
-    <!-- Structured data: SoftwareApplication, Organization, FAQPage -->
+    <!-- Structured data: SoftwareApplication, Organization, FAQPage, + page-specific -->
     <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationJsonLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd)} />
+    {extraJsonLd.map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
   </head>
   <body>
     <slot />

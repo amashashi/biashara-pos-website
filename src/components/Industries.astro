@@ -1,18 +1,14 @@
 ---
 import { Image } from 'astro:assets';
-import clothing from '../assets/verticals/clothing.jpg';
-import retail from '../assets/verticals/retail.jpg';
-import restaurant from '../assets/verticals/restaurant.jpg';
-import hospital from '../assets/verticals/hospital.jpg';
-import pharmacy from '../assets/verticals/pharmacy.jpg';
+import { verticals, verticalSlugs } from '../data/verticals';
 
-const verticals = [
-  { key: 'cloth', img: clothing,   alt: 'Clothing boutique',   en: { title: 'Clothing',   desc: 'Sizes, colors & variants, fast.' },    sw: { title: 'Nguo',         desc: 'Saizi, rangi na aina, haraka.' },                  icon: '<path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/>' },
-  { key: 'retail', img: retail,    alt: 'Retail supermarket',  en: { title: 'Retail',     desc: 'Barcodes, bulk import, stock.' },      sw: { title: 'Rejareja',     desc: 'Misimbo, uingizaji wa wingi, stoki.' },             icon: '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>' },
-  { key: 'resto',  img: restaurant,alt: 'Restaurant dining',   en: { title: 'Restaurant', desc: 'Tables & kitchen tickets.' },          sw: { title: 'Mgahawa',      desc: 'Meza na tiketi za jikoni.' },                       icon: '<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>' },
-  { key: 'hosp',   img: hospital,  alt: 'Hospital reception',  en: { title: 'Hospital',   desc: 'Patient billing & records.' },         sw: { title: 'Hospitali',    desc: 'Utozaji wa wagonjwa na kumbukumbu.' },              icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>' },
-  { key: 'pharm',  img: pharmacy,  alt: 'Pharmacy counter',    en: { title: 'Pharmacy',   desc: 'Expiry dates & batches.' },            sw: { title: 'Duka la Dawa', desc: 'Tarehe za mwisho na bechi.' },                      icon: '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/>' },
-];
+const cardIcons: Record<string, string> = {
+  clothing:  '<path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/>',
+  retail:    '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
+  restaurant:'<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>',
+  hospital:  '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>',
+  pharmacy:  '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/>',
+};
 ---
 <section class="sec sec-white" id="industries">
   <div class="wrap">
@@ -25,25 +21,27 @@ const verticals = [
       >The same fast checkout, tailored to how your industry actually sells. <span class="sw">Kila biashara, mfumo mmoja.</span></p>
     </div>
     <div class="vgrid">
-      {verticals.map((v) => (
-        <div class="vcard reveal">
-          <div class="vimg">
-            <Image
-              src={v.img}
-              alt={v.alt}
-              widths={[320, 480, 640, 800]}
-              sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, (max-width: 1080px) 33vw, 220px"
-              formats={['avif', 'webp']}
-              loading="lazy"
-            />
-            <span class={`vbadge v-${v.key}`} set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${v.icon}</svg>`}></span>
-          </div>
-          <div class="vbody">
-            <h3 data-en={v.en.title} data-sw={v.sw.title}>{v.en.title}</h3>
-            <p data-en={v.en.desc} data-sw={v.sw.desc}>{v.en.desc}</p>
-          </div>
-        </div>
-      ))}
+      {verticalSlugs.map((slug) => {
+        const v = verticals[slug];
+        return (
+          <a class="vcard reveal" href={`/pos-for-${v.slug}`} aria-label={`${v.name.en} POS — learn more`}>
+            <div class="vimg">
+              <Image
+                src={v.photo}
+                alt={v.alt}
+                widths={[320, 480, 640, 800]}
+                sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, (max-width: 1080px) 33vw, 220px"
+                loading="lazy"
+              />
+              <span class={`vbadge v-${v.badgeKey}`} set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${cardIcons[v.slug]}</svg>`}></span>
+            </div>
+            <div class="vbody">
+              <h3 data-en={v.name.en} data-sw={v.name.sw}>{v.name.en}</h3>
+              <p data-en={v.shortDesc.en} data-sw={v.shortDesc.sw}>{v.shortDesc.en}</p>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>
