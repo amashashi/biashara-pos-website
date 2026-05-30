@@ -230,7 +230,24 @@ section { position: relative; }
 /* ---------- payment strip ---------- */
 .pay-strip { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 40px; }
 .pay-strip .pl { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-right: 4px; }
-.pay { font-size: 13.5px; font-weight: 800; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; box-shadow: var(--sh-sm); }
+.pay {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13.5px; font-weight: 800; color: var(--ink-2);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 12px 6px 6px;
+  box-shadow: var(--sh-sm);
+}
+.pay-ic {
+  display: inline-grid; place-items: center;
+  width: 22px; height: 22px; border-radius: 5px;
+  font-size: 11px; font-weight: 900; letter-spacing: -.02em;
+  color: #fff; flex: none;
+}
+.pay-ic.ic-mpesa  { background: #E60000; }
+.pay-ic.ic-mixx   { background: #001959; }
+.pay-ic.ic-airtel { background: #E40000; font-family: Georgia, serif; font-style: italic; }
+.pay-ic.ic-visa   { background: #1A1F71; font-size: 7.5px; letter-spacing: .04em; }
+.pay-ic.pay-ic-mc { background: transparent; width: 30px; height: 22px; border-radius: 0; }
 
 /* ---------- vertical cards ---------- */
 .vgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }

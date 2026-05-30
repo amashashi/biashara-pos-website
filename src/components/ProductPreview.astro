@@ -74,11 +74,26 @@ const appUrl = 'https://app.biashara-pos.com';
     <!-- payment strip -->
     <div class="pay-strip reveal">
       <span class="pl" data-en="Accepts" data-sw="Inakubali">Accepts</span>
-      <span class="pay">M-Pesa</span>
-      <span class="pay">Mixx by Yas</span>
-      <span class="pay">Airtel Money</span>
-      <span class="pay">Visa</span>
-      <span class="pay">Mastercard</span>
+      <span class="pay">
+        <span class="pay-ic ic-mpesa" aria-hidden="true">M</span>M-Pesa
+      </span>
+      <span class="pay">
+        <span class="pay-ic ic-mixx" aria-hidden="true">Y</span>Mixx by Yas
+      </span>
+      <span class="pay">
+        <span class="pay-ic ic-airtel" aria-hidden="true">a</span>Airtel Money
+      </span>
+      <span class="pay">
+        <span class="pay-ic ic-visa" aria-hidden="true">VISA</span>Visa
+      </span>
+      <span class="pay">
+        <svg class="pay-ic pay-ic-mc" viewBox="0 0 32 22" aria-hidden="true">
+          <circle cx="13" cy="11" r="9" fill="#EB001B"/>
+          <circle cx="19" cy="11" r="9" fill="#F79E1B"/>
+          <path d="M16 4.6a9 9 0 0 1 0 12.8a9 9 0 0 1 0-12.8z" fill="#FF5F00"/>
+        </svg>
+        Mastercard
+      </span>
     </div>
   </div>
 </section>
