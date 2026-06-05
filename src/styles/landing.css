@@ -231,23 +231,16 @@ section { position: relative; }
 .pay-strip { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 40px; }
 .pay-strip .pl { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-right: 4px; }
 .pay {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13.5px; font-weight: 800; color: var(--ink-2);
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: 8px; padding: 6px 12px 6px 6px;
-  box-shadow: var(--sh-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 46px; padding: 0 16px;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; box-shadow: var(--sh-sm);
 }
-.pay-ic {
-  display: inline-grid; place-items: center;
-  width: 22px; height: 22px; border-radius: 5px;
-  font-size: 11px; font-weight: 900; letter-spacing: -.02em;
-  color: #fff; flex: none;
+.pay img {
+  max-height: 28px; max-width: 84px; width: auto; height: auto;
+  object-fit: contain; display: block;
 }
-.pay-ic.ic-mpesa  { background: #E60000; }
-.pay-ic.ic-mixx   { background: #001959; }
-.pay-ic.ic-airtel { background: #E40000; font-family: Georgia, serif; font-style: italic; }
-.pay-ic.ic-visa   { background: #1A1F71; font-size: 7.5px; letter-spacing: .04em; }
-.pay-ic.pay-ic-mc { background: transparent; width: 30px; height: 22px; border-radius: 0; }
+.pay img.pay-mixx { max-height: 34px; border-radius: 6px; }
 
 /* ---------- vertical cards ---------- */
 .vgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
@@ -399,6 +392,11 @@ section { position: relative; }
 .comp-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
 .comp-card .ch { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .comp-card .cico { width: 42px; height: 42px; border-radius: 11px; background: var(--green-50); color: var(--green-d); display: grid; place-items: center; }
+.comp-card .clogo { height: 46px; display: flex; align-items: center; }
+.comp-card .clogo img { max-height: 46px; max-width: 120px; width: auto; object-fit: contain; display: block; }
+.comp-card .cwordmark { display: inline-flex; align-items: baseline; gap: 6px; padding: 7px 12px; border: 1.5px solid var(--ink-2); border-radius: 8px; line-height: 1; }
+.comp-card .cwordmark .cw-pre { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: var(--ink-3); text-transform: uppercase; }
+.comp-card .cwordmark .cw-num { font-size: 19px; font-weight: 900; letter-spacing: -.01em; color: var(--ink-1); }
 .status { font-size: 11.5px; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
 .status.on { background: var(--green-50); color: var(--green-d); }
 .status.prog { background: #fdf3e1; color: #b9791a; }
