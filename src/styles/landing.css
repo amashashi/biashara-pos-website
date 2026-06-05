@@ -138,7 +138,7 @@ section { position: relative; }
 .hero-vision { text-align: center; padding: 64px 0 70px; }
 .hero-center { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
 .brand-lockup { font-size: clamp(46px, 9vw, 108px); font-weight: 800; letter-spacing: -0.03em; line-height: .95; }
-.brand-lockup b { color: var(--blue-d); } .brand-lockup i { color: var(--green-d); font-style: italic; }
+.brand-lockup b { color: var(--blue-d); } .brand-lockup i { color: var(--green-d); font-style: italic; font-weight: 800; }
 .tagline { display: inline-flex; align-items: center; gap: 13px; margin-top: 16px; font-size: clamp(12px, 1.4vw, 14px); font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
 .tagline::before, .tagline::after { content: ""; width: 30px; height: 2px; background: var(--gold); border-radius: 2px; }
 .hero-vision h1 { font-size: clamp(26px, 3.8vw, 46px); margin: 22px 0 0; letter-spacing: -0.02em; font-weight: 800; }
