@@ -142,7 +142,9 @@ const faqPageJsonLd = {
     <!-- Structured data: SoftwareApplication, Organization, FAQPage, + page-specific -->
     <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationJsonLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd)} />
+    {faqs.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqPageJsonLd)} />
+    )}
     {extraJsonLd.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} />
     ))}
