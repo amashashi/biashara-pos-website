@@ -7,6 +7,10 @@ export interface FAQItem { q: string; a: string; }
 export interface Props {
   title?: string;
   description?: string;
+  /** Swahili <title>, swapped in by the EN/SW toggle. Defaults to the English title. */
+  titleSw?: string;
+  /** Swahili meta description, swapped in by the EN/SW toggle. Defaults to the English description. */
+  descriptionSw?: string;
   /** Path of the current page used for canonical + og:url. Defaults to "/". */
   path?: string;
   /** Per-page FAQ items rendered as FAQPage JSON-LD. Defaults to homepage FAQs. */
@@ -26,6 +30,8 @@ const homepageFaqs: FAQItem[] = [
 const {
   title = 'BiasharaPOS — One POS for every business',
   description = "One POS for every business vertical — clothing, retail, restaurants, hospitals & pharmacies. Real-time net profit after every sale, works offline, TRA-compliant, flat monthly fee.",
+  titleSw,
+  descriptionSw,
   path = '/',
   faqs = homepageFaqs,
   extraJsonLd = [],
@@ -149,17 +155,22 @@ const faqPageJsonLd = {
       <script type="application/ld+json" set:html={JSON.stringify(block)} />
     ))}
   </head>
-  <body>
+  <body
+    data-title-en={title}
+    data-title-sw={titleSw ?? title}
+    data-desc-en={description}
+    data-desc-sw={descriptionSw ?? description}
+  >
     <slot />
 
     <!-- Floating WhatsApp button (right) -->
-    <a class="fab fab-wa" href={WA_URL} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <a class="fab fab-wa" href={WA_URL} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" data-sw-aria="Ongea kwenye WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.18-3 .94.95-2.92-.2-.3A8 8 0 1 1 12 20z"/>
         <path d="M17.5 14.4c-.3-.15-1.7-.84-2-.93-.27-.1-.47-.15-.66.15-.2.3-.76.92-.93 1.11-.17.2-.34.22-.64.08-.3-.15-1.26-.47-2.4-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.65-1.6-.9-2.18-.23-.56-.47-.49-.65-.5h-.56c-.2 0-.51.08-.78.38-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.27-.19-.56-.33z"/>
       </svg>
     </a>
-    <span class="fab-tip tip-wa">Chat on WhatsApp</span>
+    <span class="fab-tip tip-wa" data-en="Chat on WhatsApp" data-sw="Ongea kwenye WhatsApp">Chat on WhatsApp</span>
 
     <!-- Biashara Bot chat widget (left FAB + panel) -->
     <ChatWidget />
@@ -309,19 +320,40 @@ const faqPageJsonLd = {
     <script is:inline>
       (function () {
         function applyLang(lang) {
+          var sw = lang === 'sw';
           document.documentElement.lang = lang;
-          document.body.classList.toggle('lang-sw', lang === 'sw');
+          document.body.classList.toggle('lang-sw', sw);
           document.querySelectorAll('[data-en]').forEach(function (el) {
             var enText = el.getAttribute('data-en');
             var swText = el.getAttribute('data-sw');
-            var text = lang === 'sw' ? (swText || enText) : enText;
+            var text = sw ? (swText || enText) : enText;
             if (text == null) return;
             // Use innerHTML so inline <span class="sw">...</span> phrases render correctly
             if (text.indexOf('<') !== -1) el.innerHTML = text;
             else el.textContent = text;
           });
+          // Attribute-level swaps (screen-reader labels + input placeholders)
+          document.querySelectorAll('[data-sw-aria]').forEach(function (el) {
+            var en = el.getAttribute('data-en-aria');
+            if (en == null) { en = el.getAttribute('aria-label'); if (en != null) el.setAttribute('data-en-aria', en); }
+            var val = sw ? el.getAttribute('data-sw-aria') : en;
+            if (val != null) el.setAttribute('aria-label', val);
+          });
+          document.querySelectorAll('[data-sw-placeholder]').forEach(function (el) {
+            var en = el.getAttribute('data-en-placeholder');
+            if (en == null) { en = el.getAttribute('placeholder'); if (en != null) el.setAttribute('data-en-placeholder', en); }
+            var val = sw ? el.getAttribute('data-sw-placeholder') : en;
+            if (val != null) el.setAttribute('placeholder', val);
+          });
+          // Document <title> + meta description (SEO / browser tab)
+          var b = document.body;
+          var t = sw ? b.getAttribute('data-title-sw') : b.getAttribute('data-title-en');
+          if (t) document.title = t;
+          var meta = document.querySelector('meta[name="description"]');
+          var d = sw ? b.getAttribute('data-desc-sw') : b.getAttribute('data-desc-en');
+          if (meta && d) meta.setAttribute('content', d);
           document.querySelectorAll('[data-lang-toggle]').forEach(function (btn) {
-            btn.textContent = lang === 'en' ? 'SW' : 'EN';
+            btn.textContent = sw ? 'EN' : 'SW';
           });
           try { localStorage.setItem('biashara-lang', lang); } catch (e) {}
         }

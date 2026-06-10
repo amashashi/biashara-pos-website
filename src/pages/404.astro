@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const appUrl = 'https://app.biashara-pos.com';
+---
+<Layout
+  title="Page not found — BiasharaPOS"
+  titleSw="Ukurasa haupatikani — BiasharaPOS"
+  description="The page you were looking for could not be found."
+  descriptionSw="Ukurasa uliokuwa unautafuta haukupatikana."
+  path="/404"
+  faqs={[]}
+>
+  <Nav />
+  <main id="top" class="nf">
+    <div class="wrap nf-wrap">
+      <span class="nf-code" aria-hidden="true">404</span>
+      <h1 data-en="This page took the day off" data-sw="Ukurasa huu haupatikani">This page took the day off</h1>
+      <p data-en="We couldn't find what you were looking for. It may have moved, or the link might be out of date." data-sw="Hatukuweza kupata ulichokuwa unatafuta. Huenda umehamishwa, au kiungo kimepitwa na wakati.">We couldn't find what you were looking for. It may have moved, or the link might be out of date.</p>
+      <div class="nf-cta">
+        <a class="btn btn-primary btn-lg" href="/" data-en="← Back to home" data-sw="← Rudi mwanzo">← Back to home</a>
+        <a class="btn btn-ghost btn-lg" href={appUrl} data-en="Launch the app ↗" data-sw="Fungua app ↗">Launch the app ↗</a>
+      </div>
+      <nav class="nf-links" aria-label="Popular pages">
+        <span class="nf-links-lbl" data-en="Popular pages:" data-sw="Kurasa maarufu:">Popular pages:</span>
+        <a href="/pos-for-retail">Retail</a>
+        <a href="/pos-for-clothing">Clothing</a>
+        <a href="/pos-for-restaurant">Restaurant</a>
+        <a href="/pos-for-hospital">Hospital</a>
+        <a href="/pos-for-pharmacy">Pharmacy</a>
+      </nav>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .nf { padding: 140px 0 80px; background: var(--bg); }
+  .nf-wrap { max-width: 640px; text-align: center; }
+  .nf-code {
+    display: inline-block; font-size: clamp(64px, 16vw, 132px); font-weight: 800; line-height: 1;
+    color: var(--green-100); letter-spacing: -0.04em; margin-bottom: 8px;
+  }
+  .nf h1 { font-size: clamp(26px, 5vw, 38px); color: var(--ink); margin: 0 0 12px; }
+  .nf p { font-size: 17px; color: var(--ink-2); line-height: 1.6; margin: 0 auto 28px; max-width: 480px; }
+  .nf-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .nf-links {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center;
+    font-size: 14.5px; color: var(--ink-3);
+  }
+  .nf-links a { color: var(--green-d); font-weight: 600; text-decoration: none; }
+  .nf-links a:hover { text-decoration: underline; }
+  .nf-links-lbl { color: var(--ink-3); }
+  @media (max-width: 600px) { .nf { padding: 110px 0 56px; } }
+</style>

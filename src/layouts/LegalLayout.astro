@@ -6,8 +6,12 @@ import Footer from '../components/Footer.astro';
 export interface Props {
   /** <title> + og:title for the page. */
   title: string;
+  /** Swahili <title>, swapped in by the EN/SW toggle. */
+  titleSw?: string;
   /** Meta description. */
   description: string;
+  /** Swahili meta description, swapped in by the EN/SW toggle. */
+  descriptionSw?: string;
   /** Canonical path, e.g. "/privacy". */
   path: string;
   /** Page heading (English). */
@@ -18,9 +22,9 @@ export interface Props {
   updated: string;
 }
 
-const { title, description, path, heading, headingSw, updated } = Astro.props;
+const { title, titleSw, description, descriptionSw, path, heading, headingSw, updated } = Astro.props;
 ---
-<Layout title={title} description={description} path={path} faqs={[]}>
+<Layout title={title} titleSw={titleSw} description={description} descriptionSw={descriptionSw} path={path} faqs={[]}>
   <Nav />
   <main id="top" class="legal">
     <div class="wrap legal-wrap">
