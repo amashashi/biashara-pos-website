@@ -60,6 +60,9 @@ Dynamic route `src/pages/pos-for-[vertical].astro` emits:
 
 Each has a unique `<title>`, meta description, canonical, vertical-tailored features, locked dashboard mock, vertical-specific FAQs, BreadcrumbList JSON-LD, and cross-links to the other 4 verticals. Content lives in `src/data/verticals.ts` as a typed single source of truth.
 
+### Legal pages (3)
+Bilingual `/privacy`, `/terms` and `/cookies`, composed via a shared `src/layouts/LegalLayout.astro` (Nav + styled article + Footer). Footer "Legal" links now point to these real pages instead of the old `/` placeholders.
+
 ### Behavior & UX
 - **Bilingual EN/SW toggle** — `[data-en]`/`[data-sw]` attributes on every text element; runtime swap supports inline HTML (`.sw` italic Swahili phrases stay rendered inside English paragraphs). Persists in `localStorage`.
 - **Industry switcher** — clicking a tab rewrites category, mode, tag, products grid, net profit, sales today, transactions. Data map in `Layout.astro`.
@@ -85,7 +88,7 @@ Each has a unique `<title>`, meta description, canonical, vertical-tailored feat
 - **Stack:** Astro 4 with inline `<script>`s (not React islands w/ `client:visible`). Acceptable per the handoff — keeps the bundle tiny on a static marketing page.
 - **Fonts:** Google Fonts `<link>` (not self-hosted `@fontsource-variable/plus-jakarta-sans`). Preconnects in place; self-hosting is a low-priority LCP optimization.
 - **`<Image>` vs `<Picture>`:** Using `<Image>` (single `<img>` with WebP `srcset`), not `<Picture>` with AVIF+WebP type negotiation. WebP-only is fine in 2026 (~96% browser support).
-- **Footer About / Privacy / Terms / Cookie:** Point to `/` placeholders per the client's choice for v1. Replace when real pages exist.
+- **Footer About:** Points to the on-page company section (`#top`). Privacy / Terms / Cookie now have real pages (`/privacy`, `/terms`, `/cookies`).
 - **Testimonial avatar:** Fdhyler Collection brand logo at `public/testimonial-fdhyler.jpg`. The "F" initial remains as `onerror` fallback.
 - **OG image:** Auto-generated from a temporary `/og-preview` route via headless Chrome. Has a tiny dev-toolbar sliver at the bottom — should be replaced with a designer-made asset.
 - **Payments rebrand:** "Tigo Pesa" / "Tigo" replaced everywhere with **"Mixx by Yas"** (homepage chip, Features, Pricing, FAQ + JSON-LD, all 5 vertical pages, WhatsApp agent knowledge base).
@@ -108,7 +111,6 @@ Each has a unique `<title>`, meta description, canonical, vertical-tailored feat
 - Add `AggregateRating` / `Review` JSON-LD **only** with real verifiable customer reviews (the handoff explicitly warns against fake ones)
 - Optional blog under `/blog/` for long-tail content ("how to calculate net profit per sale", "TRA VFD explained")
 - Self-host fonts via `@fontsource-variable/plus-jakarta-sans` (shaves a third-party DNS lookup)
-- Real Privacy / Terms / Cookie pages (currently `/` placeholders)
 
 ## Repo layout (today's shipping surface)
 
