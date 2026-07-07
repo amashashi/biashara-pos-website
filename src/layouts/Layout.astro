@@ -16,17 +16,18 @@ export interface Props {
 }
 
 const homepageFaqs: FAQItem[] = [
-  { q: 'Is BiasharaPOS really free?', a: 'Yes — 100% free, no strings attached. Every feature is included, with no trial that expires, no credit card required and no hidden fees.' },
+  { q: 'Is BiasharaPOS really free?', a: 'Yes — free for businesses doing up to 1,000 sales a month, with every feature included. No trial that expires, no credit card, no hidden fees. Above 1,000 sales a month there\'s one simple plan: TZS 200,000/month, unlimited.' },
+  { q: 'What happens if I pass 1,000 sales in a month?', a: 'It means your business is growing — you\'ll be asked to move to the Unlimited plan (TZS 200,000/month). Your products, sales history and settings stay exactly as they are.' },
   { q: 'Do I need internet to use BiasharaPOS?', a: 'No. BiasharaPOS works fully offline — sales queue locally and auto-sync the moment you\'re back online.' },
   { q: 'Is BiasharaPOS accepted by TRA?', a: 'Yes. We issue VFD fiscal receipt numbers (RCTVNUM) on every sale and generate one-click TRA audit PDF reports.' },
   { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
   { q: 'Can I use it for my pharmacy / restaurant / supermarket?', a: 'Absolutely. Dedicated modes handle expiry & batches for pharmacies, tables & kitchen tickets for restaurants, and barcodes & bulk for retail.' },
-  { q: 'What payment methods are supported?', a: 'M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard — all completely free, with no per-transaction charges.' },
+  { q: 'What payment methods are supported?', a: 'M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard — all included on every plan, with no per-transaction charges.' },
 ];
 
 const {
   title = 'BiasharaPOS — One POS for every business',
-  description = "One POS for every business vertical — clothing, retail, restaurants, hospitals, pharmacies & barbershops. Real-time net profit after every sale, works offline, TRA-compliant, 100% free.",
+  description = "One POS for every business vertical — clothing, retail, restaurants, hospitals, pharmacies & barbershops. Real-time net profit after every sale, works offline, TRA-compliant, free up to 1,000 sales a month.",
   path = '/',
   faqs = homepageFaqs,
   extraJsonLd = [],
@@ -47,7 +48,8 @@ const softwareApplicationJsonLd = {
   url: siteUrl,
   inLanguage: ['en', 'sw'],
   offers: [
-    { '@type': 'Offer', name: 'Free forever', price: '0', priceCurrency: 'TZS' },
+    { '@type': 'Offer', name: 'Free',      price: '0',      priceCurrency: 'TZS', description: 'Free for up to 1,000 sales per month — all features included.' },
+    { '@type': 'Offer', name: 'Unlimited', price: '200000', priceCurrency: 'TZS', priceSpecification: { '@type': 'UnitPriceSpecification', price: '200000', priceCurrency: 'TZS', billingDuration: 'P1M' } },
   ],
 };
 

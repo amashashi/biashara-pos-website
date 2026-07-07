@@ -1,18 +1,18 @@
 ---
 const rows = [
-  { sales: 'TZS 1,000,000', label: '', comp: '35,000', us: '0', save: '+35,000', save_sw: '+35,000', hl: false },
-  { sales: 'TZS 2,000,000', label: '', comp: '70,000', us: '0', save: '+70,000', save_sw: '+70,000', hl: false },
-  { sales: 'TZS 5,000,000', label: 'TYPICAL SME', label_sw: 'SME YA KAWAIDA', comp: '175,000', us: '0', save: '+175,000', save_sw: '+175,000', hl: true },
-  { sales: 'TZS 10,000,000', label: '', comp: '350,000', us: '0', save: '+350,000', save_sw: '+350,000', hl: false },
-  { sales: 'TZS 20,000,000', label: '', comp: '700,000', us: '0', save: '+700,000', save_sw: '+700,000', hl: false },
+  { sales: 'TZS 1,000,000', label: '', comp: '35,000', us: 'Free', us_sw: 'Bure', save: '+35,000', save_sw: '+35,000', hl: false },
+  { sales: 'TZS 2,000,000', label: '', comp: '70,000', us: 'Free', us_sw: 'Bure', save: '+70,000', save_sw: '+70,000', hl: false },
+  { sales: 'TZS 5,000,000', label: 'TYPICAL SME', label_sw: 'SME YA KAWAIDA', comp: '175,000', us: 'Free', us_sw: 'Bure', save: '+175,000', save_sw: '+175,000', hl: true },
+  { sales: 'TZS 10,000,000', label: '', comp: '350,000', us: 'Free', us_sw: 'Bure', save: '+350,000', save_sw: '+350,000', hl: false },
+  { sales: 'TZS 20,000,000', label: '', comp: '700,000', us: '200,000', us_sw: '200,000', save: '+500,000', save_sw: '+500,000', hl: false },
 ];
 ---
 <section class="sec sec-tint">
   <div class="wrap cmp">
     <div class="reveal">
       <span class="eyebrow" data-en="Compare the cost" data-sw="Linganisha gharama">Compare the cost</span>
-      <h2 data-en="Competitors take 3.5% per sale. We're 100% free." data-sw="Washindani wanatoza 3.5% kwa kila mauzo. Sisi ni bure kabisa.">Competitors take 3.5% per sale. We're 100% free.</h2>
-      <p class="lead" data-en="No subscription, no per-transaction charges, no surprises — BiasharaPOS costs you nothing, no matter how much your sales grow." data-sw="Hakuna ada ya kila mwezi, hakuna ada za kila muamala, hakuna mshangao — BiasharaPOS haikugharimu chochote, hata mauzo yako yakikua kiasi gani.">No subscription, no per-transaction charges, no surprises — BiasharaPOS costs you nothing, no matter how much your sales grow.</p>
+      <h2 data-en="Competitors take 3.5% per sale. Most businesses pay us TZS 0." data-sw="Washindani wanatoza 3.5% kwa kila mauzo. Biashara nyingi hazitulipi chochote.">Competitors take 3.5% per sale. Most businesses pay us TZS 0.</h2>
+      <p class="lead" data-en="Free up to 1,000 sales a month. Above that, one flat TZS 200,000/month — no per-transaction charges, no surprises as your sales grow." data-sw="Bure hadi mauzo 1,000 kwa mwezi. Zaidi ya hapo, TZS 200,000 tu kwa mwezi — hakuna ada za kila muamala, hakuna mshangao mauzo yako yakikua.">Free up to 1,000 sales a month. Above that, one flat TZS 200,000/month — no per-transaction charges, no surprises as your sales grow.</p>
       <div class="save-chip"><b>~TZS 2.1M</b><span data-en="saved per year at TZS 5M monthly sales" data-sw="zinazookolewa kwa mwaka kwa mauzo ya TZS 5M kwa mwezi">saved per year at TZS 5M monthly sales</span></div>
     </div>
     <div class="cmp-table reveal">
@@ -33,12 +33,17 @@ const rows = [
                 {r.label && (<small data-en={r.label} data-sw={r.label_sw}>{r.label}</small>)}
               </td>
               <td class="comp">{r.comp}</td>
-              <td class="us">{r.us}</td>
+              <td class="us" data-en={r.us} data-sw={r.us_sw}>{r.us}</td>
               <td class="save" data-en={r.save} data-sw={r.save_sw}>{r.save}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <p
+        style="padding:12px 18px;margin:0;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line);"
+        data-en="Based on an average sale of TZS 10,000. Free up to 1,000 sales a month; TZS 200,000/mo unlimited above that."
+        data-sw="Kwa wastani wa mauzo ya TZS 10,000 kwa muamala. Bure hadi mauzo 1,000 kwa mwezi; TZS 200,000/mwezi bila kikomo zaidi ya hapo."
+      >Based on an average sale of TZS 10,000. Free up to 1,000 sales a month; TZS 200,000/mo unlimited above that.</p>
     </div>
   </div>
 </section>
