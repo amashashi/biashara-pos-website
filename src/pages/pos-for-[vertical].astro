@@ -52,7 +52,11 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
           <p class="lead" data-en={v.heroSubhead.en} data-sw={v.heroSubhead.sw}>{v.heroSubhead.en}</p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href={appUrl} data-en="Start for Free →" data-sw="Anza Bila Malipo →">Start for Free →</a>
-            <a class="btn btn-ghost btn-lg" href="#features" data-en="See features" data-sw="Tazama vipengele">See features</a>
+            {v.slug === 'barbershop' ? (
+              <a class="btn btn-ghost btn-lg" href="/demo/barbershop/" data-en="Try the live demo" data-sw="Jaribu demo ya moja kwa moja">Try the live demo</a>
+            ) : (
+              <a class="btn btn-ghost btn-lg" href="#features" data-en="See features" data-sw="Tazama vipengele">See features</a>
+            )}
           </div>
           <div class="hero-ticks">
             <span class="tick"><span class="ic">✓</span><span data-en="TRA-compliant receipts" data-sw="Risiti zinazokubalika TRA">TRA-compliant receipts</span></span>
@@ -141,6 +145,16 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
             </div>
           </div>
         </div>
+
+        {v.slug === 'barbershop' && (
+          <div class="demo-banner reveal">
+            <div class="demo-banner-copy">
+              <h3 data-en="Click around the real thing" data-sw="Jaribu mfumo halisi">Click around the real thing</h3>
+              <p data-en="Explore the full barbershop POS — queue, appointments, checkout and reports — right in your browser. No sign-up." data-sw="Chunguza POS kamili ya kinyozi — foleni, miadi, malipo na ripoti — moja kwa moja kwenye kivinjari chako. Bila kujisajili.">Explore the full barbershop POS — queue, appointments, checkout and reports — right in your browser. No sign-up.</p>
+            </div>
+            <a class="btn btn-primary btn-lg" href="/demo/barbershop/" data-en="Open the live demo →" data-sw="Fungua demo →">Open the live demo →</a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -232,9 +246,20 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
   /* prod grid with 4 placeholder items (no switcher) */
   .prod-grid-static { grid-template-columns: repeat(2, 1fr); }
 
+  /* live demo banner (barbershop) */
+  .demo-banner {
+    margin-top: 22px; padding: 26px 30px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    background: linear-gradient(120deg, #04785712, #e7a52c14);
+    border: 1px solid var(--line); border-radius: var(--r-lg);
+  }
+  .demo-banner h3 { font-size: 20px; margin: 0 0 4px; }
+  .demo-banner p { color: var(--ink-3); font-size: 14.5px; max-width: 560px; }
+  @media (max-width: 720px) { .demo-banner { flex-direction: column; align-items: flex-start; } }
+
   /* cross-link cards */
   .xlinks {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 980px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: 1080px; margin: 0 auto;
   }
   .xlink {
     display: flex; flex-direction: column; gap: 4px; padding: 20px;
@@ -250,6 +275,7 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
   .xlink.v-resto::before  { background: linear-gradient(180deg,#e7a52c,#f4b53e); }
   .xlink.v-hosp::before   { background: linear-gradient(180deg,#10977c,#2faee4); }
   .xlink.v-pharm::before  { background: linear-gradient(180deg,#0c4a85,#239b46); }
+  .xlink.v-barber::before { background: linear-gradient(180deg,#047857,#e7a52c); }
   .xlink:hover { transform: translateY(-4px); box-shadow: var(--sh-md); border-color: var(--green-100); }
   .xlink-name { font-size: 17px; font-weight: 800; color: var(--ink); }
   .xlink-desc { font-size: 13.5px; color: var(--ink-3); }

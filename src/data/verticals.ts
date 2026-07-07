@@ -11,6 +11,7 @@ import retail from '../assets/verticals/retail.jpg';
 import restaurant from '../assets/verticals/restaurant.jpg';
 import hospital from '../assets/verticals/hospital.jpg';
 import pharmacy from '../assets/verticals/pharmacy.jpg';
+import barbershop from '../assets/verticals/barbershop.jpg';
 
 export interface VerticalFAQ {
   q: string;
@@ -25,9 +26,9 @@ export interface VerticalFeature {
 }
 
 export interface Vertical {
-  slug: 'clothing' | 'retail' | 'restaurant' | 'hospital' | 'pharmacy';
+  slug: 'clothing' | 'retail' | 'restaurant' | 'hospital' | 'pharmacy' | 'barbershop';
   /** Used by Industries badge gradient (.v-cloth / .v-retail / etc.). */
-  badgeKey: 'cloth' | 'retail' | 'resto' | 'hosp' | 'pharm';
+  badgeKey: 'cloth' | 'retail' | 'resto' | 'hosp' | 'pharm' | 'barber';
   /** English + Swahili display names. */
   name: { en: string; sw: string };
   /** Headline that doubles as the page <h1>. */
@@ -212,6 +213,38 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       { q: 'Can I track batch numbers and expiry per product?', a: 'Yes — every receipt records the batch sold. FEFO (first-expiry-first-out) is automatic at checkout.' },
       { q: 'Can I log prescriptions against sales?', a: 'Yes — link any sale to a prescription and patient. Useful for controlled substances and audit reporting.' },
       { q: 'Does it generate purchase orders for my wholesalers?', a: 'Yes — auto-generate POs from your reorder points, then reconcile deliveries against incoming batches.' },
+    ],
+  },
+
+  barbershop: {
+    slug: 'barbershop',
+    badgeKey: 'barber',
+    name: { en: 'Barbershop', sw: 'Kinyozi' },
+    headline: { en: 'POS for barbershops & salons in Tanzania', sw: 'POS kwa vinyozi na saluni Tanzania' },
+    seoTitle: 'POS for Barbershops & Salons in Tanzania | BiasharaPOS',
+    seoDescription:
+      'BiasharaPOS — the POS for Tanzanian barbershops & salons. Walk-in queue, barber commissions & tips, appointments, product retail, M-Pesa, TRA-compliant receipts.',
+    shortDesc: { en: 'Queue, chairs & commissions.', sw: 'Foleni, viti na kamisheni.' },
+    heroSubhead: {
+      en: 'Manage the walk-in queue, book appointments, split commissions and tips per barber, and sell products at the counter — with real profit on every cut.',
+      sw: 'Simamia foleni ya wateja, weka miadi, gawanya kamisheni na bahashishi kwa kila kinyozi, na uze bidhaa kaunta — na faida halisi kwa kila mkato.',
+    },
+    photo: barbershop,
+    alt: 'Barbers cutting hair in a modern Tanzanian barbershop',
+    sampleNet: '+TZS 2,800',
+    sampleSales: 'TZS 265,000',
+    sampleTx: '21',
+    features: [
+      { icon: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>', title: 'Walk-in queue', desc: 'Customers join the queue at the door. Barbers call the next client from their chair — no shouting, no lost turns.' },
+      { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/>', title: 'Commissions & tips', desc: 'Set a commission rate per barber. Every sale and tip is split automatically — payday takes minutes, not hours.' },
+      { icon: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>', title: 'Appointments & reminders', desc: 'Book regulars in advance, color-coded per barber. SMS reminders cut no-shows.' },
+      { icon: '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>', title: 'Services + product retail', desc: 'Ring up a fade and a pomade on one receipt. Track stock of oils, waxes and shampoos with low-stock alerts.' },
+    ],
+    faqs: [
+      { q: 'Can barbers see their own queue and earnings?', a: 'Yes — each barber has a PIN login showing their queue, completed cuts, commission and tips for the day. Admins see everyone.' },
+      { q: 'How are commissions and tips calculated?', a: 'Set a commission percentage per barber. Every service sale is split automatically between shop and barber, and tips are tracked separately per barber.' },
+      { q: 'Can I sell products like pomade and beard oil too?', a: 'Yes — services and retail products go on the same TRA-compliant receipt, and product stock is tracked with low-stock alerts.' },
+      { q: 'Does it handle walk-ins and appointments together?', a: 'Yes — walk-ins join the live queue while booked appointments hold their slot. The queue reorders automatically so nobody loses their place.' },
     ],
   },
 };

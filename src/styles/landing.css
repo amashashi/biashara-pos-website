@@ -243,7 +243,7 @@ section { position: relative; }
 .pay img.pay-mixx { max-height: 34px; border-radius: 6px; }
 
 /* ---------- vertical cards ---------- */
-.vgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.vgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
 .vcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; transition: transform .18s, box-shadow .22s; display: flex; flex-direction: column; }
 .vcard:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
 .vcard .vimg { aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--green-50); }
@@ -256,6 +256,7 @@ section { position: relative; }
 .v-resto { background: linear-gradient(140deg, #e7a52c, #f4b53e); }
 .v-hosp  { background: linear-gradient(140deg, #10977c, #2faee4); }
 .v-pharm { background: linear-gradient(140deg, #0c4a85, #239b46); }
+.v-barber { background: linear-gradient(140deg, #047857, #e7a52c); }
 .vcard .vbody { padding: 16px 18px 18px; }
 .vcard h3 { font-size: 18px; }
 .vcard p { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; }
