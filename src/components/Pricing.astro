@@ -2,27 +2,75 @@
 const appUrl = 'https://app.biashara-pos.com';
 const plans = [
   {
-    pop: false,
-    en: { name: 'Free', price: 'TZS 0', per: '/mo', meta: '1 user · 1 device', features: ['Basic POS', 'Sales tracking', 'Cash payments', 'Daily sales report'], cta: 'Get started' },
-    sw: { name: 'Bure', price: 'TZS 0', per: '/mw', meta: 'Mtumiaji 1 · Kifaa 1', features: ['POS ya msingi', 'Ufuatiliaji wa mauzo', 'Malipo ya pesa taslimu', 'Ripoti ya mauzo ya kila siku'], cta: 'Anza' },
-    btn: 'btn-ghost',
-  },
-  {
     pop: true,
-    en: { name: 'Pro', price: 'TZS 35k', per: '/mo', meta: '3 users · 2 devices', features: ['Everything in Free', 'Real-time profit dashboard', 'TRA audit PDF reports', 'VFD fiscal receipts', 'Inventory alerts', 'M-Pesa, Mixx by Yas, Airtel, Visa, MC'], cta: 'Start Pro trial' },
-    sw: { name: 'Pro', price: 'TZS 35k', per: '/mw', meta: 'Watumiaji 3 · Vifaa 2', features: ['Vyote vya Bure', 'Dashibodi ya faida ya wakati huo', 'Ripoti za ukaguzi wa TRA PDF', 'Risiti za kodi VFD', 'Tahadhari za stoki', 'M-Pesa, Mixx by Yas, Airtel, Visa, MC'], cta: 'Anza Pro' },
+    en: {
+      name: 'Free',
+      price: 'TZS 0',
+      per: '/mo',
+      meta: 'Up to 1,000 sales a month · Unlimited users & devices',
+      features: [
+        'Full POS & sales tracking',
+        'Real-time profit dashboard',
+        'TRA audit PDF reports',
+        'VFD fiscal receipts',
+        'Inventory & expiry alerts',
+        'Purchase orders',
+        'Pharmacy & restaurant mode',
+        'Advanced analytics',
+        'M-Pesa, Mixx by Yas, Airtel, Visa, MC',
+        'Works offline',
+      ],
+      cta: 'Create free account →',
+    },
+    sw: {
+      name: 'Bure',
+      price: 'TZS 0',
+      per: '/mw',
+      meta: 'Hadi mauzo 1,000 kwa mwezi · Watumiaji na vifaa visivyo na kikomo',
+      features: [
+        'POS kamili na ufuatiliaji wa mauzo',
+        'Dashibodi ya faida ya wakati huo',
+        'Ripoti za ukaguzi wa TRA PDF',
+        'Risiti za kodi VFD',
+        'Tahadhari za stoki na tarehe ya mwisho',
+        'Maagizo ya ununuzi',
+        'Hali ya duka la dawa na mgahawa',
+        'Uchanganuzi wa hali ya juu',
+        'M-Pesa, Mixx by Yas, Airtel, Visa, MC',
+        'Inafanya kazi bila intaneti',
+      ],
+      cta: 'Fungua akaunti bila malipo →',
+    },
     btn: 'btn-primary',
   },
   {
     pop: false,
-    en: { name: 'Business', price: 'TZS 85k', per: '/mo', meta: '10 users · 5 devices', features: ['Everything in Pro', 'Expiry date tracking', 'Purchase orders', 'Pharmacy & restaurant mode', 'Advanced analytics', 'Priority support'], cta: 'Start trial' },
-    sw: { name: 'Biashara', price: 'TZS 85k', per: '/mw', meta: 'Watumiaji 10 · Vifaa 5', features: ['Vyote vya Pro', 'Ufuatiliaji wa tarehe ya mwisho', 'Maagizo ya ununuzi', 'Hali ya duka la dawa na mgahawa', 'Uchanganuzi wa hali ya juu', 'Msaada wa kipaumbele'], cta: 'Anza majaribio' },
-    btn: 'btn-ghost',
-  },
-  {
-    pop: false,
-    en: { name: 'Enterprise', price: 'Custom', per: '', meta: 'Unlimited users & devices', features: ['Everything in Business', 'Multi-branch management', 'White-label branding', 'Dedicated support', 'Custom integrations · SLA'], cta: 'Contact us' },
-    sw: { name: 'Biashara Kubwa', price: 'Maalumu', per: '', meta: 'Watumiaji & vifaa visivyo na kikomo', features: ['Vyote vya Biashara', 'Usimamizi wa matawi mengi', 'Chapa ya kibinafsi', 'Msaada wa kujitolea', 'Muunganisho maalumu · SLA'], cta: 'Wasiliana' },
+    en: {
+      name: 'Unlimited',
+      price: 'TZS 200k',
+      per: '/mo',
+      meta: 'Over 1,000 sales a month · Everything unlimited',
+      features: [
+        'Everything in Free',
+        'Unlimited monthly sales',
+        'Unlimited users & devices',
+        'No per-transaction fees, ever',
+      ],
+      cta: 'Start now →',
+    },
+    sw: {
+      name: 'Bila Kikomo',
+      price: 'TZS 200k',
+      per: '/mw',
+      meta: 'Zaidi ya mauzo 1,000 kwa mwezi · Kila kitu bila kikomo',
+      features: [
+        'Vyote vya Bure',
+        'Mauzo yasiyo na kikomo kwa mwezi',
+        'Watumiaji na vifaa visivyo na kikomo',
+        'Hakuna ada za kila muamala, kamwe',
+      ],
+      cta: 'Anza sasa →',
+    },
     btn: 'btn-ghost',
   },
 ];
@@ -30,21 +78,21 @@ const plans = [
 <section class="sec sec-tint" id="pricing">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow center" data-en="Simple pricing" data-sw="Bei rahisi">Simple pricing</span>
-      <h2 data-en="Flat monthly. Big value." data-sw="Ada moja kwa mwezi. Thamani kubwa.">Flat monthly. Big value.</h2>
+      <span class="eyebrow center" data-en="Free for small businesses" data-sw="Bure kwa biashara ndogo">Free for small businesses</span>
+      <h2 data-en="Free up to 1,000 sales a month." data-sw="Bure hadi mauzo 1,000 kwa mwezi.">Free up to 1,000 sales a month.</h2>
       <p
-        data-en='Start free. Upgrade when you&#39;re ready. No per-transaction fees, ever. <span class="sw">Bei rahisi, thamani kubwa.</span>'
-        data-sw='Anza bila malipo. Pandisha unapokuwa tayari. Hakuna ada za kila muamala, kamwe. <span class="sw">Bei rahisi, thamani kubwa.</span>'
-      >Start free. Upgrade when you're ready. No per-transaction fees, ever. <span class="sw">Bei rahisi, thamani kubwa.</span></p>
+        data-en='Every feature included, free — no trial that expires, no card, no hidden fees. Grow past 1,000 sales a month and there&#39;s just one simple plan. <span class="sw">Bure kwa biashara ndogo.</span>'
+        data-sw='Kila kipengele kimejumuishwa, bure — hakuna majaribio yanayoisha, hakuna kadi, hakuna gharama zilizofichwa. Ukikua zaidi ya mauzo 1,000 kwa mwezi, kuna kifurushi kimoja tu rahisi. <span class="sw">Bure kwa biashara ndogo.</span>'
+      >Every feature included, free — no trial that expires, no card, no hidden fees. Grow past 1,000 sales a month and there's just one simple plan. <span class="sw">Bure kwa biashara ndogo.</span></p>
     </div>
-    <div class="price-grid">
+    <div class="price-grid duo">
       {plans.map((p) => (
         <div class={`plan reveal ${p.pop ? 'pop' : ''}`}>
-          {p.pop && (<span class="tagpop" data-en="★ Most popular" data-sw="★ Maarufu zaidi">★ Most popular</span>)}
+          {p.pop && (<span class="tagpop" data-en="★ Free for most businesses" data-sw="★ Bure kwa biashara nyingi">★ Free for most businesses</span>)}
           <div>
             <div class="pname" data-en={p.en.name} data-sw={p.sw.name}>{p.en.name}</div>
             <div class="pprice">
-              <span data-en={p.en.price} data-sw={p.sw.price}>{p.en.price}</span>{p.en.per && (<small data-en={p.en.per} data-sw={p.sw.per}>{p.en.per}</small>)}
+              <span data-en={p.en.price} data-sw={p.sw.price}>{p.en.price}</span><small data-en={p.en.per} data-sw={p.sw.per}>{p.en.per}</small>
             </div>
           </div>
           <div class="pmeta" data-en={p.en.meta} data-sw={p.sw.meta}>{p.en.meta}</div>
@@ -57,5 +105,17 @@ const plans = [
         </div>
       ))}
     </div>
+    <p
+      class="reveal"
+      style="text-align:center;margin-top:22px;font-size:14px;color:var(--ink-3);font-weight:600;"
+      data-en="No credit card · No time limit · No per-transaction fees, ever"
+      data-sw="Hakuna kadi ya benki · Hakuna kikomo cha muda · Hakuna ada za kila muamala, kamwe"
+    >No credit card · No time limit · No per-transaction fees, ever</p>
   </div>
 </section>
+<style>
+  .price-grid.duo { grid-template-columns: repeat(2, minmax(0, 400px)); justify-content: center; }
+  @media (max-width: 700px) {
+    .price-grid.duo { grid-template-columns: 1fr; }
+  }
+</style>
