@@ -297,7 +297,10 @@ section { position: relative; }
    punch-hole camera rather than an earpiece bar floating in the screen, and
    side buttons — without those it reads as a rounded rectangle, not a phone. */
 .dev-phone {
-  width: 168px; height: 344px; position: relative;
+  /* aspect-ratio, not a fixed height: overrides set width only, and a fixed
+     height left the hero's 112px-wide phone still 344px tall — a 3.07 ratio
+     against a real phone's ~2.08. 168/344 keeps the Devices row's shape. */
+  width: 168px; aspect-ratio: 168 / 344; position: relative;
   background: linear-gradient(160deg, #26333d 0%, #0e1a22 42%, #0a141b 100%);
   border-radius: 26px; padding: 5px;
   box-shadow: var(--sh-lg), inset 0 0 0 1px rgba(255,255,255,.07);
@@ -701,8 +704,17 @@ section { position: relative; }
   box-shadow: 0 26px 50px -24px rgba(18,32,25,.45), 0 6px 18px -10px rgba(18,32,25,.22);
 }
 /* the mock type is sized for the larger stage further down; ease it off here */
-.hero-stage .hs-phone .mini-profit .v { font-size: 15px; }
-.hero-stage .hs-phone .mini-row { padding: 5px 0; }
+/* The hero phone is 112px wide against the Devices row's 168px, so its screen
+   is about two thirds the height. The mini-* UI is sized in px for the larger
+   one and overflowed by 62px here, clipping a row and the Charge button. */
+.hero-stage .hs-phone .scrn { padding: 11px 7px 7px; gap: 4px; }
+.hero-stage .hs-phone .mini-bar { font-size: 6.5px; }
+.hero-stage .hs-phone .mini-profit { padding: 7px 8px; }
+.hero-stage .hs-phone .mini-profit .l { font-size: 6.5px; }
+.hero-stage .hs-phone .mini-profit .v { font-size: 13px; }
+.hero-stage .hs-phone .mini-row { padding: 4px 0; font-size: 7.5px; }
+.hero-stage .hs-phone .mini-row .ic { width: 14px; height: 14px; }
+.hero-stage .hs-phone .mini-btn { font-size: 8px; padding: 6px 0; }
 
 @media (max-width: 720px) {
   /* Two devices on a phone, not three. Stacked, the FLEX 3 pushed the cluster
