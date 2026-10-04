@@ -13,6 +13,9 @@
  *   · offline restaurant service          — ordering, KDS and settlement need the network
  * claims-guard-allow-end
  */
+import { Image } from 'astro:assets';
+import kitchenFlex from '../assets/devices/kitchen-flex3.webp';
+
 const appUrl = 'https://app.biashara-pos.com';
 
 const modules = [
@@ -114,25 +117,23 @@ const modules = [
 
           <div class="mod-art">
             {m.id === 'restaurant' && (
-              <div class="kds">
-                <div class="kds-top">
-                  <span class="kds-ttl">Jikoni · Grill</span>
-                  <span class="kds-live"><i></i>4 live</span>
-                </div>
-                <div class="kds-tix">
-                  <div class="tix tix-ok">
-                    <div class="tix-h"><b>T4 · Round 2</b><span class="tix-t">02:10</span></div>
-                    <div class="tix-i">2 × Nyama Choma</div>
-                    <div class="tix-i">1 × Chips Mayai</div>
-                  </div>
-                  <div class="tix tix-warn">
-                    <div class="tix-h"><b>T9 · Round 1</b><span class="tix-t">06:48</span></div>
-                    <div class="tix-i">1 × Pilau</div>
-                    <div class="tix-i">2 × Chapati</div>
-                  </div>
-                  <div class="tix tix-late">
-                    <div class="tix-h"><b>Takeaway · 114</b><span class="tix-t">11:25</span></div>
-                    <div class="tix-i">1 × Mishkaki</div>
+              <div class="kitchen-shot">
+                <Image src={kitchenFlex} alt="A cook mounting a SUNMI FLEX 3 on an articulating arm in a restaurant kitchen, the BiasharaPOS kitchen screen showing live orders" widths={[440, 880]} sizes="440px" loading="lazy" />
+                {/* The kitchen screen, mapped onto the display in the photo's own
+                    perspective. Quad traced off the photo: 629,240 · 1062,254 ·
+                    1036,524 · 606,527. The source box is a true 16:9 — the
+                    homography supplies the foreshortening. */}
+                <div class="kitchen-space" aria-hidden="true">
+                  <div class="kitchen-ui">
+                    <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>6 live</span></div>
+                    <div class="kds-cards">
+                      <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><span>Chips Mayai</span><em>02:10</em></div>
+                      <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><span>Chapati ×4</span><em>06:48</em></div>
+                      <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
+                      <div class="kc ok"><b>Meza C2</b><span>Samaki wa Kupaka</span><em>01:04</em></div>
+                      <div class="kc warn"><b>Meza B7</b><span>Wali Nyama ×2</span><em>07:32</em></div>
+                      <div class="kc ok"><b>Meza A1</b><span>Chipsi Kuku</span><span>Soda ×3</span><em>03:18</em></div>
+                    </div>
                   </div>
                 </div>
               </div>
