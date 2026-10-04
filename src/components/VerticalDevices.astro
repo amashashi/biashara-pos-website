@@ -1,0 +1,98 @@
+---
+/**
+ * The SUNMI hardware, shown on a vertical page with that vertical's own goods
+ * on the till.
+ *
+ * Reuses .v3-shot / .flex-shot from the homepage, so the device drawing, the
+ * screen overlay and its scale all stay in one place — see landing.css. The
+ * V3 PLUS overlay scale derives from --v3-w; set the width there, not here.
+ *
+ * The FLEX 3 shows the kitchen display only for restaurants, since that is
+ * what it does there. Everywhere else it is a counter screen showing the same
+ * sale as the handheld.
+ */
+import { Image } from 'astro:assets';
+import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
+import flex3 from '../assets/devices/sunmi-flex3.webp';
+import type { Vertical } from '../data/verticals';
+
+interface Props { v: Vertical }
+const { v } = Astro.props;
+
+const isRestaurant = v.slug === 'restaurant';
+const total = v.tillItems
+  .reduce((sum, i) => sum + Number(i.price.replace(/,/g, '')), 0)
+  .toLocaleString('en-US');
+---
+<section class="sec" id="devices">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow center" data-en="On the counter" data-sw="Kaunta kwako">On the counter</span>
+      <h2
+        data-en={`The same ${v.name.en.toLowerCase()} sale, on the hardware you already have.`}
+        data-sw={`Mauzo yale yale ya ${v.name.sw.toLowerCase()}, kwenye vifaa ulivyonavyo.`}
+      >The same {v.name.en.toLowerCase()} sale, on the hardware you already have.</h2>
+      <p
+        data-en="BiasharaPOS runs in the browser, so it works on an Android phone, a tablet or a computer. These are the two SUNMI terminals we run it on."
+        data-sw="BiasharaPOS inafanya kazi kwenye kivinjari, hivyo inatumika kwenye simu ya Android, tableti au kompyuta. Hizi ni terminal mbili za SUNMI tunazoitumia."
+      >BiasharaPOS runs in the browser, so it works on an Android phone, a tablet or a computer. These are the two SUNMI terminals we run it on.</p>
+    </div>
+
+    <div class="vdev-stage">
+      <div class="dev reveal">
+        <div class="v3-shot">
+          <Image src={v3Front} alt={`SUNMI V3 PLUS handheld running a ${v.name.en.toLowerCase()} sale in BiasharaPOS`} widths={[196, 392]} sizes="196px" loading="lazy" />
+          <div class="screen-space" aria-hidden="true">
+            <div class="screen-ui">
+              <div class="su-bar"><b>Kaunta 1</b><span>live</span></div>
+              <div class="su-rows">
+                {v.tillItems.map((i) => (
+                  <div><span>{i.label}</span><b>{i.price}</b></div>
+                ))}
+              </div>
+              <div class="su-total"><span>JUMLA</span><b>{total}</b></div>
+              <div class="su-profit">{v.sampleNet.replace('+TZS ', 'Faida +')}</div>
+              <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap"><b>SUNMI V3 PLUS</b><span data-en="Handheld, printer built in" data-sw="Ya mkononi, printa ndani">Handheld, printer built in</span></div>
+      </div>
+
+      <div class="dev reveal">
+        <div class="flex-shot">
+          <Image src={flex3} alt={`SUNMI FLEX 3 counter screen running BiasharaPOS for ${v.name.en.toLowerCase()}`} widths={[300, 600]} sizes="300px" loading="lazy" />
+          <div class="flex-screen" aria-hidden="true">
+            {isRestaurant ? (
+              <>
+                <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>4 live</span></div>
+                <div class="kds-cards">
+                  <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><em>02:10</em></div>
+                  <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><em>06:48</em></div>
+                  <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
+                  <div class="kc ok"><b>Meza C2</b><span>Samaki</span><em>01:04</em></div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="kds-tabs"><i class="on">{v.name.en}</i><i data-en="Stock" data-sw="Stoki">Stock</i><i data-en="Reports" data-sw="Ripoti">Reports</i><span>Kaunta 2</span></div>
+                <div class="vflex-till">
+                  <div class="vt-rows">
+                    {v.tillItems.map((i) => (
+                      <div><span>{i.label}</span><b>{i.price}</b></div>
+                    ))}
+                  </div>
+                  <div class="vt-side">
+                    <div class="vt-total"><span data-en="Total" data-sw="Jumla">Total</span><b>TZS {total}</b></div>
+                    <div class="vt-profit"><span data-en="Net profit" data-sw="Faida halisi">Net profit</span><b>{v.sampleNet}</b></div>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+        <div class="cap"><b>SUNMI FLEX 3</b><span data-en={isRestaurant ? 'Kitchen screen' : 'Counter screen'} data-sw={isRestaurant ? 'Skrini ya jikoni' : 'Skrini ya kaunta'}>{isRestaurant ? 'Kitchen screen' : 'Counter screen'}</span></div>
+      </div>
+    </div>
+  </div>
+</section>

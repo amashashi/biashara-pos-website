@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import VerticalDevices from '../components/VerticalDevices.astro';
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Pricing from '../components/Pricing.astro';
@@ -159,6 +160,8 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
     </section>
 
     <Pricing />
+
+    <VerticalDevices v={v} />
 
     <!-- ============ VERTICAL FAQ ============ -->
     <section class="sec sec-tint" id="faq">

@@ -861,3 +861,25 @@ section { position: relative; }
 .flex-shot .kc.late { border-color: #e2574c; } .flex-shot .kc.late em { color: #c7382c; }
 .dev-wide { flex-basis: 100%; }
 @media (min-width: 900px) { .dev-wide { flex-basis: auto; } }
+
+/* Device pair on the vertical pages. The devices themselves reuse .v3-shot and
+   .flex-shot, so nothing about their drawing or overlay scale is duplicated. */
+.vdev-stage {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: clamp(24px, 5vw, 64px); flex-wrap: wrap; margin-top: 44px;
+}
+/* FLEX 3 as a counter till rather than a kitchen screen */
+.flex-shot .vflex-till { display: flex; gap: 4px; margin-top: 4px; flex-grow: 1; }
+.flex-shot .vt-rows { flex-grow: 1; display: flex; flex-direction: column; gap: 3px; }
+.flex-shot .vt-rows div { display: flex; justify-content: space-between; font-size: 5px; color: var(--ink-2); }
+.flex-shot .vt-rows div b { color: var(--ink); font-weight: 700; }
+.flex-shot .vt-side { width: 38%; display: flex; flex-direction: column; gap: 3px; }
+.flex-shot .vt-total, .flex-shot .vt-profit {
+  background: #fff; border-radius: 2.5px; padding: 4px 5px;
+  display: flex; flex-direction: column; gap: 1px;
+}
+.flex-shot .vt-total span, .flex-shot .vt-profit span { font-size: 4.2px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.flex-shot .vt-total b { font-size: 8px; letter-spacing: -.02em; }
+.flex-shot .vt-profit { background: var(--green-50); }
+.flex-shot .vt-profit span { color: var(--green-dd); }
+.flex-shot .vt-profit b { font-size: 7px; color: var(--green-dd); }

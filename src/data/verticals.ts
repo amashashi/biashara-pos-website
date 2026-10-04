@@ -49,6 +49,8 @@ export interface Vertical {
   photo: ImageMetadata;
   /** Alt text for the hero photo. */
   alt: string;
+  /** Three sample till lines, shown on the device screens for this vertical. */
+  tillItems: { label: string; price: string }[];
   /** "Net profit" sample for the locked dashboard mock on this page. */
   sampleNet: string;
   sampleSales: string;
@@ -71,6 +73,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: clothing,
     alt: 'Tanzanian clothing boutique interior',
+    tillItems: [
+      { label: 'Kitenge Dress', price: '48,000' },
+      { label: 'Linen Shirt × 2', price: '64,000' },
+      { label: 'Leather Sandals', price: '28,000' },
+    ],
     sampleNet: '+TZS 6,800',
     sampleSales: 'TZS 612,000',
     sampleTx: '18',
@@ -104,6 +111,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: retail,
     alt: 'Tanzanian retail supermarket',
+    tillItems: [
+      { label: 'Sukari 1kg × 2', price: '6,400' },
+      { label: 'Mafuta 2L', price: '9,500' },
+      { label: 'Mchele 5kg', price: '22,000' },
+    ],
     sampleNet: '+TZS 4,200',
     sampleSales: 'TZS 847,500',
     sampleTx: '24',
@@ -136,6 +148,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: restaurant,
     alt: 'Restaurant interior with diners',
+    tillItems: [
+      { label: 'Nyama Choma × 2', price: '36,000' },
+      { label: 'Pilau', price: '9,000' },
+      { label: 'Soda × 3', price: '4,500' },
+    ],
     sampleNet: '+TZS 3,400',
     sampleSales: 'TZS 528,000',
     sampleTx: '36',
@@ -168,6 +185,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: hospital,
     alt: 'Hospital reception desk',
+    tillItems: [
+      { label: 'Ushauri wa daktari', price: '20,000' },
+      { label: 'Kipimo cha malaria', price: '8,000' },
+      { label: 'Dawa', price: '12,500' },
+    ],
     sampleNet: '+TZS 12,500',
     sampleSales: 'TZS 1,240,000',
     sampleTx: '14',
@@ -199,6 +221,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: pharmacy,
     alt: 'Pharmacy counter with dispenser',
+    tillItems: [
+      { label: 'Paracetamol × 2', price: '5,000' },
+      { label: 'Amoxicillin', price: '7,000' },
+      { label: 'ORS Sachet × 3', price: '3,600' },
+    ],
     sampleNet: '+TZS 5,100',
     sampleSales: 'TZS 392,000',
     sampleTx: '29',
@@ -231,6 +258,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     },
     photo: barbershop,
     alt: 'Barbers cutting hair in a modern Tanzanian barbershop',
+    tillItems: [
+      { label: 'Kunyoa nywele', price: '5,000' },
+      { label: 'Kunyoa ndevu', price: '3,000' },
+      { label: 'Mafuta ya nywele', price: '8,000' },
+    ],
     sampleNet: '+TZS 2,800',
     sampleSales: 'TZS 265,000',
     sampleTx: '21',
