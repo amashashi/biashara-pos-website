@@ -1,20 +1,20 @@
 ---
 const faqs = [
   {
-    en: { q: 'Is BiasharaPOS really free?', a: 'Yes — free for businesses doing up to 1,000 sales a month, with every feature included. No trial that expires, no credit card, no hidden fees. Above 1,000 sales a month there\'s one simple plan: TZS 200,000/month, unlimited.' },
+    en: { q: 'Is BiasharaPOS really free?', a: 'Yes — free for businesses doing up to 1,000 sales a month, with every feature included. No trial that expires, no credit card, no hidden fees. Above 1,000 sales a month there is one simple plan: TZS 200,000/month, unlimited.' },
     sw: { q: 'Je, BiasharaPOS ni bure kweli?', a: 'Ndio — ni bure kwa biashara zinazofanya hadi mauzo 1,000 kwa mwezi, na kila kipengele kimejumuishwa. Hakuna majaribio yanayoisha, hakuna kadi ya benki, hakuna gharama zilizofichwa. Zaidi ya mauzo 1,000 kwa mwezi kuna kifurushi kimoja rahisi: TZS 200,000 kwa mwezi, bila kikomo.' },
   },
   {
-    en: { q: 'What happens if I pass 1,000 sales in a month?', a: 'It means your business is growing — you\'ll be asked to move to the Unlimited plan (TZS 200,000/month). Your products, sales history and settings stay exactly as they are.' },
+    en: { q: 'What happens if I pass 1,000 sales in a month?', a: 'It means your business is growing — you will be asked to move to the Unlimited plan (TZS 200,000/month). Your products, sales history and settings stay exactly as they are.' },
     sw: { q: 'Itakuwaje nikizidi mauzo 1,000 kwa mwezi?', a: 'Inamaanisha biashara yako inakua — utaombwa kuhamia kifurushi cha Bila Kikomo (TZS 200,000 kwa mwezi). Bidhaa zako, historia ya mauzo na mipangilio vinabaki kama vilivyo.' },
   },
   {
-    en: { q: 'Do I need internet to use BiasharaPOS?', a: 'No. BiasharaPOS works fully offline — sales queue locally and auto-sync the moment you\'re back online.' },
-    sw: { q: 'Je, nahitaji intaneti kutumia BiasharaPOS?', a: 'Hapana. BiasharaPOS inafanya kazi bila intaneti kabisa — mauzo yanahifadhiwa ndani na yanasawazishwa moja kwa moja unaporejea mtandaoni.' },
+    en: { q: 'What happens when the internet goes down?', a: 'Counter sales keep working — they queue on the device and sync themselves the moment you are back online. Restaurant table service, the kitchen screen and online orders do need a connection, since several devices have to stay in step with each other.' },
+    sw: { q: 'Nini kinatokea mtandao ukikatika?', a: 'Mauzo ya kaunta yanaendelea — yanahifadhiwa kwenye kifaa na kujisawazisha mara unaporejea mtandaoni. Huduma ya meza, skrini ya jikoni na oda za mtandaoni zinahitaji mtandao, kwa sababu vifaa kadhaa vinapaswa kuwa sambamba.' },
   },
   {
-    en: { q: 'Is BiasharaPOS accepted by TRA?', a: 'Yes. We issue VFD fiscal receipt numbers (RCTVNUM) on every sale and generate one-click TRA audit PDF reports.' },
-    sw: { q: 'Je, BiasharaPOS inakubaliwa na TRA?', a: 'Ndio. Tunatoa namba za risiti za kodi VFD (RCTVNUM) kwa kila mauzo na kuzalisha ripoti za ukaguzi wa TRA PDF kwa mguso mmoja.' },
+    en: { q: 'How does BiasharaPOS handle TRA receipts?', a: 'Every sale is issued a fiscal receipt number and queued for TRA submission, following the VFD specification, and your sales records export as an audit-ready PDF. BiasharaPOS itself is not certified by the TRA — you stay responsible for your own fiscalisation obligations.' },
+    sw: { q: 'BiasharaPOS inashughulikiaje risiti za TRA?', a: 'Kila mauzo hupewa namba ya risiti ya kodi na kupangwa kutumwa TRA, kufuata maelekezo ya VFD, na kumbukumbu zako za mauzo husafirishwa kama PDF tayari kwa ukaguzi. BiasharaPOS yenyewe haijathibitishwa na TRA — wewe unabaki na jukumu la wajibu wako wa kodi.' },
   },
   {
     en: { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
@@ -25,33 +25,16 @@ const faqs = [
     sw: { q: 'Je, naweza kuitumia kwa duka langu la dawa / mgahawa / soko?', a: 'Bila shaka. Hali maalumu zinashughulikia mwisho wa muda na bechi kwa maduka ya dawa, meza na tiketi za jikoni kwa migahawa, na misimbo na bulk kwa rejareja.' },
   },
   {
-    en: { q: 'What payment methods are supported?', a: 'M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard — all included on every plan, with no per-transaction charges.' },
-    sw: { q: 'Ni njia gani za malipo zinazoungwa mkono?', a: 'M-Pesa, Mixx by Yas, Airtel Money, Visa na Mastercard — zote zimejumuishwa kwenye kila kifurushi, bila ada za kila muamala.' },
+    en: { q: 'How are payments recorded?', a: 'You keep taking payment the way you already do — M-Pesa, Mixx by Yas, Airtel Money, cash or card — and record it against the sale, with the confirmation code if you want it. BiasharaPOS does not sit between you and your money, which is why there are no per-transaction charges.' },
+    sw: { q: 'Malipo yanarekodiwaje?', a: 'Unaendelea kupokea malipo jinsi unavyofanya sasa — M-Pesa, Mixx by Yas, Airtel Money, pesa taslimu au kadi — na kuyarekodi kwenye mauzo, pamoja na namba ya uthibitisho ukitaka. BiasharaPOS haiingii kati yako na pesa yako, ndiyo maana hakuna ada za kila muamala.' },
   },
 ];
 ---
 <section class="sec sec-white" id="faq">
-  <div class="wrap tf">
-    <div class="quote reveal">
-      <div class="qm">"</div>
-      <div class="qt" data-en="I see my profit instantly after every sale — I've never had this before." data-sw="Naona faida yangu mara moja baada ya kila mauzo — sijawahi kuwa na hii kabla.">I see my profit instantly after every sale — I've never had this before.</div>
-      <div class="muted sw" style="color:rgba(255,255,255,.85);font-size:15px;margin:-12px 0 22px;">Naona faida yangu mara moja baada ya kila uuzaji — sijawahi kuwa na hii kabla.</div>
-      <div class="qa">
-        <div class="qav">
-          <img
-            src={import.meta.env.BASE_URL + "testimonial-fdhyler.jpg"}
-            alt="Fdhyler Collection"
-            loading="lazy"
-            onerror="this.remove()"
-          />
-          <span class="qav-fallback">F</span>
-        </div>
-        <div class="qn">
-          <b>Fdhyler Collection</b>
-          <span data-en="Dar es Salaam, Tanzania · ★★★★★" data-sw="Dar es Salaam, Tanzania · ★★★★★">Dar es Salaam, Tanzania · ★★★★★</span>
-        </div>
-      </div>
-    </div>
+  <div class="wrap tf tf-solo">
+    <!-- Customer testimonial removed: we do not hold permission to name or quote
+         the business it was attributed to. Do not reinstate a named quote, a
+         photo or a star rating without written permission from that customer. -->
     <div class="reveal">
       <span class="eyebrow" data-en="Got questions?" data-sw="Una maswali?">Got questions?</span>
       <h2 style="font-size:30px;margin:14px 0 22px;" data-en="Frequently asked" data-sw="Maswali yanayoulizwa mara kwa mara">Frequently asked</h2>

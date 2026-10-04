@@ -1,0 +1,31 @@
+name: Claim guard
+
+# BiasharaPOS holds none of the TRA VFD / NF525 / ISO 27001 / PCI DSS
+# certifications, does not process payments, and is offline-capable only at the
+# retail counter. Unsupported claims have been removed from the site twice and
+# come back whenever someone reworks the copy without that context.
+#
+# This runs on pull requests so the claim is caught at review time, and on
+# pushes to main so a direct push cannot slip one past.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  claims:
+    name: No unsupported marketing claims
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # No dependencies — the guard is plain Node with no imports beyond node:fs.
+      - name: Check marketing claims
+        run: node scripts/check-claims.mjs

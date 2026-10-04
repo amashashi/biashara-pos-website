@@ -1,0 +1,20 @@
+# The agent is normally deployed from this directory, so this is the ignore
+# file that actually applies. The one at the repo root is the safety net for a
+# deploy run from there by mistake.
+#
+# Railway does not read .gitignore, so secrets must be listed here explicitly.
+
+# --- secrets: never upload ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- rebuilt inside the image by the Dockerfile ---
+node_modules/
+dist/
+
+# --- misc ---
+.DS_Store
+*.log

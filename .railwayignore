@@ -1,0 +1,50 @@
+# What `railway up` must never upload.
+#
+# Railway uploads the working directory as the build context, and it does NOT
+# read .gitignore. Without this file a deploy run from the repo root would ship
+# the real .env — along with two zipped copies of the whole site and two
+# unpacked ones.
+#
+# Keep the secrets block first and do not relax it. If a deploy needs a value
+# from .env, set it as a Railway service variable instead of shipping the file.
+
+# --- secrets: never upload ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- vcs / tooling ---
+.git/
+.github/
+.claude/
+.astro/
+.snapshots/
+.vscode/
+.idea/
+
+# --- dependencies and build output (rebuilt in the image) ---
+node_modules/
+dist/
+.cache/
+
+# --- stray copies of the site that live in this working tree ---
+Biashara-POS Website/
+Biashara-POS Website (1)/
+biashara-pos-website/
+biashara-agent/
+*.zip
+
+# --- design canvas working files (not part of any deploy) ---
+*.dc.html
+canvas.json
+biashara-pos-website-revamp.html
+
+# --- local helper scripts ---
+*.bat
+
+# --- misc ---
+.DS_Store
+*.local
+*.log

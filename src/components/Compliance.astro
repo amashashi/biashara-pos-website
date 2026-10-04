@@ -1,29 +1,65 @@
 ---
+/**
+ * Compliance section.
+ *
+ * IMPORTANT — read before editing. BiasharaPOS holds NONE of these certifications.
+ * What we have is engineering built to follow each standard's approach. Every status
+ * chip here must therefore stay in the "aligned / not certified" register, the
+ * disclaimer below the grid must stay on the page, and image alt text must never
+ * contain the words "certified" or "compliant" — the logos identify the standard
+ * being followed, they do not indicate endorsement by the body that owns them.
+ */
 const cards = [
-  { status: { en: 'Active', sw: 'Inafanya kazi' }, cls: 'on', logo: '/logos/tra.jpg', logoAlt: 'Tanzania Revenue Authority', en: { title: 'TRA VFD integrated', desc: 'Automatic fiscal receipt numbers (RCTVNUM) on every sale.' }, sw: { title: 'TRA VFD imeunganishwa', desc: 'Namba za risiti za kodi (RCTVNUM) moja kwa moja kwa kila mauzo.' }, icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>' },
-  { status: { en: 'Active', sw: 'Inafanya kazi' }, cls: 'on', logo: '/logos/nf525.jpg', logoAlt: 'NF525 certified', en: { title: 'NF525 receipt chain', desc: 'Tamper-proof cryptographic receipt chain for audit integrity.' }, sw: { title: 'Mnyororo wa risiti NF525', desc: 'Mnyororo wa risiti usioweza kubadilishwa kwa uadilifu wa ukaguzi.' }, icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>' },
-  { status: { en: 'In progress', sw: 'Inaendelea' }, cls: 'prog', logo: '/logos/ISO.png', logoAlt: 'ISO 27001 Certified', en: { title: 'ISO 27001', desc: 'Audit log, access control and incident-response framework.' }, sw: { title: 'ISO 27001', desc: 'Kumbukumbu za ukaguzi, udhibiti wa ufikiaji na muundo wa majibu ya tukio.' }, icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>' },
-  { status: { en: 'Aligned', sw: 'Imeshirikiana' }, cls: 'on', logo: '/logos/pci-dss.png', logoAlt: 'PCI DSS Compliant', en: { title: 'PCI DSS', desc: 'No card data stored. TLS encryption with tokenised payments.' }, sw: { title: 'PCI DSS', desc: 'Hakuna data ya kadi inayohifadhiwa. Usimbaji wa TLS na malipo ya tokeni.' }, icon: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/>' },
+  {
+    status: { en: 'Aligned', sw: 'Imefuata viwango' },
+    cls: 'on',
+    logo: '/logos/tra.jpg',
+    logoAlt: 'Tanzania Revenue Authority',
+    en: { title: 'Built to TRA VFD', desc: 'Fiscal receipt numbers are issued on every sale and queued for TRA submission, following the VFD specification.' },
+    sw: { title: 'Imejengwa kwa TRA VFD', desc: 'Namba za risiti za kodi hutolewa kwa kila mauzo na kupangwa kutumwa TRA, kufuata maelekezo ya VFD.' },
+  },
+  {
+    status: { en: 'Aligned', sw: 'Imefuata viwango' },
+    cls: 'on',
+    logo: '/logos/nf525.jpg',
+    logoAlt: 'NF525 standard',
+    en: { title: 'NF525-style receipt chain', desc: 'Each receipt is cryptographically chained to the one before it, so a changed or deleted sale is detectable.' },
+    sw: { title: 'Mnyororo wa risiti wa mtindo wa NF525', desc: 'Kila risiti imeunganishwa kwa njia ya siri na iliyotangulia, hivyo mauzo yaliyobadilishwa au kufutwa yanagundulika.' },
+  },
+  {
+    status: { en: 'Aligned', sw: 'Imefuata viwango' },
+    cls: 'on',
+    logo: '/logos/ISO.png',
+    logoAlt: 'ISO/IEC 27001 standard',
+    en: { title: 'ISO 27001 practices', desc: 'Audit logging, role-based access control and tenant data isolation enforced in the database itself.' },
+    sw: { title: 'Taratibu za ISO 27001', desc: 'Kumbukumbu za ukaguzi, udhibiti wa ufikiaji kwa majukumu na utengaji wa data ya kila biashara ndani ya hifadhidata yenyewe.' },
+  },
+  {
+    status: { en: 'Aligned', sw: 'Imefuata viwango' },
+    cls: 'on',
+    logo: '/logos/pci-dss.png',
+    logoAlt: 'PCI DSS standard',
+    en: { title: 'PCI DSS practices', desc: 'We never store, process or transmit card data. Card payments are recorded as a tender type only.' },
+    sw: { title: 'Taratibu za PCI DSS', desc: 'Hatuhifadhi, hatushughulikii wala hatutumi data ya kadi. Malipo ya kadi yanarekodiwa kama aina ya malipo tu.' },
+  },
 ];
 ---
 <section class="sec sec-white" id="compliance">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow center" data-en="Compliant by design" data-sw="Utii wa muundo">Compliant by design</span>
-      <h2 data-en="Audit-ready from day one" data-sw="Tayari kwa ukaguzi tangu siku ya kwanza">Audit-ready from day one</h2>
-      <p data-en="Built for TRA, NF525, ISO 27001 and PCI DSS — so you're covered as you grow." data-sw="Imejengwa kwa TRA, NF525, ISO 27001 na PCI DSS — ili uwe salama unapokua.">Built for TRA, NF525, ISO 27001 and PCI DSS — so you're covered as you grow.</p>
+      <span class="eyebrow center" data-en="Built on standards" data-sw="Imejengwa kwa viwango">Built on standards</span>
+      <h2 data-en="Engineered to be audit-ready" data-sw="Imetengenezwa kuwa tayari kwa ukaguzi">Engineered to be audit-ready</h2>
+      <p
+        data-en="We build to the TRA VFD, NF525, ISO 27001 and PCI DSS standards — so your records stand up when someone asks for them."
+        data-sw="Tunajenga kwa viwango vya TRA VFD, NF525, ISO 27001 na PCI DSS — ili kumbukumbu zako ziwe imara mtu anapoziomba."
+      >We build to the TRA VFD, NF525, ISO 27001 and PCI DSS standards — so your records stand up when someone asks for them.</p>
     </div>
+
     <div class="comp-grid">
       {cards.map((c) => (
         <div class="comp-card reveal">
           <div class="ch">
-            {c.logo ? (
-              <div class="clogo"><img src={c.logo} alt={c.logoAlt} loading="lazy" decoding="async" /></div>
-            ) : c.wordmark ? (
-              <div class="cwordmark"><span class="cw-pre">ISO/IEC</span><strong class="cw-num">27001</strong></div>
-            ) : (
-              <div class="cico" set:html={`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${c.icon}</svg>`}></div>
-            )}
+            <div class="clogo"><img src={c.logo} alt={c.logoAlt} loading="lazy" decoding="async" /></div>
             <span class={`status ${c.cls}`} data-en={c.status.en} data-sw={c.status.sw}>{c.status.en}</span>
           </div>
           <h3 data-en={c.en.title} data-sw={c.sw.title}>{c.en.title}</h3>
@@ -31,5 +67,11 @@ const cards = [
         </div>
       ))}
     </div>
+
+    <p
+      class="comp-note reveal"
+      data-en="BiasharaPOS is not certified or accredited by the Tanzania Revenue Authority, Infocert/LNE (NF525), ISO or the PCI Security Standards Council. These logos identify the standards our system is built to follow; they do not indicate endorsement. You remain responsible for your own tax and regulatory obligations."
+      data-sw="BiasharaPOS haijathibitishwa wala kuidhinishwa na Mamlaka ya Mapato Tanzania, Infocert/LNE (NF525), ISO au PCI Security Standards Council. Nembo hizi zinaonyesha viwango ambavyo mfumo wetu umejengwa kufuata; haziashirii idhini. Wewe unabaki na jukumu la wajibu wako wa kodi na kanuni."
+    >BiasharaPOS is not certified or accredited by the Tanzania Revenue Authority, Infocert/LNE (NF525), ISO or the PCI Security Standards Council. These logos identify the standards our system is built to follow; they do not indicate endorsement. You remain responsible for your own tax and regulatory obligations.</p>
   </div>
 </section>

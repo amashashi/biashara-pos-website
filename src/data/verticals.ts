@@ -63,11 +63,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for clothing boutiques in Tanzania', sw: 'POS kwa maduka ya nguo Tanzania' },
     seoTitle: 'POS for Clothing Boutiques in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for clothing & fashion boutiques in Tanzania. Size & color variants, fast checkout, M-Pesa, TRA-compliant receipts, real-time profit.',
-    shortDesc: { en: 'Sizes, colors & variants, fast.', sw: 'Saizi, rangi na aina, haraka.' },
+      'BiasharaPOS — the POS for clothing & fashion boutiques in Tanzania. Per-variant stock and SKUs, a Boutique online shop with delivery, fast checkout, real profit per sale.',
+    shortDesc: { en: 'Variants, and a shop online.', sw: 'Aina za bidhaa, na duka mtandaoni.' },
     heroSubhead: {
-      en: 'Track every size, colour and style with one tap. Print TRA receipts, accept M-Pesa, and see your real profit on every sale.',
-      sw: 'Fuatilia kila saizi, rangi na mtindo kwa mguso mmoja. Chapisha risiti za TRA, kubali M-Pesa, na uone faida halisi kwa kila mauzo.',
+      en: 'Give every size and colour its own stock count and SKU, then put the same rail online in a Boutique shopfront your customers can order from. Real profit on every sale, in store or online.',
+      sw: 'Mpe kila saizi na rangi hesabu yake ya stoki na SKU, kisha weka bidhaa hizo hizo mtandaoni kwenye duka la Boutique ambalo wateja wanaweza kuagiza. Faida halisi kwa kila mauzo, dukani au mtandaoni.',
     },
     photo: clothing,
     alt: 'Tanzanian clothing boutique interior',
@@ -75,16 +75,17 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     sampleSales: 'TZS 612,000',
     sampleTx: '18',
     features: [
-      { icon: '<path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/>', title: 'Sizes, colours & variants', desc: 'Unlimited variant options per product — XS to XXXL, every shade, every fit.' },
+      { icon: '<path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/>', title: 'A variant per size and shade', desc: 'Add as many options as a product needs — each with its own SKU, stock count and price difference.' },
       { icon: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6v12M11 6v12M15 6v12"/>', title: 'Barcode label printing', desc: 'Print your own barcode labels at the counter, or scan existing manufacturer barcodes.' },
       { icon: '<path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/>', title: 'Dead-stock report', desc: 'See which items are not moving so you can run promotions or return to suppliers.' },
-      { icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>', title: 'M-Pesa, card & cash', desc: 'One receipt, every method — M-Pesa, Mixx by Yas, Airtel Money, Visa, Mastercard, cash.' },
+      { icon: '<path d="M3 9l1-5h16l1 5"/><path d="M4 9h16v11H4z"/><path d="M9 13h6"/>', title: 'A Boutique shop online', desc: 'Open a lookbook storefront on the same stock as the till. Customers browse and order with no account, and pick up or get it delivered.' },
     ],
     faqs: [
-      { q: 'Can I track sizes and colours of each item?', a: 'Yes — every product can have unlimited variant options (size, colour, fit, fabric). Each variant has its own stock count and SKU.' },
+      { q: 'Can I track sizes and colours of each item?', a: 'Yes — add an option for each one you stock, such as "Blue / L". Every option carries its own SKU, its own stock count and its own price difference, and sells down independently at the till and online.' },
       { q: 'Do you print barcode labels?', a: 'Yes — print barcode labels directly from BiasharaPOS, or scan existing manufacturer barcodes. Works with any USB or Bluetooth scanner.' },
       { q: 'Can I see which items are not selling?', a: 'Yes — the dead-stock report shows slow-moving items by category, so you can run promotions or return to suppliers.' },
-      { q: 'Does it accept M-Pesa for boutique sales?', a: 'Yes — M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
+      { q: 'Does it accept M-Pesa for boutique sales?', a: 'Yes. You take payment on your own M-Pesa, Mixx by Yas or Airtel till as you do today, then record it against the sale with its confirmation code. Cash and card go on the same receipt.' },
+      { q: 'Can my customers buy online?', a: 'Yes — open a Boutique storefront and share the link or a product QR on WhatsApp or Instagram. Customers order without creating an account, choose pickup or delivery, and follow the order on a tracking page in Swahili or English. Online orders reserve stock from the same inventory as the till.' },
     ],
   },
 
@@ -95,7 +96,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for retail shops & supermarkets in Tanzania', sw: 'POS kwa maduka ya rejareja na supermarket Tanzania' },
     seoTitle: 'POS for Retail Shops & Supermarkets in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for retail and supermarkets in Tanzania. Barcode scanning, bulk import, low-stock alerts, M-Pesa, TRA-compliant. Real profit per sale.',
+      'BiasharaPOS — the POS for retail and supermarkets in Tanzania. Barcode scanning, bulk import, low-stock alerts, M-Pesa, audit-ready. Real profit per sale.',
     shortDesc: { en: 'Barcodes, bulk import, stock.', sw: 'Misimbo, uingizaji wa wingi, stoki.' },
     heroSubhead: {
       en: 'Scan barcodes, import thousands of SKUs from Excel, get low-stock alerts and see your real profit margin on every basket.',
@@ -127,7 +128,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for restaurants & cafés in Tanzania', sw: 'POS kwa migahawa Tanzania' },
     seoTitle: 'POS for Restaurants & Cafés in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for Tanzanian restaurants, cafés and bars. Table management, kitchen tickets, split bills, M-Pesa, TRA receipts, real-time profit per plate.',
+      'BiasharaPOS — the POS for Tanzanian restaurants, cafés and bars. Table management, kitchen display, split bills, recipe costing and real margin per plate.',
     shortDesc: { en: 'Tables & kitchen tickets.', sw: 'Meza na tiketi za jikoni.' },
     heroSubhead: {
       en: 'Manage tables, send orders straight to the kitchen, split bills at the end of the night, and see the real margin on every plate.',
@@ -139,16 +140,16 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     sampleSales: 'TZS 528,000',
     sampleTx: '36',
     features: [
-      { icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/>', title: 'Table management', desc: 'Visual table layout. Assign orders to tables, move them, merge or split bills at the end.' },
-      { icon: '<path d="M6 3v6a3 3 0 0 0 3 3M18 3v6a3 3 0 0 1-3 3M12 12v9"/>', title: 'Kitchen tickets', desc: 'Orders print instantly at the kitchen, hot kitchen, bar or dessert station — your choice.' },
-      { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/>', title: 'Modifiers & combos', desc: 'No onions, extra cheese, sauce on the side — capture every customisation cleanly.' },
+      { icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16M12 4v16"/>', title: 'Tables and covers', desc: 'Sections and tables with live state, covers and the waiter assigned — each table with its own QR for the diners sitting at it.' },
+      { icon: '<path d="M6 3v6a3 3 0 0 0 3 3M18 3v6a3 3 0 0 1-3 3M12 12v9"/>', title: 'Kitchen tickets', desc: 'The order prints in the kitchen the moment the waiter fires it, and the bill and receipt at the cashier, over an ordinary thermal printer.' },
+      { icon: '<path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/>', title: 'A kitchen screen that nags', desc: 'Tickets by station with prep timers that turn amber, then red, against your own target times — with a chime when one is late.' },
       { icon: '<path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/>', title: 'Recipe costing', desc: 'Track ingredient cost per dish so you know your real margin — not just the menu price.' },
     ],
     faqs: [
-      { q: 'Can I manage tables and split bills at the end?', a: 'Yes — assign every order to a table. At the end, split by item, by share or by guest — and merge tables if needed.' },
-      { q: 'Do orders print at the kitchen automatically?', a: 'Yes — connect a kitchen printer (or multiple stations) and tickets print the moment the waiter sends the order.' },
+      { q: 'Can I split a bill between guests?', a: 'Yes — split the bill for a table item by item into separate bills so each guest pays their own, and take a single bill across cash, M-Pesa and card together.' },
+      { q: 'Do orders print at the kitchen automatically?', a: 'Yes — connect a thermal printer on your shop network and the kitchen ticket prints the moment the waiter fires the order. The bill and fiscal receipt print at the cashier.' },
       { q: 'Can I track the cost of ingredients per dish?', a: 'Yes — recipe costing lets you log ingredients per menu item, so you see your real profit margin per plate.' },
-      { q: 'Does it support M-Pesa Lipa Namba for orders?', a: 'Yes — M-Pesa, Mixx by Yas, Airtel Money, Visa and Mastercard, all on one TRA-compliant receipt.' },
+      { q: 'Does it support M-Pesa Lipa Namba for orders?', a: 'Yes. You take payment on your own M-Pesa, Mixx by Yas or Airtel till as you do today, then record it against the sale with its confirmation code. Cash and card go on the same receipt.' },
     ],
   },
 
@@ -159,11 +160,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS & billing for clinics and hospitals in Tanzania', sw: 'POS na bili kwa zahanati na hospitali Tanzania' },
     seoTitle: 'POS & Billing for Clinics & Hospitals in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — billing for Tanzanian clinics, hospitals and pharmacies. Patient billing, NHIF claims, lab + pharmacy in one invoice, TRA-compliant receipts.',
+      'BiasharaPOS — billing for Tanzanian clinics, hospitals and pharmacies. Patient billing, lab + pharmacy on one invoice, role-based access, a counter that keeps selling offline, audit-ready fiscal receipts.',
     shortDesc: { en: 'Patient billing & records.', sw: 'Utozaji wa wagonjwa na kumbukumbu.' },
     heroSubhead: {
-      en: 'Bill patients for consultation, lab and pharmacy on one invoice. Track NHIF and private insurance claims. TRA-compliant from day one.',
-      sw: 'Toza wagonjwa kwa ushauri, maabara na duka la dawa kwa bili moja. Fuatilia madai ya NHIF na bima binafsi. Inakubalika TRA tangu siku ya kwanza.',
+      en: 'Bill patients for consultation, lab and pharmacy on one invoice. Role-based access keeps records private, and the whole thing keeps working when the line goes down.',
+      sw: 'Toza wagonjwa kwa ushauri, maabara na duka la dawa kwa bili moja. Udhibiti wa ufikiaji unalinda kumbukumbu, na mfumo unaendelea kufanya kazi mtandao ukikatika.',
     },
     photo: hospital,
     alt: 'Hospital reception desk',
@@ -172,14 +173,13 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     sampleTx: '14',
     features: [
       { icon: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>', title: 'Patient profiles', desc: 'Full patient records — visits, prescriptions, lab results, balance owed — all in one place.' },
-      { icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>', title: 'Combined invoicing', desc: 'Bill consultation, labs, X-ray and pharmacy on a single TRA-compliant invoice.' },
-      { icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>', title: 'NHIF & insurance claims', desc: 'Track claim status, link to NHIF, and reconcile insurer payouts against patient visits.' },
+      { icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>', title: 'Combined invoicing', desc: 'Bill consultation, labs, X-ray and pharmacy on a single audit-ready invoice.' },
+      { icon: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/>', title: 'Tamper-evident records', desc: 'Every invoice is chained to the one before it, so an altered or deleted charge shows up in the audit trail.' },
       { icon: '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 6a3 3 0 0 1 0 6M21 20a5 5 0 0 0-4-5"/>', title: 'Role-based access', desc: 'Doctors, nurses, cashiers and admins each see only what they should. Full audit trail.' },
     ],
     faqs: [
-      { q: 'Can I bill a patient for consultation, labs and pharmacy in one invoice?', a: 'Yes — every charge added to a patient visit appears on a single TRA-compliant invoice at checkout.' },
-      { q: 'Do you support NHIF and private insurance claims?', a: 'Yes — link visits to an NHIF or insurer claim, track status, and reconcile when the insurer pays out.' },
-      { q: 'Is patient data kept private?', a: 'Yes — role-based access means each staff member sees only what they should. Every action is logged for audit.' },
+      { q: 'Can I bill a patient for consultation, labs and pharmacy in one invoice?', a: 'Yes — every charge added to a patient visit appears on a single audit-ready invoice at checkout.' },
+            { q: 'Is patient data kept private?', a: 'Yes — role-based access means each staff member sees only what they should. Every action is logged for audit.' },
       { q: 'Can it run in a rural clinic without internet?', a: 'Yes — full offline mode. Visits, charges and receipts queue locally and sync the moment connection is back.' },
     ],
   },
@@ -191,7 +191,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for pharmacies & drug stores in Tanzania', sw: 'POS kwa maduka ya dawa Tanzania' },
     seoTitle: 'POS for Pharmacies & Drug Stores in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for Tanzanian pharmacies. Expiry alerts, batch tracking (FEFO), prescription logging, supplier management, TRA-compliant fiscal receipts.',
+      'BiasharaPOS — the POS for Tanzanian pharmacies. Expiry alerts, batch tracking (FEFO), prescription logging, supplier management, audit-ready fiscal receipts.',
     shortDesc: { en: 'Expiry dates & batches.', sw: 'Tarehe za mwisho na bechi.' },
     heroSubhead: {
       en: 'Track expiry dates, batch numbers and prescriptions on every sale. First-expiry-first-out is automatic — no more wasted stock.',
@@ -223,7 +223,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for barbershops & salons in Tanzania', sw: 'POS kwa vinyozi na saluni Tanzania' },
     seoTitle: 'POS for Barbershops & Salons in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for Tanzanian barbershops & salons. Walk-in queue, barber commissions & tips, appointments, product retail, M-Pesa, TRA-compliant receipts.',
+      'BiasharaPOS — the POS for Tanzanian barbershops & salons. Walk-in queue, barber commissions & tips, appointments, product retail, M-Pesa, audit-ready fiscal receipts.',
     shortDesc: { en: 'Queue, chairs & commissions.', sw: 'Foleni, viti na kamisheni.' },
     heroSubhead: {
       en: 'Manage the walk-in queue, book appointments, split commissions and tips per barber, and sell products at the counter — with real profit on every cut.',
@@ -243,7 +243,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     faqs: [
       { q: 'Can barbers see their own queue and earnings?', a: 'Yes — each barber has a PIN login showing their queue, completed cuts, commission and tips for the day. Admins see everyone.' },
       { q: 'How are commissions and tips calculated?', a: 'Set a commission percentage per barber. Every service sale is split automatically between shop and barber, and tips are tracked separately per barber.' },
-      { q: 'Can I sell products like pomade and beard oil too?', a: 'Yes — services and retail products go on the same TRA-compliant receipt, and product stock is tracked with low-stock alerts.' },
+      { q: 'Can I sell products like pomade and beard oil too?', a: 'Yes — services and retail products go on the same audit-ready receipt, and product stock is tracked with low-stock alerts.' },
       { q: 'Does it handle walk-ins and appointments together?', a: 'Yes — walk-ins join the live queue while booked appointments hold their slot. The queue reorders automatically so nobody loses their place.' },
     ],
   },

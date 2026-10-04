@@ -420,6 +420,8 @@ section { position: relative; }
 
 /* ---------- testimonial + faq ---------- */
 .tf { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+/* FAQ with no testimonial beside it — centre it instead of leaving a gap. */
+.tf-solo { grid-template-columns: minmax(0, 760px); justify-content: center; }
 .quote { background: linear-gradient(155deg, var(--green) 0%, var(--green-dd) 100%); color: #fff; border-radius: var(--r-lg); padding: 36px; box-shadow: var(--sh-lg); }
 .quote .qm { font-size: 60px; line-height: .5; font-weight: 800; opacity: .5; }
 .quote .qt { font-size: 24px; font-weight: 700; line-height: 1.32; margin: 14px 0 24px; letter-spacing: -0.01em; }
@@ -551,3 +553,100 @@ section { position: relative; }
 .chat-input .send:hover { background: var(--green-d); }
 .chat-input .send svg { width: 18px; height: 18px; }
 @media (max-width: 560px) { .chat-panel { left: 12px; bottom: 88px; } .fab-bot { left: 16px; } .fab-wa { right: 16px; } }
+
+/* Compliance disclaimer — legally load-bearing, keep visible (not a footnote
+   buried in the footer). Sits under the standards grid. */
+.comp-note {
+  max-width: 860px;
+  margin: 26px auto 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/* ============================================================
+   Flagship module showcase (Modules.astro)
+   Alternating copy/art rows — restaurant, storefront, delivery.
+   ============================================================ */
+.mods { display: flex; flex-direction: column; gap: 76px; margin-top: 54px; }
+.mod {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 54px; align-items: center;
+}
+.mod-rev .mod-copy { order: 2; }
+.mod-copy h3 { font-size: 33px; line-height: 1.1; margin: 14px 0 14px; max-width: 15ch; }
+.mod-lead { font-size: 17px; color: var(--ink-2); line-height: 1.62; max-width: 46ch; }
+.mod-points { list-style: none; display: flex; flex-direction: column; gap: 13px; margin: 22px 0 0; }
+.mod-points li { display: flex; gap: 11px; align-items: flex-start; font-size: 15.5px; color: var(--ink-2); line-height: 1.5; }
+.mod-points li svg { color: var(--green); flex-shrink: 0; margin-top: 3px; }
+.mod-proof {
+  margin-top: 22px; padding: 12px 15px; border-radius: var(--r-sm);
+  background: var(--green-50); color: var(--green-dd);
+  font-size: 14.5px; font-weight: 700; line-height: 1.45;
+}
+/* Honest scope note — says what the module does NOT do. Keep it visible. */
+.mod-note { margin-top: 14px; font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+.mod-link { display: inline-block; margin-top: 20px; font-size: 15.5px; font-weight: 700; color: var(--green-d); }
+.mod-link:hover { color: var(--green-dd); }
+
+.mod-art { display: flex; justify-content: center; }
+.mod-art > * { width: 100%; max-width: 440px; border-radius: var(--r); box-shadow: var(--sh-md); }
+
+/* --- kitchen display --- */
+.kds { background: #121a23; border: 1px solid #22303c; padding: 18px; }
+.kds-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.kds-ttl { font-size: 14px; font-weight: 800; color: #eef2f6; }
+.kds-live { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: #8c9aa8; }
+.kds-live i { width: 7px; height: 7px; border-radius: 50%; background: #35c95f; }
+.kds-tix { display: flex; flex-direction: column; gap: 10px; }
+.tix { background: #1a242f; border-left: 4px solid; border-radius: 8px; padding: 12px 14px; }
+.tix-h { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 7px; }
+.tix-h b { font-size: 14px; color: #fff; }
+.tix-t { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.tix-i { font-size: 13.5px; color: #9fadba; line-height: 1.5; }
+.tix-ok { border-color: #35c95f; } .tix-ok .tix-t { color: #35c95f; }
+.tix-warn { border-color: #e7a52c; } .tix-warn .tix-t { color: #e7a52c; }
+.tix-late { border-color: #e2574c; } .tix-late .tix-t { color: #e2574c; }
+
+/* --- boutique storefront --- */
+.shopfront { background: var(--surface); border: 1px solid var(--line); padding: 16px; }
+.sf-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 4px 14px; border-bottom: 1px solid var(--line); }
+.sf-brand { font-size: 15px; font-weight: 800; letter-spacing: .14em; }
+.sf-lang { font-size: 11.5px; font-weight: 800; color: var(--ink-3); border: 1px solid var(--line-2); border-radius: 999px; padding: 3px 9px; }
+.sf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 14px 0; }
+.sf-card { display: flex; flex-direction: column; gap: 3px; }
+.sf-card b { font-size: 13.5px; }
+.sf-card span:last-child { font-size: 13px; color: var(--ink-3); }
+.sf-img { display: block; height: 96px; border-radius: 9px; }
+.sf-a { background: linear-gradient(135deg, #e6f6ea, #cce9d4); }
+.sf-b { background: linear-gradient(135deg, #e8f1fa, #cfe1f4); }
+.sf-c { background: linear-gradient(135deg, #fbeedd, #f4ddb9); }
+.sf-d { background: linear-gradient(135deg, #e9e7fb, #d6d2f4); }
+.sf-foot { text-align: center; font-size: 12.5px; font-weight: 700; color: var(--green-d); padding-top: 12px; border-top: 1px solid var(--line); }
+
+/* --- delivery tracking --- */
+.track { background: var(--surface); border: 1px solid var(--line); padding: 20px; }
+.trk-h { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+.trk-h b { font-size: 15.5px; }
+.trk-eta { font-size: 13px; font-weight: 700; color: var(--green-d); }
+.trk-steps { list-style: none; display: flex; flex-direction: column; gap: 0; margin: 0 0 18px; }
+.trk-steps li { position: relative; display: flex; align-items: center; gap: 13px; font-size: 14.5px; padding: 9px 0; color: var(--ink-3); }
+.trk-steps li span { width: 13px; height: 13px; border-radius: 50%; background: var(--line-2); flex-shrink: 0; }
+.trk-steps li.done { color: var(--ink-2); } .trk-steps li.done span { background: var(--green); }
+.trk-steps li.now { color: var(--ink); font-weight: 700; }
+.trk-steps li.now span { background: var(--green); box-shadow: 0 0 0 4px var(--green-50); }
+.trk-rider { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.trk-av { width: 38px; height: 38px; border-radius: 50%; background: var(--blue-50); color: var(--blue-d); font-size: 13.5px; font-weight: 800; display: grid; place-items: center; flex-shrink: 0; }
+.trk-rd { display: flex; flex-direction: column; flex-grow: 1; }
+.trk-rd b { font-size: 14.5px; } .trk-rd span { font-size: 12.5px; color: var(--ink-3); }
+.trk-code { display: flex; flex-direction: column; align-items: flex-end; }
+.trk-code span { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.trk-code b { font-size: 17px; letter-spacing: .14em; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 900px) {
+  .mod { grid-template-columns: 1fr; gap: 30px; }
+  .mod-rev .mod-copy { order: 0; }
+  .mod-copy h3 { font-size: 27px; max-width: none; }
+  .mods { gap: 56px; }
+}

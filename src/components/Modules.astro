@@ -1,0 +1,178 @@
+---
+/**
+ * Flagship module showcase — restaurant, boutique storefront, delivery.
+ *
+ * EVERY claim in this file was checked against the app source. Before adding to
+ * it, check the same way. Specifically NOT claimable today, and deliberately
+ * absent below. claims-guard-allow-start
+ *   · modifiers / option groups / combos  — handler returns an empty array
+ *   · move or merge tables                — no endpoint, no UI
+ *   · per-station printers                — only 'kitchen' and 'cashier' exist
+ *   · paying online                       — no provider configured in production
+ *   · courier partners, live GPS map      — mock adapter only / never built
+ *   · offline restaurant service          — ordering, KDS and settlement need the network
+ * claims-guard-allow-end
+ */
+const appUrl = 'https://app.biashara-pos.com';
+
+const modules = [
+  {
+    id: 'restaurant',
+    eyebrow: { en: 'Restaurant', sw: 'Mgahawa' },
+    title: { en: 'The order leaves the table and lands in the kitchen.', sw: 'Oda inaondoka mezani na kufika jikoni.' },
+    body: {
+      en: 'Your waiter takes the order on their own Android phone. It prints in the kitchen the moment they fire it, and shows on a kitchen screen with a timer that turns amber, then red, against the prep time you set.',
+      sw: 'Mhudumu anachukua oda kwa simu yake ya Android. Inachapishwa jikoni mara anapoituma, na inaonekana kwenye skrini ya jikoni na saa inayobadilika kuwa ya manjano, kisha nyekundu, kulingana na muda uliopanga.',
+    },
+    points: [
+      { en: 'Diners scan the QR on their table, order, watch the kitchen work and ask for the bill without getting up', sw: 'Wateja wanaskani QR ya meza yao, wanaagiza, wanaona jikoni inavyofanya kazi na wanaomba bili bila kuinuka' },
+      { en: 'Split a bill item by item so each guest pays their own, and settle one bill across cash, M-Pesa and card', sw: 'Gawanya bili kipande kwa kipande ili kila mgeni alipe chake, na maliza bili moja kwa pesa taslimu, M-Pesa na kadi' },
+      { en: 'Enter a recipe once and see food cost and margin per dish — firing a plate draws its ingredients out of stock', sw: 'Weka mapishi mara moja na uone gharama ya chakula na faida kwa kila sahani — kuandaa sahani kunatoa viungo vyake stokini' },
+      { en: 'End of day gives you covers, table turns, food cost, waste, your busiest hour and every unsettled bill', sw: 'Mwisho wa siku unakupa idadi ya wateja, mzunguko wa meza, gharama ya chakula, upotevu, saa yenye shughuli nyingi na kila bili ambayo haijalipwa' },
+    ],
+    href: '/pos-for-restaurant',
+  },
+  {
+    id: 'storefront',
+    eyebrow: { en: 'Online shop', sw: 'Duka la mtandaoni' },
+    title: { en: 'Put the same rail online, without a second stock list.', sw: 'Weka bidhaa zile zile mtandaoni, bila orodha ya pili ya stoki.' },
+    body: {
+      en: 'Open a shopfront on the stock you already have at the till. A boutique gets a lookbook layout; a pharmacy, restaurant or hardware shop each get their own. Sell one shirt online and the shelf count moves at the counter too.',
+      sw: 'Fungua duka kwa stoki uliyonayo tayari kaunta. Boutique inapata muonekano wa lookbook; duka la dawa, mgahawa au hardware kila moja inapata lake. Ukiuza shati moja mtandaoni, hesabu ya rafu inabadilika kaunta pia.',
+    },
+    points: [
+      { en: 'Customers order without creating an account — no password, no sign-up, just a phone number', sw: 'Wateja wanaagiza bila kufungua akaunti — hakuna nenosiri, hakuna usajili, ni namba ya simu tu' },
+      { en: 'Share a product straight to WhatsApp or Instagram and the link opens with its photo and price', sw: 'Tuma bidhaa moja kwa moja WhatsApp au Instagram na kiungo kinafunguka na picha na bei yake' },
+      { en: 'Swahili by default, English on a tap — the whole shop, not just the buttons', sw: 'Kiswahili kwanza, Kiingereza kwa mguso — duka zima, si vitufe tu' },
+      { en: 'Every order shows you where it came from, so you can see which link actually sold', sw: 'Kila oda inakuonyesha ilikotoka, ili uone ni kiungo kipi kiliuza kweli' },
+    ],
+    note: {
+      en: 'Customers order online and pay on pickup or on delivery. Paying on the shop itself is built and waiting on our payment provider.',
+      sw: 'Wateja wanaagiza mtandaoni na kulipa wanapochukua au wanapopokea. Kulipa kwenye duka lenyewe kumejengwa na kunasubiri mtoa huduma wa malipo.',
+    },
+    href: '/pos-for-clothing',
+  },
+  {
+    id: 'delivery',
+    eyebrow: { en: 'Delivery', sw: 'Usafirishaji' },
+    title: { en: 'Out the door, and you still know where it is.', sw: 'Imetoka dukani, na bado unajua ilipo.' },
+    body: {
+      en: 'Draw your delivery areas and give each one its own fee, its own minimum order and its own rough arrival time. The customer picks their area at checkout and sees the real cost before they commit.',
+      sw: 'Chora maeneo yako ya usafirishaji na upe kila moja ada yake, kiwango chake cha chini cha oda na muda wake wa kufika. Mteja anachagua eneo lake wakati wa kuagiza na anaona gharama halisi kabla ya kukubali.',
+    },
+    points: [
+      { en: 'Your rider works from a page on their own phone — the address, what to collect, and a button for each step', sw: 'Mtoa huduma anafanya kazi kwa ukurasa kwenye simu yake — anwani, kiasi cha kukusanya, na kitufe kwa kila hatua' },
+      { en: 'The customer reads out a four-digit code at handover, or signs on the screen if they have lost it', sw: 'Mteja anasoma namba ya tarakimu nne wakati wa kupokea, au anasaini kwenye skrini akiipoteza' },
+      { en: 'Cash the rider collects lands on their own till shift, so the evening count is already reconciled', sw: 'Pesa ambayo mtoa huduma amekusanya inaingia kwenye zamu yake ya till, hivyo hesabu ya jioni iko tayari sawa' },
+      { en: 'A text in Swahili or English at every step, each one carrying the tracking link', sw: 'Ujumbe kwa Kiswahili au Kiingereza kila hatua, kila mmoja ukiwa na kiungo cha kufuatilia' },
+    ],
+    note: {
+      en: 'Your own riders, tracked by delivery stage and arrival time. No map, and no third-party courier fleet.', // claims-guard-allow
+      sw: 'Watoa huduma wako mwenyewe, wanafuatiliwa kwa hatua na muda wa kufika. Hakuna ramani, wala kampuni ya nje ya usafirishaji.',
+    },
+    href: appUrl,
+  },
+];
+---
+<section class="sec sec-white" id="modules">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow center" data-en="One system, many counters" data-sw="Mfumo mmoja, kaunta nyingi">One system, many counters</span>
+      <h2 data-en="A restaurant and a boutique need different tills." data-sw="Mgahawa na boutique zinahitaji till tofauti.">A restaurant and a boutique need different tills.</h2>
+      <p
+        data-en="So BiasharaPOS gives them different tills — on the same stock, the same staff list and the same books."
+        data-sw="Hivyo BiasharaPOS inazipa till tofauti — kwa stoki moja, orodha moja ya wafanyakazi na vitabu vilevile."
+      >So BiasharaPOS gives them different tills — on the same stock, the same staff list and the same books.</p>
+    </div>
+
+    <div class="mods">
+      {modules.map((m, i) => (
+        <article class={`mod reveal ${i % 2 === 1 ? 'mod-rev' : ''}`} id={m.id}>
+          <div class="mod-copy">
+            <span class="eyebrow" data-en={m.eyebrow.en} data-sw={m.eyebrow.sw}>{m.eyebrow.en}</span>
+            <h3 data-en={m.title.en} data-sw={m.title.sw}>{m.title.en}</h3>
+            <p class="mod-lead" data-en={m.body.en} data-sw={m.body.sw}>{m.body.en}</p>
+
+            <ul class="mod-points">
+              {m.points.map((pt) => (
+                <li>
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 7"/></svg>
+                  <span data-en={pt.en} data-sw={pt.sw}>{pt.en}</span>
+                </li>
+              ))}
+            </ul>
+
+            {m.proof && (
+              <p class="mod-proof" data-en={m.proof.en} data-sw={m.proof.sw}>{m.proof.en}</p>
+            )}
+            {m.note && (
+              <p class="mod-note" data-en={m.note.en} data-sw={m.note.sw}>{m.note.en}</p>
+            )}
+
+            <a class="mod-link" href={m.href} data-en="See how it works →" data-sw="Ona inavyofanya kazi →">See how it works →</a>
+          </div>
+
+          <div class="mod-art">
+            {m.id === 'restaurant' && (
+              <div class="kds">
+                <div class="kds-top">
+                  <span class="kds-ttl">Jikoni · Grill</span>
+                  <span class="kds-live"><i></i>4 live</span>
+                </div>
+                <div class="kds-tix">
+                  <div class="tix tix-ok">
+                    <div class="tix-h"><b>T4 · Round 2</b><span class="tix-t">02:10</span></div>
+                    <div class="tix-i">2 × Nyama Choma</div>
+                    <div class="tix-i">1 × Chips Mayai</div>
+                  </div>
+                  <div class="tix tix-warn">
+                    <div class="tix-h"><b>T9 · Round 1</b><span class="tix-t">06:48</span></div>
+                    <div class="tix-i">1 × Pilau</div>
+                    <div class="tix-i">2 × Chapati</div>
+                  </div>
+                  <div class="tix tix-late">
+                    <div class="tix-h"><b>Takeaway · 114</b><span class="tix-t">11:25</span></div>
+                    <div class="tix-i">1 × Mishkaki</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {m.id === 'storefront' && (
+              <div class="shopfront">
+                <div class="sf-top">
+                  <span class="sf-brand">DUKA LAKO</span>
+                  <span class="sf-lang">SW</span>
+                </div>
+                <div class="sf-grid">
+                  <div class="sf-card"><span class="sf-img sf-a"></span><b>Kitenge Dress</b><span>TZS 48,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-b"></span><b>Linen Shirt</b><span>TZS 32,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-c"></span><b>Denim Jacket</b><span>TZS 65,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-d"></span><b>Leather Sandals</b><span>TZS 28,000</span></div>
+                </div>
+                <div class="sf-foot">Agiza bila akaunti · Chukua au uletewe</div>
+              </div>
+            )}
+
+            {m.id === 'delivery' && (
+              <div class="track">
+                <div class="trk-h"><b>Oda FD-0042</b><span class="trk-eta">Inafika saa 4:59</span></div>
+                <ol class="trk-steps">
+                  <li class="done"><span></span>Imepokelewa</li>
+                  <li class="done"><span></span>Imeandaliwa</li>
+                  <li class="done"><span></span>Iko njiani</li>
+                  <li class="now"><span></span>Inafika kwako</li>
+                </ol>
+                <div class="trk-rider">
+                  <div class="trk-av">JM</div>
+                  <div class="trk-rd"><b>Juma M.</b><span>Dereva wako</span></div>
+                  <div class="trk-code"><span>Namba yako</span><b>4 7 1 9</b></div>
+                </div>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
