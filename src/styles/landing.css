@@ -368,25 +368,6 @@ section { position: relative; }
 .steps .step:last-child::after { display: none; }
 
 /* ---------- comparison ---------- */
-.cmp { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
-.cmp h2 { font-size: clamp(28px, 3.4vw, 40px); margin: 14px 0 18px; }
-.save-chip { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(120deg, var(--green-50), var(--green-100)); border: 1px solid var(--green-100); border-radius: var(--r); padding: 14px 18px; margin-top: 20px; }
-.save-chip b { font-size: 20px; color: var(--green-dd); font-weight: 800; }
-.save-chip span { font-size: 13.5px; color: var(--ink-2); }
-.cmp-table { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-md); }
-.cmp-table table { width: 100%; border-collapse: collapse; }
-.cmp-table th, .cmp-table td { padding: 14px 18px; text-align: right; font-size: 14.5px; }
-.cmp-table th:first-child, .cmp-table td:first-child { text-align: left; }
-.cmp-table thead th { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); background: var(--bg); border-bottom: 1px solid var(--line); }
-.cmp-table thead th:last-child { color: var(--green-d); }
-.cmp-table tbody tr { border-bottom: 1px solid var(--line); }
-.cmp-table tbody tr:last-child { border-bottom: none; }
-.cmp-table tbody tr.hl { background: var(--green-50); }
-.cmp-table td.comp { color: var(--ink-3); text-decoration: line-through; }
-.cmp-table td.us { font-weight: 800; }
-.cmp-table td.save { font-weight: 800; color: var(--green-d); }
-.cmp-table .rowlab { font-weight: 700; }
-.cmp-table .rowlab small { display: block; font-size: 11.5px; font-weight: 700; color: var(--gold); }
 
 /* ---------- compliance ---------- */
 .comp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -479,7 +460,7 @@ section { position: relative; }
   .sec { padding: 72px 0; }
   .nav-links { display: none; }
   .nav-cta .signin { display: none; }
-  .split, .cmp, .tf { grid-template-columns: 1fr; gap: 32px; }
+  .split, .tf { grid-template-columns: 1fr; gap: 32px; }
   .fgrid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: 1fr; }
   .step::after { display: none; }
