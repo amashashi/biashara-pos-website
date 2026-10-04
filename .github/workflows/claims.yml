@@ -7,6 +7,12 @@ name: Claim guard
 #
 # This runs on pull requests so the claim is caught at review time, and on
 # pushes to main so a direct push cannot slip one past.
+#
+# It covers whatsapp-agent/src as well as the site (see SCAN_DIRS in the
+# script). That matters more there than here: the agent's system prompt is what
+# Biashara Bot says to a customer who asked directly, and the agent is deployed
+# by Railway's own GitHub integration on every push to main — so this workflow
+# is the only gate between an edit to that prompt and a customer reading it.
 
 on:
   pull_request:
