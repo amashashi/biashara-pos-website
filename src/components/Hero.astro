@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
+import flex3 from '../assets/devices/sunmi-flex3.webp';
 
 const appUrl = 'https://app.biashara-pos.com';
 ---
@@ -23,6 +24,19 @@ const appUrl = 'https://app.biashara-pos.com';
          tighter two-device composition so the full stage further down the page
          still has something of its own to say. No image assets involved. -->
     <div class="hero-stage reveal" aria-hidden="true">
+      <div class="hs-flex flex-shot">
+        <Image src={flex3} alt="" widths={[300, 600]} sizes="300px" loading="eager" />
+        <div class="flex-screen">
+          <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>4 live</span></div>
+          <div class="kds-cards">
+            <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><em>02:10</em></div>
+            <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><em>06:48</em></div>
+            <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
+            <div class="kc ok"><b>Meza C2</b><span>Samaki</span><em>01:04</em></div>
+          </div>
+        </div>
+      </div>
+
       <div class="hs-term v3-shot">
         <Image src={v3Front} alt="" widths={[196, 392]} sizes="196px" loading="eager" />
         <div class="screen-space">

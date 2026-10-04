@@ -658,13 +658,25 @@ section { position: relative; }
    positions and scales them. The phone overlaps the terminal so the pair reads
    as one object rather than a second copy of the device stage below.
    ============================================================ */
+/* Three devices in the hero: the FLEX 3 behind as the counter screen, the
+   V3 PLUS overlapping it, the phone in front. Each is absolutely placed so
+   they read as one group rather than a row. */
+.hero-stage .hs-flex {
+  position: absolute;
+  right: 0; bottom: 64px;
+  width: 340px;
+  z-index: 1;
+}
+.hero-stage .hs-flex img { filter: drop-shadow(0 26px 36px rgba(18,32,25,.26)); }
+
 .hero-stage {
   position: relative;
   /* The tilted phone reaches up and left; without enough clearance its corner
      lands on the primary CTA. It did, and blocked clicks on the button's
      bottom-left before pointer-events was set. Keep both guards. */
   margin: 72px auto 0;
-  width: min(100%, 520px);
+  width: min(100%, 680px);
+  min-height: 330px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -674,17 +686,17 @@ section { position: relative; }
   pointer-events: none;
 }
 /* 196px, matching the scale baked into .v3-shot .screen-space */
-.hero-stage .hs-term { width: 196px; }
+.hero-stage .hs-term { position: relative; z-index: 2; width: 174px; margin-right: 208px; }
 .hero-stage .hs-term img { filter: drop-shadow(0 30px 40px rgba(18,32,25,.30)); }
 .hero-stage .hs-phone {
   position: absolute;
-  left: 4px;
-  bottom: -8px;
-  width: 128px;
-  z-index: 2;
+  left: 0;
+  bottom: -6px;
+  width: 112px;
+  z-index: 3;
 }
 .hero-stage .hs-phone .dev-phone {
-  width: 128px;
+  width: 112px;
   transform: rotate(-5deg);
   box-shadow: 0 26px 50px -24px rgba(18,32,25,.45), 0 6px 18px -10px rgba(18,32,25,.22);
 }
@@ -693,10 +705,16 @@ section { position: relative; }
 .hero-stage .hs-phone .mini-row { padding: 5px 0; }
 
 @media (max-width: 720px) {
-  .hero-stage { width: 100%; padding-left: 0; margin-top: 48px; flex-direction: column; align-items: center; gap: 0; }
+  /* Stack: FLEX 3, then the handheld with the phone tucked under it. Sizes are
+     cut here on purpose — at desktop sizes the three stacked devices made the
+     hero 889px tall on a 812px phone, pushing everything below the fold. */
+  .hero-stage { width: 100%; padding-left: 0; margin-top: 44px; flex-direction: column; align-items: center; gap: 0; min-height: 0; }
+  .hero-stage .hs-flex { position: static; width: min(100%, 252px); margin-bottom: 10px; }
+  .hero-stage .hs-term { margin-right: 0; width: 136px; }
+  .hero-stage .hs-term .screen-space { transform: scale(0.32850) !important; }  /* 136 / 414 */
   .hero-stage .hs-term { transform: none; }
-  .hero-stage .hs-phone { position: static; width: 150px; margin-top: -26px; align-self: flex-start; }
-  .hero-stage .hs-phone .dev-phone { width: 150px; }
+  .hero-stage .hs-phone { position: static; width: 104px; margin-top: -40px; align-self: flex-start; margin-left: 8%; }
+  .hero-stage .hs-phone .dev-phone { width: 104px; }
 }
 
 /* Hardware strip: the real renders, sitting under the drawn devices. The
