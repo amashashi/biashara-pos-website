@@ -781,3 +781,39 @@ section { position: relative; }
   padding: 3px 0; border-radius: 3px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-3);
 }
 .v3-shot .su-pay i.on { background: var(--green); border-color: var(--green); color: #fff; }
+
+/* ---- SUNMI FLEX 3 running the kitchen display ----
+   Flat front elevation, so the screen is axis-aligned: the overlay is
+   positioned in percentages rather than a matrix3d. The inset comes from the
+   panel's 16mm bezel and lands on a 16:9 active area, matching 1920x1080. */
+.flex-shot { position: relative; width: 300px; }
+.flex-shot img { width: 100%; height: auto; display: block; filter: drop-shadow(0 22px 30px rgba(18,32,25,.3)); }
+.flex-shot .flex-screen {
+  position: absolute;
+  left: 3.71%; top: 6.50%; width: 92.16%; height: 86.85%;
+  background: #f7f9fb;
+  display: flex; flex-direction: column;
+  padding: 4px 5px 5px;
+  overflow: hidden;
+}
+.flex-shot .kds-tabs { display: flex; align-items: center; gap: 3px; }
+.flex-shot .kds-tabs i {
+  font-style: normal; font-size: 5px; font-weight: 800; padding: 2px 5px; border-radius: 3px;
+  background: #e6ebf0; color: var(--ink-3);
+}
+.flex-shot .kds-tabs i.on { background: var(--ink); color: #fff; }
+.flex-shot .kds-tabs span { margin-left: auto; font-size: 4.5px; font-weight: 800; color: var(--green-d); }
+.flex-shot .kds-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 4px; align-content: start; }
+.flex-shot .kc {
+  background: #fff; border-radius: 3px; padding: 4px; border-top: 2.5px solid;
+  display: flex; flex-direction: column; gap: 1.5px;
+  box-shadow: 0 1px 2px rgba(18,32,25,.12);
+}
+.flex-shot .kc b { font-size: 5.5px; }
+.flex-shot .kc span { font-size: 4.5px; color: var(--ink-2); }
+.flex-shot .kc em { font-style: normal; margin-top: 2px; font-size: 5.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.flex-shot .kc.ok { border-color: #2fa84f; } .flex-shot .kc.ok em { color: #2fa84f; }
+.flex-shot .kc.warn { border-color: #e7a52c; } .flex-shot .kc.warn em { color: #b9791a; }
+.flex-shot .kc.late { border-color: #e2574c; } .flex-shot .kc.late em { color: #c7382c; }
+.dev-wide { flex-basis: 100%; }
+@media (min-width: 900px) { .dev-wide { flex-basis: auto; } }

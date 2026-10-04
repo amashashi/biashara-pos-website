@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
 import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
+import flex3 from '../assets/devices/sunmi-flex3.webp';
 ---
 <section class="sec sec-tint devsec" id="devices">
   <div class="wrap">
@@ -59,6 +60,31 @@ import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
         <div class="cap"><b>SUNMI V3 PLUS</b><span data-en="Handheld, printer built in" data-sw="Ya mkononi, printa ndani">Handheld, printer built in</span></div>
       </div>
 
+      <!-- SUNMI FLEX 3 running the kitchen display. The render is a flat
+           front elevation, so the screen quad is axis-aligned — the overlay is
+           plain percentages, no perspective transform needed. Measured inset:
+           the 16mm bezel puts the active area at 3.71%/6.50% with a 16:9
+           aspect, which matches the panel's 1920x1080. -->
+      <div class="dev dev-wide reveal">
+        <div class="flex-shot">
+          <Image src={flex3} alt="SUNMI FLEX 3 counter display running the BiasharaPOS kitchen screen" widths={[300, 600]} sizes="300px" loading="lazy" />
+          <div class="flex-screen" aria-hidden="true">
+            <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>4 live</span></div>
+            <div class="kds-cards">
+              <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><span>Chips Mayai</span><em>02:10</em></div>
+              <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><span>Chapati ×4</span><em>06:48</em></div>
+              <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
+              <div class="kc ok"><b>Meza C2</b><span>Samaki wa Kupaka</span><em>01:04</em></div>
+              <div class="kc warn"><b>Meza B7</b><span>Wali Nyama ×2</span><span>Mchuzi wa Samaki</span><em>07:32</em></div>
+              <div class="kc ok"><b>Meza A1</b><span>Chipsi Kuku</span><span>Soda ×3</span><em>03:18</em></div>
+              <div class="kc late"><b>Delivery 0042</b><span>Pilau ×4</span><span>Kachumbari</span><em>14:06</em></div>
+              <div class="kc ok"><b>Meza D2</b><span>Ugali Nyama</span><em>00:42</em></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap"><b>SUNMI FLEX 3</b><span data-en="Kitchen screen &amp; counter" data-sw="Skrini ya jikoni na kaunta">Kitchen screen &amp; counter</span></div>
+      </div>
+
       <!-- computer -->
       <div class="dev reveal">
         <div class="dev-comp">
@@ -82,9 +108,9 @@ import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
 
     <div class="devnote reveal">
       <p
-        data-en="We run BiasharaPOS on two SUNMI terminals. The V3 PLUS is the handheld above — the receipt printer is in its head and a small screen on the back faces your customer. The FLEX 3 is a large touchscreen for a fixed counter, from 15.6 to 27 inches, that prints to a separate receipt printer. Both are Android, and BiasharaPOS runs in the browser, so there is nothing to install on either."
-        data-sw="Tunaendesha BiasharaPOS kwenye terminal mbili za SUNMI. V3 PLUS ndiyo ya mkononi iliyo hapo juu — printa ya risiti iko kichwani mwake na skrini ndogo nyuma inamwelekea mteja. FLEX 3 ni skrini kubwa ya kugusa kwa kaunta ya kudumu, kuanzia inchi 15.6 hadi 27, inayochapisha kwenye printa ya risiti ya pembeni. Zote ni Android, na BiasharaPOS inafanya kazi kwenye kivinjari, hivyo hakuna cha kusakinisha kwenye yoyote."
-      >We run BiasharaPOS on two SUNMI terminals. The V3 PLUS is the handheld above — the receipt printer is in its head and a small screen on the back faces your customer. The FLEX 3 is a large touchscreen for a fixed counter, from 15.6 to 27 inches, that prints to a separate receipt printer. Both are Android, and BiasharaPOS runs in the browser, so there is nothing to install on either.</p>
+        data-en="We run BiasharaPOS on two SUNMI terminals. The V3 PLUS is the handheld above — the receipt printer is in its head and a small screen on the back faces your customer. The FLEX 3 is a large touchscreen, from 15.6 to 27 inches, that mounts on a counter or on an arm in the kitchen as the order screen. It has no printer of its own and prints to a separate one. Both are Android, and BiasharaPOS runs in the browser, so there is nothing to install on either."
+        data-sw="Tunaendesha BiasharaPOS kwenye terminal mbili za SUNMI. V3 PLUS ndiyo ya mkononi iliyo hapo juu — printa ya risiti iko kichwani mwake na skrini ndogo nyuma inamwelekea mteja. FLEX 3 ni skrini kubwa ya kugusa, kuanzia inchi 15.6 hadi 27, inayowekwa kaunta au kwenye mkono jikoni kama skrini ya oda. Haina printa yake na huchapisha kwenye printa ya pembeni. Zote ni Android, na BiasharaPOS inafanya kazi kwenye kivinjari, hivyo hakuna cha kusakinisha kwenye yoyote."
+      >We run BiasharaPOS on two SUNMI terminals. The V3 PLUS is the handheld above — the receipt printer is in its head and a small screen on the back faces your customer. The FLEX 3 is a large touchscreen, from 15.6 to 27 inches, that mounts on a counter or on an arm in the kitchen as the order screen. It has no printer of its own and prints to a separate one. Both are Android, and BiasharaPOS runs in the browser, so there is nothing to install on either.</p>
       <p
         class="devnote-sub"
         data-en="It is not required. BiasharaPOS runs the same on any Android phone, tablet or computer with a browser."
