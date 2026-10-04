@@ -673,11 +673,9 @@ section { position: relative; }
   /* decoration only — must never intercept a click meant for the CTA */
   pointer-events: none;
 }
-.hero-stage .hs-term { width: 200px; }
-.hero-stage .hs-term img {
-  width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 30px 40px rgba(18,32,25,.30));
-}
+/* 196px, matching the scale baked into .v3-shot .screen-space */
+.hero-stage .hs-term { width: 196px; }
+.hero-stage .hs-term img { filter: drop-shadow(0 30px 40px rgba(18,32,25,.30)); }
 .hero-stage .hs-phone {
   position: absolute;
   left: 4px;
@@ -727,3 +725,59 @@ section { position: relative; }
 }
 .hwstrip figure { max-width: 300px; }
 .hwstrip img { max-width: 196px; }
+
+/* ---- Till composited onto the V3 PLUS render's screen ----
+   The render is a 414x900 image. .screen-space recreates that coordinate
+   space at 1:1 and scales down to the display width, so the matrix3d below
+   can be written in the image's own pixels. The matrix maps a flat
+   100 x 211.6 box onto the screen quad measured off the render. */
+.v3-shot { position: relative; width: 196px; }
+.v3-shot img { width: 100%; height: auto; display: block; }
+.v3-shot .screen-space {
+  position: absolute; top: 0; left: 0;
+  width: 414px; height: 900px;
+  transform: scale(0.47343);           /* 196 / 414 */
+  transform-origin: top left;
+  pointer-events: none;
+}
+.v3-shot .screen-ui {
+  position: absolute; top: 0; left: 0;
+  /* sits under the render's own glass reflection, which is part of the image */
+  width: 100px; height: 205.9px;
+  transform-origin: 0 0;
+  /* Screen corners traced off the render: TL 66,385 · TR 255,455 ·
+     BR 252,884 · BL 72,800. The first fit was wrong because the screen's
+     upper half carries a reflection (so a luminance threshold cut it off)
+     and the printer head overlaps its top-right corner. */
+  transform: matrix3d(1.730360,0.485914,0,-0.00042286,0.046160,2.149504,0,0.00023941,0,0,1,0,68.67,391.89,0,1);
+  background:
+    linear-gradient(118deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,0) 34%),
+    radial-gradient(130% 90% at 50% 45%, #ffffff 58%, #e7edf2 100%);
+  box-shadow: inset 0 0 6px rgba(16,28,38,.26), inset 0 0 0 1px rgba(16,28,38,.14);
+  display: flex; flex-direction: column;
+  padding: 7px 6px 8px;
+  font-size: 7px; line-height: 1.25; color: var(--ink);
+}
+.v3-shot .su-bar { display: flex; justify-content: space-between; align-items: center; }
+.v3-shot .su-bar b { font-size: 7px; }
+.v3-shot .su-bar span { font-size: 5.5px; font-weight: 700; color: var(--green-d); }
+.v3-shot .su-rows { display: flex; flex-direction: column; gap: 3px; margin-top: 7px; }
+.v3-shot .su-rows div { display: flex; justify-content: space-between; font-size: 6.5px; color: var(--ink-2); }
+.v3-shot .su-rows div b { color: var(--ink); font-weight: 700; }
+.v3-shot .su-total {
+  margin-top: auto; padding-top: 5px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.v3-shot .su-total span { font-size: 5.5px; font-weight: 800; letter-spacing: .08em; color: var(--ink-3); }
+.v3-shot .su-total b { font-size: 11px; letter-spacing: -.02em; }
+.v3-shot .su-profit {
+  margin-top: 5px; padding: 3px 5px; border-radius: 3px;
+  background: var(--green-50); color: var(--green-dd);
+  font-size: 6.5px; font-weight: 800; text-align: center;
+}
+.v3-shot .su-pay { display: flex; gap: 3px; margin-top: 5px; }
+.v3-shot .su-pay i {
+  flex: 1; font-style: normal; text-align: center; font-size: 5.5px; font-weight: 800;
+  padding: 3px 0; border-radius: 3px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-3);
+}
+.v3-shot .su-pay i.on { background: var(--green); border-color: var(--green); color: #fff; }

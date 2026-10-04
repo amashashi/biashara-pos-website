@@ -36,8 +36,25 @@ import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
            including the customer-facing screen on the printer head, which a
            front elevation cannot. -->
       <div class="dev reveal">
-        <div class="dev-render">
-          <Image src={v3Front} alt="SUNMI V3 PLUS handheld POS terminal, showing the customer-facing screen on its printer housing" widths={[196, 392]} sizes="196px" loading="lazy" />
+        <div class="dev-render v3-shot">
+          <Image src={v3Front} alt="SUNMI V3 PLUS handheld POS terminal running BiasharaPOS" widths={[196, 392]} sizes="196px" loading="lazy" />
+          <!-- Till composited onto the screen. The matrix3d maps a flat
+               100x211.6 box onto the screen's four corners as measured in the
+               render (68,440 / 262,424 / 262,887 / 68,798), so the UI takes the
+               device's own perspective instead of floating on top of it. -->
+          <div class="screen-space" aria-hidden="true">
+            <div class="screen-ui">
+              <div class="su-bar"><b>Kaunta 1</b><span>live</span></div>
+              <div class="su-rows">
+                <div><span>Sukari 1kg</span><b>6,400</b></div>
+                <div><span>Mafuta 2L</span><b>9,500</b></div>
+                <div><span>Mchele 5kg</span><b>22,000</b></div>
+              </div>
+              <div class="su-total"><span>JUMLA</span><b>37,900</b></div>
+              <div class="su-profit">Faida +5,180</div>
+              <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
+            </div>
+          </div>
         </div>
         <div class="cap"><b>SUNMI V3 PLUS</b><span data-en="Handheld, printer built in" data-sw="Ya mkononi, printa ndani">Handheld, printer built in</span></div>
       </div>

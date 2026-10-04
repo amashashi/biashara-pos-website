@@ -23,8 +23,21 @@ const appUrl = 'https://app.biashara-pos.com';
          tighter two-device composition so the full stage further down the page
          still has something of its own to say. No image assets involved. -->
     <div class="hero-stage reveal" aria-hidden="true">
-      <div class="hs-term">
-        <Image src={v3Front} alt="" widths={[200, 400]} sizes="200px" loading="eager" />
+      <div class="hs-term v3-shot">
+        <Image src={v3Front} alt="" widths={[196, 392]} sizes="196px" loading="eager" />
+        <div class="screen-space">
+          <div class="screen-ui">
+            <div class="su-bar"><b>Kaunta 1</b><span>live</span></div>
+            <div class="su-rows">
+              <div><span>Sukari 1kg</span><b>6,400</b></div>
+              <div><span>Mafuta 2L</span><b>9,500</b></div>
+              <div><span>Mchele 5kg</span><b>22,000</b></div>
+            </div>
+            <div class="su-total"><span>JUMLA</span><b>37,900</b></div>
+            <div class="su-profit">Faida +5,180</div>
+            <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
+          </div>
+        </div>
       </div>
 
       <div class="hs-phone">
