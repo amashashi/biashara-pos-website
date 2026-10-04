@@ -658,3 +658,43 @@ section { position: relative; }
   .mod-copy h3 { font-size: 27px; max-width: none; }
   .mods { gap: 56px; }
 }
+
+/* ============================================================
+   Hero device cluster (Hero.astro)
+   Reuses .dev-term / .dev-phone / .scrn from the Devices section — this only
+   positions and scales them. The phone overlaps the terminal so the pair reads
+   as one object rather than a second copy of the device stage below.
+   ============================================================ */
+.hero-stage {
+  position: relative;
+  margin: 46px auto 0;
+  width: min(100%, 520px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* room for the phone hanging off the left edge */
+  padding-left: 86px;
+}
+.hero-stage .hs-term { transform: scale(1.04); transform-origin: bottom center; }
+.hero-stage .hs-phone {
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  width: 136px;
+  z-index: 2;
+}
+.hero-stage .hs-phone .dev-phone {
+  width: 136px;
+  transform: rotate(-5deg);
+  box-shadow: 0 26px 50px -24px rgba(18,32,25,.45), 0 6px 18px -10px rgba(18,32,25,.22);
+}
+/* the mock type is sized for the larger stage further down; ease it off here */
+.hero-stage .hs-phone .mini-profit .v { font-size: 15px; }
+.hero-stage .hs-phone .mini-row { padding: 5px 0; }
+
+@media (max-width: 720px) {
+  .hero-stage { width: 100%; padding-left: 0; flex-direction: column; align-items: center; gap: 0; }
+  .hero-stage .hs-term { transform: none; }
+  .hero-stage .hs-phone { position: static; width: 150px; margin-top: -26px; align-self: flex-start; }
+  .hero-stage .hs-phone .dev-phone { width: 150px; }
+}

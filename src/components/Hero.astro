@@ -15,6 +15,43 @@ const appUrl = 'https://app.biashara-pos.com';
       <a class="btn btn-primary btn-lg" href={appUrl} data-en="Start for Free →" data-sw="Anza Bila Malipo →">Start for Free →</a>
       <a class="btn btn-ghost btn-lg" href="#modules" data-en="See the modules" data-sw="Ona moduli">See the modules</a>
     </div>
+    <!-- Device cluster. Reuses the mock styling from the Devices section
+         (.dev-term/.dev-phone/.scrn) rather than duplicating it, and shows a
+         tighter two-device composition so the full stage further down the page
+         still has something of its own to say. No image assets involved. -->
+    <div class="hero-stage reveal" aria-hidden="true">
+      <div class="hs-term">
+        <div class="dev-term">
+          <div class="term-main">
+            <div class="scrn">
+              <div class="mini-bar"><span class="mt">Till · Kaunta 1</span><span class="mst">● live</span></div>
+              <div class="term-amt"><div class="tl" data-en="Amount due" data-sw="Kiasi cha kulipa">Amount due</div><div class="tv">TZS 35,000</div></div>
+              <div class="term-tenders">
+                <span class="tnd on">M-Pesa</span><span class="tnd">Mixx</span><span class="tnd">Airtel</span><span class="tnd">Cash</span>
+              </div>
+            </div>
+            <div class="term-receipt"><i></i><i></i><i></i></div>
+          </div>
+          <div class="term-cfd">
+            <div class="cfd-l" data-en="Customer display" data-sw="Skrini ya mteja">Customer display</div>
+            <div class="cfd-v">TZS 35,000</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hs-phone">
+        <div class="dev-phone">
+          <div class="scrn">
+            <div class="mini-bar"><div class="md"><i style="background:#ec6a5e"></i><i style="background:#f4bf4f"></i><i style="background:#61c454"></i></div><span class="mt">BiasharaPOS</span><span class="mst">● live</span></div>
+            <div class="mini-profit"><div class="l" data-en="Net profit · this sale" data-sw="Faida halisi · mauzo haya">Net profit · this sale</div><div class="v">+TZS 4,200</div></div>
+            <div class="mini-row"><span class="ic" style="background:linear-gradient(135deg,#dbe7fb,#fff)"></span><span class="nm">Cooking Oil 2L</span><span class="pr">9,500</span></div>
+            <div class="mini-row"><span class="ic" style="background:linear-gradient(135deg,#e6f6ea,#fff)"></span><span class="nm">Rice 5kg</span><span class="pr">22,000</span></div>
+            <div class="mini-btn" data-en="Charge sale" data-sw="Toza mauzo">Charge sale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="hero-ticks reveal">
       <span class="tick"><span class="ic">✓</span><span data-en="Phone, POS terminal & computer" data-sw="Simu, terminal ya POS &amp; kompyuta">Phone, POS terminal &amp; computer</span></span>
       <span class="tick"><span class="ic">✓</span><span data-en="Counter sells without the network" data-sw="Kaunta inauza bila mtandao">Counter sells without the network</span></span>
