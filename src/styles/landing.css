@@ -667,13 +667,18 @@ section { position: relative; }
    ============================================================ */
 .hero-stage {
   position: relative;
-  margin: 46px auto 0;
+  /* The tilted phone reaches up and left; without enough clearance its corner
+     lands on the primary CTA. It did, and blocked clicks on the button's
+     bottom-left before pointer-events was set. Keep both guards. */
+  margin: 72px auto 0;
   width: min(100%, 520px);
   display: flex;
   justify-content: center;
   align-items: flex-end;
   /* room for the phone hanging off the left edge */
   padding-left: 86px;
+  /* decoration only — must never intercept a click meant for the CTA */
+  pointer-events: none;
 }
 .hero-stage .hs-term { transform: scale(1.04); transform-origin: bottom center; }
 .hero-stage .hs-phone {
@@ -693,7 +698,7 @@ section { position: relative; }
 .hero-stage .hs-phone .mini-row { padding: 5px 0; }
 
 @media (max-width: 720px) {
-  .hero-stage { width: 100%; padding-left: 0; flex-direction: column; align-items: center; gap: 0; }
+  .hero-stage { width: 100%; padding-left: 0; margin-top: 48px; flex-direction: column; align-items: center; gap: 0; }
   .hero-stage .hs-term { transform: none; }
   .hero-stage .hs-phone { position: static; width: 150px; margin-top: -26px; align-self: flex-start; }
   .hero-stage .hs-phone .dev-phone { width: 150px; }
