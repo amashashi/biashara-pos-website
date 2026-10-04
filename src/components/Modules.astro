@@ -4,13 +4,14 @@
  *
  * EVERY claim in this file was checked against the app source. Before adding to
  * it, check the same way. Specifically NOT claimable today, and deliberately
- * absent below:
+ * absent below. claims-guard-allow-start
  *   · modifiers / option groups / combos  — handler returns an empty array
  *   · move or merge tables                — no endpoint, no UI
  *   · per-station printers                — only 'kitchen' and 'cashier' exist
  *   · paying online                       — no provider configured in production
  *   · courier partners, live GPS map      — mock adapter only / never built
  *   · offline restaurant service          — ordering, KDS and settlement need the network
+ * claims-guard-allow-end
  */
 const appUrl = 'https://app.biashara-pos.com';
 
@@ -66,7 +67,7 @@ const modules = [
       { en: 'A text in Swahili or English at every step, each one carrying the tracking link', sw: 'Ujumbe kwa Kiswahili au Kiingereza kila hatua, kila mmoja ukiwa na kiungo cha kufuatilia' },
     ],
     note: {
-      en: 'Your own riders, tracked by delivery stage and arrival time. No map, and no third-party courier fleet.',
+      en: 'Your own riders, tracked by delivery stage and arrival time. No map, and no third-party courier fleet.', // claims-guard-allow
       sw: 'Watoa huduma wako mwenyewe, wanafuatiliwa kwa hatua na muda wa kufika. Hakuna ramani, wala kampuni ya nje ya usafirishaji.',
     },
     href: appUrl,
