@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import sunmiV3 from '../assets/devices/sunmi-v3-plus.webp';
+
 const appUrl = 'https://app.biashara-pos.com';
 ---
 <section class="hero hero-vision">
@@ -21,22 +24,7 @@ const appUrl = 'https://app.biashara-pos.com';
          still has something of its own to say. No image assets involved. -->
     <div class="hero-stage reveal" aria-hidden="true">
       <div class="hs-term">
-        <div class="dev-term">
-          <div class="term-main">
-            <div class="scrn">
-              <div class="mini-bar"><span class="mt">Till · Kaunta 1</span><span class="mst">● live</span></div>
-              <div class="term-amt"><div class="tl" data-en="Amount due" data-sw="Kiasi cha kulipa">Amount due</div><div class="tv">TZS 35,000</div></div>
-              <div class="term-tenders">
-                <span class="tnd on">M-Pesa</span><span class="tnd">Mixx</span><span class="tnd">Airtel</span><span class="tnd">Cash</span>
-              </div>
-            </div>
-            <div class="term-receipt"><i></i><i></i><i></i></div>
-          </div>
-          <div class="term-cfd">
-            <div class="cfd-l" data-en="Customer display" data-sw="Skrini ya mteja">Customer display</div>
-            <div class="cfd-v">TZS 35,000</div>
-          </div>
-        </div>
+        <Image src={sunmiV3} alt="" widths={[216, 432]} sizes="216px" loading="eager" />
       </div>
 
       <div class="hs-phone">
