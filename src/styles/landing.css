@@ -673,11 +673,7 @@ section { position: relative; }
   /* decoration only — must never intercept a click meant for the CTA */
   pointer-events: none;
 }
-.hero-stage .hs-term { width: 216px; }
-.hero-stage .hs-term img {
-  width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 30px 40px rgba(18,32,25,.30));
-}
+.hero-stage .hs-term { width: 152px; }
 .hero-stage .hs-phone {
   position: absolute;
   left: 4px;
@@ -700,3 +696,158 @@ section { position: relative; }
   .hero-stage .hs-phone { position: static; width: 150px; margin-top: -26px; align-self: flex-start; }
   .hero-stage .hs-phone .dev-phone { width: 150px; }
 }
+
+/* ============================================================
+   SUNMI hardware, drawn in CSS so the screens can show the software.
+   Front elevations, built from the real product renders: proportions, the
+   printer "hammerhead" on the V3 PLUS, the orange accent at the hinge, the
+   even 16mm bezel and silver edge on the FLEX 3.
+   Photographs cannot show a running till; these can.
+   ============================================================ */
+
+/* ---------- SUNMI V3 PLUS — handheld, printer in the head ---------- */
+.dev-v3 { width: 152px; position: relative; }
+
+/* printer block: wider than the body, stepping out at the shoulders */
+.dev-v3 .v3-head {
+  position: relative; width: 152px; height: 60px;
+  background: linear-gradient(176deg, #9aa3ab 0%, #6f787f 38%, #3d454b 100%);
+  border-radius: 13px 13px 7px 7px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+}
+/* paper slot across the crown */
+.dev-v3 .v3-head::before {
+  content: ""; position: absolute; top: 6px; left: 16px; right: 16px; height: 4px;
+  background: #222a30; border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.6);
+}
+/* receipt emerging from the slot */
+.dev-v3 .v3-receipt {
+  position: absolute; top: -26px; left: 50%; transform: translateX(-50%) rotate(-1.5deg);
+  width: 62px; padding: 6px 7px 7px; background: #fdfcf8;
+  border-radius: 3px 3px 0 0; display: flex; flex-direction: column; gap: 3px;
+  box-shadow: 0 -2px 6px -2px rgba(18,32,25,.3);
+}
+.dev-v3 .v3-receipt i { display: block; height: 2px; border-radius: 2px; background: #c8d0d6; }
+.dev-v3 .v3-receipt i:nth-child(1) { width: 70%; }
+.dev-v3 .v3-receipt i:nth-child(3) { width: 48%; }
+/* branding band with the orange stripe, as on the device */
+.dev-v3 .v3-band {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 17px;
+  background: linear-gradient(180deg, #4a535a, #2b3238);
+  border-radius: 0 0 7px 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7.5px; font-weight: 800; letter-spacing: .14em; color: #c9d2d9;
+}
+.dev-v3 .v3-band::after {
+  content: ""; position: absolute; left: 10px; right: 10px; bottom: 3px; height: 1.5px;
+  background: #e8732a; border-radius: 2px;
+}
+/* body: narrower than the head, so the shoulders read */
+.dev-v3 .v3-body {
+  width: 124px; margin: 0 auto; padding: 5px 5px 9px; position: relative;
+  background: linear-gradient(165deg, #2b333a 0%, #12191f 55%, #0c1217 100%);
+  border-radius: 4px 4px 17px 17px;
+  box-shadow: var(--sh-lg), inset 0 0 0 1px rgba(255,255,255,.06);
+}
+/* orange hinge tab where the head meets the body */
+.dev-v3 .v3-body::before {
+  content: ""; position: absolute; top: -3px; right: -3px; width: 7px; height: 20px;
+  background: #e8732a; border-radius: 2px;
+}
+/* side scan key */
+.dev-v3 .v3-body::after {
+  content: ""; position: absolute; top: 54px; right: -2px; width: 2px; height: 30px;
+  background: #1b2831; border-radius: 0 2px 2px 0;
+}
+.dev-v3 .scrn { border-radius: 3px 3px 13px 13px; padding: 9px 8px 12px; height: 226px; }
+
+/* ---------- SUNMI FLEX 3 — counter display on a stand ---------- */
+.dev-flex { width: 268px; display: flex; flex-direction: column; align-items: center; }
+.dev-flex .fx-panel {
+  width: 268px; padding: 7px;
+  background: linear-gradient(150deg, #c3cad0 0%, #8d959c 40%, #5b646b 100%);
+  border-radius: 10px;
+  box-shadow: var(--sh-lg), inset 0 0 0 1px rgba(255,255,255,.4);
+}
+/* the 16mm even bezel: black glass all round, no chin */
+.dev-flex .fx-glass { background: #0b1116; border-radius: 6px; padding: 5px; }
+.dev-flex .scrn { border-radius: 3px; height: 152px; padding: 10px 11px; }
+/* neck and foot */
+.dev-flex .fx-neck {
+  width: 26px; height: 30px;
+  background: linear-gradient(90deg, #6e767d, #aab2b8 45%, #6e767d);
+}
+.dev-flex .fx-foot {
+  width: 112px; height: 7px; border-radius: 3px 3px 5px 5px;
+  background: linear-gradient(180deg, #aab2b8, #6e767d);
+  box-shadow: 0 8px 16px -8px rgba(18,32,25,.5);
+}
+
+/* ---------- till UI shown on the SUNMI screens ---------- */
+.till-head { display: flex; align-items: center; justify-content: space-between; }
+.till-head b { font-size: 9px; font-weight: 800; color: var(--ink); }
+.till-head span { font-size: 7.5px; font-weight: 700; color: var(--green-d); }
+.till-lines { display: flex; flex-direction: column; gap: 4px; margin-top: 7px; }
+.till-lines div { display: flex; justify-content: space-between; font-size: 8.5px; color: var(--ink-2); }
+.till-lines div b { font-weight: 700; color: var(--ink); }
+.till-total {
+  margin-top: auto; padding-top: 7px; border-top: 1px solid var(--line);
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.till-total span { font-size: 7.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.till-total b { font-size: 15px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
+.till-profit {
+  margin-top: 6px; padding: 5px 7px; border-radius: 5px;
+  background: var(--green-50); display: flex; justify-content: space-between; align-items: center;
+}
+.till-profit span { font-size: 7.5px; font-weight: 700; color: var(--green-dd); }
+.till-profit b { font-size: 10px; font-weight: 800; color: var(--green-dd); }
+.till-pay { display: flex; gap: 4px; margin-top: 6px; }
+.till-pay i {
+  flex: 1; font-style: normal; text-align: center; font-size: 7px; font-weight: 800;
+  padding: 4px 0; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-3);
+}
+.till-pay i.on { background: var(--green); border-color: var(--green); color: #fff; }
+
+@media (max-width: 560px) {
+  .dev-flex, .dev-flex .fx-panel { width: 236px; }
+}
+
+/* The V3 PLUS screen is ~98px of usable width — a third of the FLEX 3's.
+   The shared till type has to come down there or the total and the profit
+   line wrap, which looks broken rather than small. */
+.dev-v3 .till-head b { font-size: 7.5px; }
+.dev-v3 .till-head span { font-size: 6.5px; }
+.dev-v3 .till-lines { gap: 3px; margin-top: 5px; }
+.dev-v3 .till-lines div { font-size: 7px; }
+.dev-v3 .till-total { padding-top: 5px; }
+.dev-v3 .till-total span { font-size: 6.5px; }
+.dev-v3 .till-total b { font-size: 11.5px; white-space: nowrap; }
+.dev-v3 .till-profit { padding: 4px 6px; margin-top: 5px; }
+.dev-v3 .till-profit span { font-size: 6.5px; }
+.dev-v3 .till-profit b { font-size: 8.5px; white-space: nowrap; }
+.dev-v3 .till-pay i { font-size: 6px; padding: 3px 0; }
+
+/* FLEX 3 is a big screen — let the till breathe at its real scale. */
+.dev-flex .till-head b { font-size: 10px; }
+.dev-flex .till-lines div { font-size: 9.5px; }
+.dev-flex .till-total b { font-size: 18px; }
+.dev-flex .till-profit b { font-size: 11px; }
+
+/* FLEX 3 is a 1920x1080 panel — give the screen its real 16:9 rather than a
+   guessed height, then fit the till inside it. At the previous fixed 152px the
+   profit chip overflowed and was clipped at narrow widths. */
+.dev-flex .scrn { height: auto; aspect-ratio: 16 / 9; padding: 9px 10px; }
+.dev-flex .till-lines { gap: 3px; margin-top: 5px; }
+.dev-flex .till-total { padding-top: 5px; }
+.dev-flex .till-profit { margin-top: 5px; padding: 4px 7px; }
+@media (max-width: 560px) {
+  /* keep it wide enough that 16:9 still leaves room for the till */
+  .dev-flex, .dev-flex .fx-panel { width: 260px; }
+}
+
+/* .scrn carries gap:7px for the older phone/computer mocks. The till blocks
+   space themselves, so on the SUNMI screens that gap is 21px of dead height —
+   enough to push the profit chip out of a 16:9 panel. */
+.dev-v3 .scrn, .dev-flex .scrn { gap: 0; }
