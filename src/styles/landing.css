@@ -883,3 +883,27 @@ section { position: relative; }
 .flex-shot .vt-profit { background: var(--green-50); }
 .flex-shot .vt-profit span { color: var(--green-dd); }
 .flex-shot .vt-profit b { font-size: 7px; color: var(--green-dd); }
+
+/* Hardware strip under the Industries grid. Smaller than the Devices section's
+   stage on purpose — it is a supporting note to the grid, not a second
+   hardware showcase. */
+.indev {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(28px, 5vw, 64px); align-items: center;
+  margin-top: 56px; padding-top: 44px; border-top: 1px solid var(--line);
+}
+.indev-copy h3 { font-size: clamp(21px, 2.4vw, 27px); line-height: 1.15; max-width: 16ch; }
+.indev-copy p { margin-top: 12px; font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 44ch; }
+.indev-pair { display: flex; align-items: flex-end; gap: clamp(20px, 3vw, 40px); }
+.indev-one { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.indev-one .v3-shot { --v3-w: 164; }
+.indev-one .flex-shot { width: 260px; }
+.indev-cap { font-size: 13px; font-weight: 600; color: var(--ink-3); text-align: center; }
+@media (max-width: 900px) {
+  .indev { grid-template-columns: 1fr; }
+  .indev-copy h3, .indev-copy p { max-width: none; }
+}
+@media (max-width: 560px) {
+  .indev-pair { flex-direction: column; align-items: center; gap: 30px; }
+  .indev-one .flex-shot { width: min(100%, 280px); }
+}

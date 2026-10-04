@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import { verticals, verticalSlugs } from '../data/verticals';
+import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
+import flex3 from '../assets/devices/sunmi-flex3.webp';
 
 const cardIcons: Record<string, string> = {
   clothing:  '<path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/>',
@@ -43,6 +45,61 @@ const cardIcons: Record<string, string> = {
           </a>
         );
       })}
+    </div>
+
+    <!-- Hardware strip. Deliberately not another "every device" line — the
+         Devices section already makes that point. This one shows the SAME two
+         terminals carrying two different trades, which is the argument the
+         Industries grid above is making. -->
+    <div class="indev reveal">
+      <div class="indev-copy">
+        <h3
+          data-en="Same two terminals. Whatever you sell."
+          data-sw="Terminal mbili zile zile. Chochote unachouza."
+        >Same two terminals. Whatever you sell.</h3>
+        <p
+          data-en="A pharmacy ringing up a prescription and a kitchen firing an order are the same hardware, running the screen each one needs."
+          data-sw="Duka la dawa likiuza dawa na jikoni likiandaa oda ni vifaa vilevile, vikiendesha skrini inayohitajika kwa kila mmoja."
+        >A pharmacy ringing up a prescription and a kitchen firing an order are the same hardware, running the screen each one needs.</p>
+      </div>
+
+      <div class="indev-pair">
+        <div class="indev-one">
+          <div class="v3-shot">
+            <Image src={v3Front} alt="SUNMI V3 PLUS handheld running a pharmacy sale in BiasharaPOS" widths={[164, 328]} sizes="164px" loading="lazy" />
+            <div class="screen-space" aria-hidden="true">
+              <div class="screen-ui">
+                <div class="su-bar"><b>Duka la dawa</b><span>live</span></div>
+                <div class="su-rows">
+                  <div><span>Paracetamol × 2</span><b>5,000</b></div>
+                  <div><span>Amoxicillin</span><b>7,000</b></div>
+                  <div><span>ORS Sachet × 3</span><b>3,600</b></div>
+                </div>
+                <div class="su-total"><span>JUMLA</span><b>15,600</b></div>
+                <div class="su-profit">Faida +5,100</div>
+                <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
+              </div>
+            </div>
+          </div>
+          <span class="indev-cap" data-en="Pharmacy · at the counter" data-sw="Duka la dawa · kaunta">Pharmacy · at the counter</span>
+        </div>
+
+        <div class="indev-one">
+          <div class="flex-shot">
+            <Image src={flex3} alt="SUNMI FLEX 3 running the BiasharaPOS kitchen screen in a restaurant" widths={[260, 520]} sizes="260px" loading="lazy" />
+            <div class="flex-screen" aria-hidden="true">
+              <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>4 live</span></div>
+              <div class="kds-cards">
+                <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><em>02:10</em></div>
+                <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><em>06:48</em></div>
+                <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
+                <div class="kc ok"><b>Meza C2</b><span>Samaki</span><em>01:04</em></div>
+              </div>
+            </div>
+          </div>
+          <span class="indev-cap" data-en="Restaurant · in the kitchen" data-sw="Mgahawa · jikoni">Restaurant · in the kitchen</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
