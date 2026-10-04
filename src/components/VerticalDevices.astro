@@ -28,10 +28,14 @@ const total = v.tillItems
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow center" data-en="On the counter" data-sw="Kaunta kwako">On the counter</span>
+      <!-- Not templated on the vertical name: "the same barbershop sale" is
+           awkward in English, and in Swahili the genitive form it produced
+           ("Mauzo yale yale ya kinyozi") is wrong — Swahili does not take a
+           noun adjunct that way. The till below already carries the vertical. -->
       <h2
-        data-en={`The same ${v.name.en.toLowerCase()} sale, on the hardware you already have.`}
-        data-sw={`Mauzo yale yale ya ${v.name.sw.toLowerCase()}, kwenye vifaa ulivyonavyo.`}
-      >The same {v.name.en.toLowerCase()} sale, on the hardware you already have.</h2>
+        data-en="The same sale you make every day, on hardware you already have."
+        data-sw="Mauzo yale yale unayofanya kila siku, kwenye vifaa ulivyonavyo."
+      >The same sale you make every day, on hardware you already have.</h2>
       <p
         data-en="BiasharaPOS runs in the browser, so it works on an Android phone, a tablet or a computer. These are the two SUNMI terminals we run it on."
         data-sw="BiasharaPOS inafanya kazi kwenye kivinjari, hivyo inatumika kwenye simu ya Android, tableti au kompyuta. Hizi ni terminal mbili za SUNMI tunazoitumia."
