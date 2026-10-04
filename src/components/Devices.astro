@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
+import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
 ---
 <section class="sec sec-tint devsec" id="devices">
   <div class="wrap">
@@ -28,52 +31,15 @@
         <div class="cap"><b data-en="Mobile app" data-sw="App ya simu">Mobile app</b><span data-en="Sell on the go" data-sw="Uza popote">Sell on the go</span></div>
       </div>
 
-      <!-- SUNMI V3 PLUS, drawn front-on so the till is legible. The
-           customer-facing screen sits on the back of the printer head, so it
-           is not visible from this side — described in the note instead. -->
+      <!-- SUNMI V3 PLUS: the real product render. The drawn version was
+           replaced by this on request — the renders show the object as it is,
+           including the customer-facing screen on the printer head, which a
+           front elevation cannot. -->
       <div class="dev reveal">
-        <div class="dev-v3">
-          <div class="v3-head">
-            <div class="v3-receipt"><i></i><i></i><i></i></div>
-            <div class="v3-band">SUNMI V3 PLUS</div>
-          </div>
-          <div class="v3-body">
-            <div class="scrn">
-              <div class="till-head"><b data-en="Till · Kaunta 1" data-sw="Till · Kaunta 1">Till · Kaunta 1</b><span>● live</span></div>
-              <div class="till-lines">
-                <div><span>Sukari 1kg × 2</span><b>6,400</b></div>
-                <div><span>Mafuta 2L</span><b>9,500</b></div>
-                <div><span>Mchele 5kg</span><b>22,000</b></div>
-              </div>
-              <div class="till-total"><span data-en="Total" data-sw="Jumla">Total</span><b>TZS 37,900</b></div>
-              <div class="till-profit"><span data-en="Net profit" data-sw="Faida halisi">Net profit</span><b>+TZS 5,180</b></div>
-              <div class="till-pay"><i class="on">M-Pesa</i><i>Mixx</i><i>Cash</i></div>
-            </div>
-          </div>
+        <div class="dev-render">
+          <Image src={v3Front} alt="SUNMI V3 PLUS handheld POS terminal, showing the customer-facing screen on its printer housing" widths={[196, 392]} sizes="196px" loading="lazy" />
         </div>
         <div class="cap"><b>SUNMI V3 PLUS</b><span data-en="Handheld, printer built in" data-sw="Ya mkononi, printa ndani">Handheld, printer built in</span></div>
-      </div>
-
-      <!-- SUNMI FLEX 3 — counter display on its stand. No printer of its own. -->
-      <div class="dev reveal">
-        <div class="dev-flex">
-          <div class="fx-panel">
-            <div class="fx-glass">
-              <div class="scrn">
-                <div class="till-head"><b data-en="Counter · Kaunta 2" data-sw="Kaunta 2">Counter · Kaunta 2</b><span>● live</span></div>
-                <div class="till-lines">
-                  <div><span>Kitenge Dress</span><b>48,000</b></div>
-                  <div><span>Linen Shirt × 2</span><b>64,000</b></div>
-                </div>
-                <div class="till-total"><span data-en="Total" data-sw="Jumla">Total</span><b>TZS 112,000</b></div>
-                <div class="till-profit"><span data-en="Net profit" data-sw="Faida halisi">Net profit</span><b>+TZS 24,600</b></div>
-              </div>
-            </div>
-          </div>
-          <div class="fx-neck"></div>
-          <div class="fx-foot"></div>
-        </div>
-        <div class="cap"><b>SUNMI FLEX 3</b><span data-en="Fixed counter screen" data-sw="Skrini ya kaunta">Fixed counter screen</span></div>
       </div>
 
       <!-- computer -->
@@ -107,6 +73,13 @@
         data-en="It is not required. BiasharaPOS runs the same on any Android phone, tablet or computer with a browser."
         data-sw="Si lazima. BiasharaPOS inafanya kazi vivyo hivyo kwenye simu yoyote ya Android, tableti au kompyuta yenye kivinjari."
       >It is not required. BiasharaPOS runs the same on any Android phone, tablet or computer with a browser.</p>
+    </div>
+
+    <div class="hwstrip reveal">
+      <figure>
+        <Image src={v3Back} alt="SUNMI V3 PLUS seen from behind, showing the thermal printer housing and the textured grip" widths={[196, 392]} sizes="196px" loading="lazy" />
+        <figcaption data-en="From behind: the thermal printer sits in the head, and receipts feed out of the top while the device stays in the hand." data-sw="Kwa nyuma: printa ya risiti iko kichwani, na risiti hutoka juu wakati kifaa kikiwa mkononi.">From behind: the thermal printer sits in the head, and receipts feed out of the top while the device stays in the hand.</figcaption>
+      </figure>
     </div>
   </div>
 </section>

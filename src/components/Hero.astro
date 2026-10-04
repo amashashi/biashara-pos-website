@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
+
 const appUrl = 'https://app.biashara-pos.com';
 ---
 <section class="hero hero-vision">
@@ -21,25 +24,7 @@ const appUrl = 'https://app.biashara-pos.com';
          still has something of its own to say. No image assets involved. -->
     <div class="hero-stage reveal" aria-hidden="true">
       <div class="hs-term">
-        <div class="dev-v3">
-          <div class="v3-head">
-            <div class="v3-receipt"><i></i><i></i><i></i></div>
-            <div class="v3-band">SUNMI V3 PLUS</div>
-          </div>
-          <div class="v3-body">
-            <div class="scrn">
-              <div class="till-head"><b>Till · Kaunta 1</b><span>● live</span></div>
-              <div class="till-lines">
-                <div><span>Sukari 1kg × 2</span><b>6,400</b></div>
-                <div><span>Mafuta 2L</span><b>9,500</b></div>
-                <div><span>Mchele 5kg</span><b>22,000</b></div>
-              </div>
-              <div class="till-total"><span>Total</span><b>TZS 37,900</b></div>
-              <div class="till-profit"><span>Net profit</span><b>+TZS 5,180</b></div>
-              <div class="till-pay"><i class="on">M-Pesa</i><i>Mixx</i><i>Cash</i></div>
-            </div>
-          </div>
-        </div>
+        <Image src={v3Front} alt="" widths={[200, 400]} sizes="200px" loading="eager" />
       </div>
 
       <div class="hs-phone">
