@@ -705,16 +705,27 @@ section { position: relative; }
 .hero-stage .hs-phone .mini-row { padding: 5px 0; }
 
 @media (max-width: 720px) {
-  /* Stack: FLEX 3, then the handheld with the phone tucked under it. Sizes are
-     cut here on purpose — at desktop sizes the three stacked devices made the
-     hero 889px tall on a 812px phone, pushing everything below the fold. */
-  .hero-stage { width: 100%; padding-left: 0; margin-top: 44px; flex-direction: column; align-items: center; gap: 0; min-height: 0; }
-  .hero-stage .hs-flex { position: static; width: min(100%, 252px); margin-bottom: 10px; }
-  .hero-stage .hs-term { margin-right: 0; width: 136px; }
-  .hero-stage .hs-term .screen-space { transform: scale(0.32850) !important; }  /* 136 / 414 */
+  /* Two devices on a phone, not three. Stacked, the FLEX 3 pushed the cluster
+     to 760px — most of a viewport of hardware before any content. It is also
+     the widest and the least relevant to someone browsing on a phone, so it
+     drops here and the handheld goes back up to a legible size. */
+  /* Side by side, not stacked: 164 + 124 fits inside 375px, and the pair is as
+     tall as the handheld alone (~356px) instead of their sum. Stacked it came
+     to 652px. */
+  .hero-stage {
+    width: 100%; padding-left: 0; margin-top: 44px; min-height: 0;
+    flex-direction: row; align-items: flex-end; justify-content: center; gap: 0;
+  }
+  .hero-stage .hs-flex { display: none; }
+  .hero-stage .hs-term { margin-right: 0; width: 164px; order: 2; }
+  .hero-stage .hs-term .screen-space { transform: scale(0.39614) !important; }  /* 164 / 414 */
   .hero-stage .hs-term { transform: none; }
-  .hero-stage .hs-phone { position: static; width: 104px; margin-top: -40px; align-self: flex-start; margin-left: 8%; }
-  .hero-stage .hs-phone .dev-phone { width: 104px; }
+  .hero-stage .hs-phone {
+    position: static; width: 118px; order: 1;
+    margin: 0 -26px 0 0;          /* tuck behind the handheld's left edge */
+    align-self: flex-end;
+  }
+  .hero-stage .hs-phone .dev-phone { width: 118px; }
 }
 
 /* Hardware strip: the real renders, sitting under the drawn devices. The
