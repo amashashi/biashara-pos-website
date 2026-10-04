@@ -3,6 +3,26 @@ import { Image } from 'astro:assets';
 import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
 import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
 import flex3 from '../assets/devices/sunmi-flex3.webp';
+
+/**
+ * SUNMI V3 PLUS: the real product render. The drawn version was
+ * replaced by this on request — the renders show the object as it is,
+ * including the customer-facing screen on the printer head, which a
+ * front elevation cannot.
+ */
+/**
+ * Till composited onto the screen. The matrix3d maps a flat
+ * 100x211.6 box onto the screen's four corners as measured in the
+ * render (68,440 / 262,424 / 262,887 / 68,798), so the UI takes the
+ * device's own perspective instead of floating on top of it.
+ */
+/**
+ * SUNMI FLEX 3 running the kitchen display. The render is a flat
+ * front elevation, so the screen quad is axis-aligned — the overlay is
+ * plain percentages, no perspective transform needed. Measured inset:
+ * the 16mm bezel puts the active area at 3.71%/6.50% with a 16:9
+ * aspect, which matches the panel's 1920x1080.
+ */
 ---
 <section class="sec sec-tint devsec" id="devices">
   <div class="wrap">
@@ -32,17 +52,9 @@ import flex3 from '../assets/devices/sunmi-flex3.webp';
         <div class="cap"><b data-en="Mobile app" data-sw="App ya simu">Mobile app</b><span data-en="Sell on the go" data-sw="Uza popote">Sell on the go</span></div>
       </div>
 
-      <!-- SUNMI V3 PLUS: the real product render. The drawn version was
-           replaced by this on request — the renders show the object as it is,
-           including the customer-facing screen on the printer head, which a
-           front elevation cannot. -->
       <div class="dev reveal">
         <div class="dev-render v3-shot">
           <Image src={v3Front} alt="SUNMI V3 PLUS handheld POS terminal running BiasharaPOS" widths={[196, 392]} sizes="196px" loading="lazy" />
-          <!-- Till composited onto the screen. The matrix3d maps a flat
-               100x211.6 box onto the screen's four corners as measured in the
-               render (68,440 / 262,424 / 262,887 / 68,798), so the UI takes the
-               device's own perspective instead of floating on top of it. -->
           <div class="screen-space" aria-hidden="true">
             <div class="screen-ui">
               <div class="su-bar"><b>Kaunta 1</b><span>live</span></div>
@@ -60,11 +72,6 @@ import flex3 from '../assets/devices/sunmi-flex3.webp';
         <div class="cap"><b>SUNMI V3 PLUS</b><span data-en="Handheld, printer built in" data-sw="Ya mkononi, printa ndani">Handheld, printer built in</span></div>
       </div>
 
-      <!-- SUNMI FLEX 3 running the kitchen display. The render is a flat
-           front elevation, so the screen quad is axis-aligned — the overlay is
-           plain percentages, no perspective transform needed. Measured inset:
-           the 16mm bezel puts the active area at 3.71%/6.50% with a 16:9
-           aspect, which matches the panel's 1920x1080. -->
       <div class="dev dev-wide reveal">
         <div class="flex-shot">
           <Image src={flex3} alt="SUNMI FLEX 3 counter display running the BiasharaPOS kitchen screen" widths={[300, 600]} sizes="300px" loading="lazy" />

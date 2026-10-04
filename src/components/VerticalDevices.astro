@@ -23,15 +23,18 @@ const isRestaurant = v.slug === 'restaurant';
 const total = v.tillItems
   .reduce((sum, i) => sum + Number(i.price.replace(/,/g, '')), 0)
   .toLocaleString('en-US');
+
+/**
+ * Not templated on the vertical name: "the same barbershop sale" is
+ * awkward in English, and in Swahili the genitive form it produced
+ * ("Mauzo yale yale ya kinyozi") is wrong — Swahili does not take a
+ * noun adjunct that way. The till below already carries the vertical.
+ */
 ---
 <section class="sec" id="devices">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow center" data-en="On the counter" data-sw="Kaunta kwako">On the counter</span>
-      <!-- Not templated on the vertical name: "the same barbershop sale" is
-           awkward in English, and in Swahili the genitive form it produced
-           ("Mauzo yale yale ya kinyozi") is wrong — Swahili does not take a
-           noun adjunct that way. The till below already carries the vertical. -->
       <h2
         data-en="The same sale you make every day, on hardware you already have."
         data-sw="Mauzo yale yale unayofanya kila siku, kwenye vifaa ulivyonavyo."

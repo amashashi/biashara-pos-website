@@ -12,6 +12,13 @@ const cardIcons: Record<string, string> = {
   pharmacy:  '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/>',
   barbershop:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>',
 };
+
+/**
+ * Hardware strip. Deliberately not another "every device" line — the
+ * Devices section already makes that point. This one shows the SAME two
+ * terminals carrying two different trades, which is the argument the
+ * Industries grid above is making.
+ */
 ---
 <section class="sec sec-white" id="industries">
   <div class="wrap">
@@ -47,10 +54,6 @@ const cardIcons: Record<string, string> = {
       })}
     </div>
 
-    <!-- Hardware strip. Deliberately not another "every device" line — the
-         Devices section already makes that point. This one shows the SAME two
-         terminals carrying two different trades, which is the argument the
-         Industries grid above is making. -->
     <div class="indev reveal">
       <div class="indev-copy">
         <h3

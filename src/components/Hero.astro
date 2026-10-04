@@ -4,6 +4,13 @@ import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
 import flex3 from '../assets/devices/sunmi-flex3.webp';
 
 const appUrl = 'https://app.biashara-pos.com';
+
+/**
+ * Device cluster. Reuses the mock styling from the Devices section
+ * (.dev-term/.dev-phone/.scrn) rather than duplicating it, and shows a
+ * tighter two-device composition so the full stage further down the page
+ * still has something of its own to say. No image assets involved.
+ */
 ---
 <section class="hero hero-vision">
   <div class="wrap hero-center">
@@ -19,10 +26,6 @@ const appUrl = 'https://app.biashara-pos.com';
       <a class="btn btn-primary btn-lg" href={appUrl} data-en="Start for Free →" data-sw="Anza Bila Malipo →">Start for Free →</a>
       <a class="btn btn-ghost btn-lg" href="#modules" data-en="See the modules" data-sw="Ona moduli">See the modules</a>
     </div>
-    <!-- Device cluster. Reuses the mock styling from the Devices section
-         (.dev-term/.dev-phone/.scrn) rather than duplicating it, and shows a
-         tighter two-device composition so the full stage further down the page
-         still has something of its own to say. No image assets involved. -->
     <div class="hero-stage reveal" aria-hidden="true">
       <div class="hs-flex flex-shot">
         <Image src={flex3} alt="" widths={[300, 600]} sizes="300px" loading="eager" />
