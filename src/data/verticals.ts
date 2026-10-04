@@ -160,7 +160,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS & billing for clinics and hospitals in Tanzania', sw: 'POS na bili kwa zahanati na hospitali Tanzania' },
     seoTitle: 'POS & Billing for Clinics & Hospitals in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — billing for Tanzanian clinics, hospitals and pharmacies. Patient billing, lab + pharmacy on one invoice, role-based access, works offline, audit-ready fiscal receipts.',
+      'BiasharaPOS — billing for Tanzanian clinics, hospitals and pharmacies. Patient billing, lab + pharmacy on one invoice, role-based access, a counter that keeps selling offline, audit-ready fiscal receipts.',
     shortDesc: { en: 'Patient billing & records.', sw: 'Utozaji wa wagonjwa na kumbukumbu.' },
     heroSubhead: {
       en: 'Bill patients for consultation, lab and pharmacy on one invoice. Role-based access keeps records private, and the whole thing keeps working when the line goes down.',
