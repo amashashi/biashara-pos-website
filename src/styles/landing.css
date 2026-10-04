@@ -686,7 +686,7 @@ section { position: relative; }
   pointer-events: none;
 }
 /* 196px, matching the scale baked into .v3-shot .screen-space */
-.hero-stage .hs-term { position: relative; z-index: 2; width: 174px; margin-right: 208px; }
+.hero-stage .hs-term { position: relative; z-index: 2; --v3-w: 174; margin-right: 208px; }
 .hero-stage .hs-term img { filter: drop-shadow(0 30px 40px rgba(18,32,25,.30)); }
 .hero-stage .hs-phone {
   position: absolute;
@@ -717,8 +717,7 @@ section { position: relative; }
     flex-direction: row; align-items: flex-end; justify-content: center; gap: 0;
   }
   .hero-stage .hs-flex { display: none; }
-  .hero-stage .hs-term { margin-right: 0; width: 164px; order: 2; }
-  .hero-stage .hs-term .screen-space { transform: scale(0.39614) !important; }  /* 164 / 414 */
+  .hero-stage .hs-term { margin-right: 0; --v3-w: 164; order: 2; }
   .hero-stage .hs-term { transform: none; }
   .hero-stage .hs-phone {
     position: static; width: 118px; order: 1;
@@ -760,12 +759,16 @@ section { position: relative; }
    space at 1:1 and scales down to the display width, so the matrix3d below
    can be written in the image's own pixels. The matrix maps a flat
    100 x 211.6 box onto the screen quad measured off the render. */
-.v3-shot { position: relative; width: 196px; }
+/* --v3-w is the device's display width in px, unitless. The overlay scale is
+   derived from it, so changing the width cannot leave the screen overlay
+   mis-scaled — which is exactly what happened when the hero went to 174px
+   while the scale stayed hardcoded at 196/414. */
+.v3-shot { --v3-w: 196; position: relative; width: calc(var(--v3-w) * 1px); }
 .v3-shot img { width: 100%; height: auto; display: block; }
 .v3-shot .screen-space {
   position: absolute; top: 0; left: 0;
   width: 414px; height: 900px;
-  transform: scale(0.47343);           /* 196 / 414 */
+  transform: scale(calc(var(--v3-w) / 414));   /* render is 414px wide */
   transform-origin: top left;
   pointer-events: none;
 }
