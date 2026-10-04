@@ -28,18 +28,29 @@
         <div class="cap"><b data-en="Mobile app" data-sw="App ya simu">Mobile app</b><span data-en="Sell on the go" data-sw="Uza popote">Sell on the go</span></div>
       </div>
 
-      <!-- POS terminal -->
+      <!-- POS terminal: iMin Falcon 2. Deliberately NOT drawn as a card
+           terminal — BiasharaPOS records tender, it does not acquire card
+           payments, so no slot, no "tap, insert or swipe". -->
       <div class="dev reveal">
         <div class="dev-term">
-          <div class="scrn">
-            <div class="mini-bar"><span class="mt" data-en="Card payment" data-sw="Malipo ya kadi">Card payment</span><span class="mst">● VFD</span></div>
-            <div class="term-amt"><div class="tl" data-en="Amount due" data-sw="Kiasi cha kulipa">Amount due</div><div class="tv">TZS 35,000</div></div>
-            <div class="term-keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="slot"></div>
+          <div class="term-main">
+            <div class="scrn">
+              <div class="mini-bar"><span class="mt" data-en="Till · Kaunta 1" data-sw="Till · Kaunta 1">Till · Kaunta 1</span><span class="mst">● live</span></div>
+              <div class="term-amt"><div class="tl" data-en="Amount due" data-sw="Kiasi cha kulipa">Amount due</div><div class="tv">TZS 35,000</div></div>
+              <div class="term-tenders">
+                <span class="tnd on">M-Pesa</span><span class="tnd">Mixx</span><span class="tnd">Airtel</span><span class="tnd">Cash</span>
+              </div>
+            </div>
+            <div class="term-receipt">
+              <i></i><i></i><i></i>
+            </div>
           </div>
-          <div class="tap" data-en="Tap, insert or swipe" data-sw="Gusa, ingiza au pita">Tap, insert or swipe</div>
+          <div class="term-cfd">
+            <div class="cfd-l" data-en="Customer display" data-sw="Skrini ya mteja">Customer display</div>
+            <div class="cfd-v">TZS 35,000</div>
+          </div>
         </div>
-        <div class="cap"><b data-en="POS terminal" data-sw="POS terminal">POS terminal</b><span data-en="At the counter" data-sw="Kaunta">At the counter</span></div>
+        <div class="cap"><b>iMin Falcon 2</b><span data-en="At the counter" data-sw="Kaunta">At the counter</span></div>
       </div>
 
       <!-- computer -->
@@ -61,6 +72,18 @@
         </div>
         <div class="cap"><b data-en="Computer" data-sw="Kompyuta">Computer</b><span data-en="Reports & back office" data-sw="Ripoti na ofisi">Reports &amp; back office</span></div>
       </div>
+    </div>
+
+    <div class="devnote reveal">
+      <p
+        data-en="The counter terminal we run on is the iMin Falcon 2 — a 10.95&quot; Android till with a 5&quot; screen facing your customer, a built-in receipt printer and an all-day battery. BiasharaPOS runs on it in the browser, so there is nothing to install."
+        data-sw="Terminal ya kaunta tunayotumia ni iMin Falcon 2 — till ya Android ya inchi 10.95 yenye skrini ya inchi 5 inayomwelekea mteja, printa ya risiti ndani yake na betri ya siku nzima. BiasharaPOS inafanya kazi humo kwenye kivinjari, hivyo hakuna cha kusakinisha."
+      >The counter terminal we run on is the iMin Falcon 2 — a 10.95" Android till with a 5" screen facing your customer, a built-in receipt printer and an all-day battery. BiasharaPOS runs on it in the browser, so there is nothing to install.</p>
+      <p
+        class="devnote-sub"
+        data-en="It is not required. BiasharaPOS runs the same on any Android phone, tablet or computer with a browser."
+        data-sw="Si lazima. BiasharaPOS inafanya kazi vivyo hivyo kwenye simu yoyote ya Android, tableti au kompyuta yenye kivinjari."
+      >It is not required. BiasharaPOS runs the same on any Android phone, tablet or computer with a browser.</p>
     </div>
   </div>
 </section>
