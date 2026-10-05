@@ -28,6 +28,28 @@ const SCAN_EXT = new Set(['.astro', '.ts', '.tsx', '.js', '.mjs', '.md', '.html'
  * `why` says what is untrue. `instead` gives the wording that is defensible.
  */
 const RULES = [
+  // ── staff-management claims (added 5 Oct 2026) ──────────────────────────
+  // The barbershop page sold a walk-in queue, per-barber commissions and tips,
+  // and appointments with SMS reminders, for months. `commission`, `tips`,
+  // `appointment` and `barber` each appear ZERO times in the app's source. The
+  // guard did not catch it because every rule here was about compliance and
+  // payments. These patterns are written to fire on the CLAIM and not on an
+  // honest denial, so "does not calculate commission" passes.
+  {
+    pattern: /commissions? (?:are |is )?(?:split|calculated|worked out) automatic|split commissions?|commission rate per|tips? (?:are|is) tracked|splits? (?:the )?tips?/i,
+    why: 'Nothing in the app calculates commission or records tips — the words do not appear in the source.',
+    instead: '"the sales report shows what each person took" (GET /reports/sales-by-user is real)',
+  },
+  {
+    pattern: /walk-in queue|queue at the door|join the queue|call the next client|barbers? (?:can )?see their own queue/i,
+    why: 'There is no queue feature. The only queue in the app is BullMQ and the storefront order list.',
+    instead: 'say nothing about a queue, or describe the till and the per-person sales report',
+  },
+  {
+    pattern: /book (?:regulars|appointments)|appointment (?:diary|booking|reminders)|SMS reminders cut|colour-coded per barber|color-coded per barber/i,
+    why: 'There is no appointment booking and no appointment reminder.',
+    instead: 'say nothing about appointments; the Reservations screen is restaurant-only',
+  },
   {
     pattern: /TRA[-\s]?compliant|accepted by TRA|approved by TRA|recognis(?:ed|ed) by (?:the )?TRA|recognized by Tanzania Revenue|registered with TRA/i,
     why: 'We are not certified, approved or recognised by the TRA.',

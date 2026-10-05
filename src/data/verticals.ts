@@ -269,11 +269,11 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     headline: { en: 'POS for barbershops & salons in Tanzania', sw: 'POS kwa vinyozi na saluni Tanzania' },
     seoTitle: 'POS for Barbershops & Salons in Tanzania | BiasharaPOS',
     seoDescription:
-      'BiasharaPOS — the POS for Tanzanian barbershops & salons. Walk-in queue, barber commissions & tips, appointments, product retail, M-Pesa, audit-ready fiscal receipts.',
-    shortDesc: { en: 'Queue, chairs & commissions.', sw: 'Foleni, viti na kamisheni.' },
+      'BiasharaPOS — the POS for Tanzanian barbershops & salons. A PIN for each barber, sales reported per person, services and products on one receipt, a counter that sells offline.',
+    shortDesc: { en: 'A PIN each, takings per barber.', sw: 'PIN kwa kila mmoja, mapato kwa kila kinyozi.' },
     heroSubhead: {
-      en: 'Manage the walk-in queue, book appointments, split commissions and tips per barber, and sell products at the counter — with real profit on every cut.',
-      sw: 'Simamia foleni ya wateja, weka miadi, gawanya kamisheni na bahashishi kwa kila kinyozi, na uze bidhaa kaunta — na faida halisi kwa kila mkato.',
+      en: 'Every barber signs in with their own PIN, and the report shows what each of them took. Sell a cut and the pomade after it on one receipt, and keep selling when the network drops.',
+      sw: 'Kila kinyozi anaingia kwa PIN yake, na ripoti inaonyesha kila mmoja ameuza kiasi gani. Uza huduma na bidhaa kwenye risiti moja, na kaunta inaendelea kuuza hata mtandao ukikatika.',
     },
     photo: barbershop,
     alt: 'Barbers cutting hair in a modern Tanzanian barbershop',
@@ -286,16 +286,16 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
     sampleSales: 'TZS 265,000',
     sampleTx: '21',
     features: [
-      { icon: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>', title: 'Walk-in queue', desc: 'Customers join the queue at the door. Barbers call the next client from their chair — no shouting, no lost turns.' },
-      { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/>', title: 'Commissions & tips', desc: 'Set a commission rate per barber. Every sale and tip is split automatically — payday takes minutes, not hours.' },
-      { icon: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>', title: 'Appointments & reminders', desc: 'Book regulars in advance, color-coded per barber. SMS reminders cut no-shows.' },
-      { icon: '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>', title: 'Services + product retail', desc: 'Ring up a fade and a pomade on one receipt. Track stock of oils, waxes and shampoos with low-stock alerts.' },
+      { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>', title: 'A PIN for each barber', desc: 'Everyone signs in with their own four-digit PIN. The sales report then breaks a day or a month down per person — how many sales, how much they took, and the average ticket.' },
+      { icon: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>', title: 'Services and products on one receipt', desc: 'Ring up a cut and the pomade that follows it on the same sale. Product stock falls as you sell, and a low-stock warning reaches you before the shelf is empty.' },
+      { icon: '<rect x="2" y="7" width="20" height="12" rx="2"/><path d="M6 11h6M6 15h3M17 11v4"/>', title: 'The counter sells without the network', desc: 'The till keeps taking sales when the connection drops and syncs them when it returns. Every sale is issued with a fiscal receipt number.' },
+      { icon: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>', title: 'Till sessions and the cash at close', desc: 'A shift opens with a float and closes against what is actually counted, so a difference is recorded at the time rather than argued about at the end of the night.' },
     ],
     faqs: [
-      { q: 'Can barbers see their own queue and earnings?', a: 'Yes — each barber has a PIN login showing their queue, completed cuts, commission and tips for the day. Admins see everyone.' },
-      { q: 'How are commissions and tips calculated?', a: 'Set a commission percentage per barber. Every service sale is split automatically between shop and barber, and tips are tracked separately per barber.' },
-      { q: 'Can I sell products like pomade and beard oil too?', a: 'Yes — services and retail products go on the same audit-ready receipt, and product stock is tracked with low-stock alerts.' },
-      { q: 'Does it handle walk-ins and appointments together?', a: 'Yes — walk-ins join the live queue while booked appointments hold their slot. The queue reorders automatically so nobody loses their place.' },
+      { q: 'Can each barber have their own login?', a: 'Yes. Everyone gets their own PIN and role. The sales-by-user report then shows, over any date range, how many sales each person made, what they took, their average ticket and how it was paid.' },
+      { q: 'Does it work out commissions and tips?', a: 'No. BiasharaPOS does not calculate commission and does not record tips. What it gives you is exactly what each barber sold over a period, so the split is worked out from real figures instead of memory.' },
+      { q: 'Is there a walk-in queue or appointment booking?', a: 'No. There is no queue board, no appointment diary and no SMS reminders. BiasharaPOS is the till, the stock and the books.' },   // claims-guard-allow — the question names them in order to say no
+      { q: 'Can I sell products as well as haircuts?', a: 'Yes. A service and a product go on the same receipt, and products carry stock levels with low-stock alerts, so oils, clippers and shampoos are counted like any other shelf.' },
     ],
   },
 
