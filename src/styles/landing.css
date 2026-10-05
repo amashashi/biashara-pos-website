@@ -909,6 +909,18 @@ section { position: relative; }
 .flex-shot .vt-profit span { color: var(--green-dd); }
 .flex-shot .vt-profit b { font-size: calc(7 * var(--fu)); color: var(--green-dd); }
 
+/* Full-bleed photo band. Cinematic on a desktop, but 21:9 on a phone is a
+   letterbox sliver with nothing readable in it, so the ratio opens up as the
+   screen narrows. No overlay, no scrim — see ShopBand.astro. */
+.band { width: 100%; overflow: hidden; background: var(--green-50); }
+.band img {
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; object-position: 50% 55%;
+}
+.band { aspect-ratio: 21 / 9; max-height: 440px; }
+@media (max-width: 880px) { .band { aspect-ratio: 16 / 9; max-height: none; } }
+@media (max-width: 560px) { .band { aspect-ratio: 4 / 3; } }
+
 /* Hardware strip under the Industries grid. Smaller than the Devices section's
    stage on purpose — it is a supporting note to the grid, not a second
    hardware showcase. */
