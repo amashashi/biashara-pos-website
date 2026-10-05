@@ -601,10 +601,13 @@ section { position: relative; }
    hero's own text runs to within 28px of the right edge, and a 48px button
    cannot fit in 28px; 44px is the smallest touch target worth shipping, so no
    corner placement clears the headline. Give the hero a gutter to sit in
-   instead. Only this corner: on a taller screen the buttons are far below the
+   instead. 72px, not the 60 first shipped: 60 left the headline's box ending
+   2px PAST the buttons' left edge — no glyph was covered, so the overlap test
+   read clean, but a font substitution or a longer translation would have
+   tipped it. Only this corner: on a taller screen the buttons are far below the
    headline and the hero stays centred. */
 @media (max-height: 480px) and (max-width: 700px) {
-  .hero-center { padding-right: 60px; }
+  .hero-center { padding-right: 72px; }
 }
 
 /* Compliance disclaimer — legally load-bearing, keep visible (not a footnote
