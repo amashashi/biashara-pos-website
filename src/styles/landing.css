@@ -575,6 +575,38 @@ section { position: relative; }
 .chat-input .send svg { width: 18px; height: 18px; }
 @media (max-width: 560px) { .chat-panel { left: 12px; right: 12px; width: auto; bottom: 164px; } .fab-bot { right: 16px; bottom: 86px; } .fab-wa { right: 16px; } }
 
+/* Short viewports — a phone held in landscape, mainly. The launchers stack
+   152px tall (24 + 58 + 12 + 58), which is 42% of a 360px-high screen, so the
+   pair reaches into the middle of the hero: measured at 564x293, the WhatsApp
+   button sat on the words "Every vertical." Shrinking to 48px and tightening
+   the gap costs 104px instead of 152, and the pair stays in the right-hand
+   gutter: at 740x360 the hero's text ends at x=672, leaving 68px — room for
+   one column, not two. Side by side was tried and moved the second button
+   LEFT into that text, which is worse. Keyed on height, not width: a
+   landscape phone is wide.
+   The tips go: there is no room for them and they would cover more than the
+   buttons do. The panel has to flex too, because .chat-body's fixed 330px is
+   taller than the whole viewport here. */
+@media (max-height: 480px) {
+  .fab { width: 48px; height: 48px; bottom: 14px; }
+  .fab svg { width: 24px; height: 24px; }
+  .fab-wa { right: 14px; }
+  .fab-bot { right: 14px; bottom: 70px; }
+  .fab-tip { display: none; }
+  .chat-panel { top: 12px; bottom: 70px; right: 14px; }
+  .chat-body { height: auto; flex: 1 1 auto; min-height: 0; }
+}
+
+/* Narrow AND short — an iPhone SE-sized phone on its side (568x320). There the
+   hero's own text runs to within 28px of the right edge, and a 48px button
+   cannot fit in 28px; 44px is the smallest touch target worth shipping, so no
+   corner placement clears the headline. Give the hero a gutter to sit in
+   instead. Only this corner: on a taller screen the buttons are far below the
+   headline and the hero stays centred. */
+@media (max-height: 480px) and (max-width: 700px) {
+  .hero-center { padding-right: 60px; }
+}
+
 /* Compliance disclaimer — legally load-bearing, keep visible (not a footnote
    buried in the footer). Sits under the standards grid. */
 .comp-note {
