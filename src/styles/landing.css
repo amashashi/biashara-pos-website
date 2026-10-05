@@ -610,6 +610,17 @@ section { position: relative; }
   .hero-center { padding-right: 72px; }
 }
 
+/* The same gutter for the vertical pages. Their hero is .vhero, a two-column
+   grid, not the centred .hero-center — so the rule above never reached them
+   and all seven still had both buttons sitting on the h1 and the lead. No
+   width bound here: .vhero stacks to one column below 880px, and above that
+   the copy is the left column, where 72px of padding costs nothing. Unlike the
+   centred hero, the whole 72px lands in the right gutter here, because the
+   column is left-aligned. */
+@media (max-height: 480px) {
+  .vhero-copy { padding-right: 72px; }
+}
+
 /* Compliance disclaimer — legally load-bearing, keep visible (not a footnote
    buried in the footer). Sits under the standards grid. */
 .comp-note {
