@@ -12,6 +12,7 @@ import restaurant from '../assets/verticals/restaurant.jpg';
 import hospital from '../assets/verticals/hospital.jpg';
 import pharmacy from '../assets/verticals/pharmacy.jpg';
 import barbershop from '../assets/verticals/barbershop.jpg';
+import bakery from '../assets/verticals/bakery.jpg';
 
 export interface VerticalFAQ {
   q: string;
@@ -53,14 +54,13 @@ export interface Vertical {
   /** 4 industry-specific FAQs (also rendered as FAQPage JSON-LD). */
   faqs: VerticalFAQ[];
   /**
-   * Hero photo from src/assets/verticals/. Optional: bakery ships without one
-   * because no bakery photo exists in either repo, and a retail shelf standing
-   * in for a bakery would be a picture of the wrong business. The page draws a
-   * branded panel instead — see .vhero-blank. Drop bakery.jpg in beside the
-   * others and add it here to switch over; nothing else needs touching.
+   * Hero photo from src/assets/verticals/. Optional: a vertical without one
+   * draws a branded panel instead (.vhero-blank / .vimg-blank) rather than
+   * borrowing another industry's photograph. All seven have one today; the
+   * fallback stays for the next vertical added before its photo arrives.
    */
   photo?: ImageMetadata;
-  /** Alt text for the hero photo — written ahead of the photo for bakery. */
+  /** Alt text for the hero photo. */
   alt: string;
   /** Three sample till lines, shown on the device screens for this vertical. */
   tillItems: { label: string; price: string }[];
@@ -313,7 +313,8 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       en: 'Know the cost and the margin of every loaf and cake, carry a use-by date on each batch, and sell at the counter or from an online shop with pickup and delivery.',
       sw: 'Jua gharama na faida ya kila mkate na keki, fuatilia kila bechi na tarehe yake ya mwisho ya matumizi, na uuze kaunta au mtandaoni — mteja achukue mwenyewe au umpelekee.',
     },
-    alt: 'Fresh bread and cakes on the counter of a Tanzanian bakery',
+    photo: bakery,
+    alt: 'A baker handing a bag of pastries across the counter of a Tanzanian bakery',
     tillItems: [
       { label: 'Mkate wa ngano', price: '2,500' },
       { label: 'Maandazi ×6', price: '3,000' },
