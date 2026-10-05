@@ -211,6 +211,17 @@ const faqPageJsonLd = {
               ['Bed / day', '60,000', '#e9e7fb'], ['Wound Dressing', '6,000', '#fbeedd']
             ]
           },
+          bakery: {
+            // Net/sales/tx match the bakery vertical page's sample figures, so the
+            // picker and /pos-for-bakery/ do not quote the same shop differently.
+            cat: 'Bakery · POS', mode: 'Counter & cabinet', tag: 'Recipes & use-by',
+            net: '+TZS 1,900', sales: 'TZS 318,000', tx: '64',
+            products: [
+              ['Mkate wa Ngano', '2,500', '#fdf3df'], ['Maandazi', '500', '#fbeedd'],
+              ['Keki ya Ndizi', '12,000', '#e9e7fb'], ['Croissant', '2,500', '#fdf3df'],
+              ['Scones', '1,500', '#dcefe6'], ['Donati', '1,000', '#d9f0f6']
+            ]
+          },
           pharmacy: {
             cat: 'Pharmacy · POS', mode: 'Dispensary', tag: 'Expiry & batches',
             net: '+TZS 5,100', sales: 'TZS 392,000', tx: '29',
