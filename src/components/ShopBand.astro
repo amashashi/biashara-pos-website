@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import shopfront from '../assets/band/shopfront.jpg';
+
+/**
+ * Full-bleed photograph, used as a breath in the densest stretch of the page.
+ *
+ * Deliberately has no text over it and no scrim. DESIGN_SYSTEM.md: "Industry
+ * photography is full-color, warm, real Tanzanian interiors (no filters, no
+ * duotone)" — so the picture is shown as it is. Anything laid over it would
+ * either need a scrim (a filter by another name) or fail the 4.5:1 the system
+ * asks for, because contrast over a photograph moves with the photograph.
+ *
+ * It also carries no caption claiming the business is a customer. It is an
+ * illustration of the trade, not a reference.
+ */
+---
+<section class="band" aria-hidden="true">
+  <Image
+    src={shopfront}
+    alt=""
+    widths={[800, 1200, 1916]}
+    sizes="100vw"
+    loading="lazy"
+    decoding="async"
+  />
+</section>
