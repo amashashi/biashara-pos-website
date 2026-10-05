@@ -1,8 +1,13 @@
 ---
 const apiUrl = import.meta.env.PUBLIC_CHAT_API_URL ?? '';
 const WA = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%20BiasharaPOS';
+
+/**
+ * The launcher sits on the right rail, stacked above the WhatsApp button —
+ * see .fab-bot in landing.css. It is not bottom-left any more: there it
+ * overlapped body copy for most of the home page.
+ */
 ---
-<!-- Floating bot FAB (left) -->
 <button class="fab fab-bot" id="botFab" aria-label="Open Biashara Bot chat">
   <span class="pulse"></span>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

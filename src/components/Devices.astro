@@ -3,6 +3,11 @@ import { Image } from 'astro:assets';
 import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
 import v3Back from '../assets/devices/sunmi-v3-plus-back.webp';
 import flex3 from '../assets/devices/sunmi-flex3.webp';
+import { kdsTickets, kdsVisible } from '../data/kds-tickets';
+
+/** Kitchen tickets come from one list so the "N live" counter cannot drift
+ *  from the number of cards drawn — it already had. */
+const tix = kdsTickets.slice(0, kdsVisible);
 
 /**
  * SUNMI V3 PLUS: the real product render. The drawn version was
@@ -76,16 +81,11 @@ import flex3 from '../assets/devices/sunmi-flex3.webp';
         <div class="flex-shot">
           <Image src={flex3} alt="SUNMI FLEX 3 counter display running the BiasharaPOS kitchen screen" widths={[300, 600]} sizes="300px" loading="lazy" />
           <div class="flex-screen" aria-hidden="true">
-            <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>4 live</span></div>
+            <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>{tix.length} live</span></div>
             <div class="kds-cards">
-              <div class="kc ok"><b>Meza D5</b><span>Nyama Choma ×2</span><span>Chips Mayai</span><em>02:10</em></div>
-              <div class="kc warn"><b>Meza A3</b><span>Pilau ×2</span><span>Chapati ×4</span><em>06:48</em></div>
-              <div class="kc late"><b>Takeaway 114</b><span>Mishkaki ×3</span><em>11:25</em></div>
-              <div class="kc ok"><b>Meza C2</b><span>Samaki wa Kupaka</span><em>01:04</em></div>
-              <div class="kc warn"><b>Meza B7</b><span>Wali Nyama ×2</span><span>Mchuzi wa Samaki</span><em>07:32</em></div>
-              <div class="kc ok"><b>Meza A1</b><span>Chipsi Kuku</span><span>Soda ×3</span><em>03:18</em></div>
-              <div class="kc late"><b>Delivery 0042</b><span>Pilau ×4</span><span>Kachumbari</span><em>14:06</em></div>
-              <div class="kc ok"><b>Meza D2</b><span>Ugali Nyama</span><em>00:42</em></div>
+              {tix.map((t) => (
+                <div class={`kc ${t.state}`}><b>{t.table}</b>{t.items.map((i) => <span>{i}</span>)}<em>{t.elapsed}</em></div>
+              ))}
             </div>
           </div>
         </div>

@@ -523,16 +523,21 @@ section { position: relative; }
 .fab { position: fixed; bottom: 24px; width: 58px; height: 58px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; border: none; box-shadow: 0 12px 30px -8px rgba(18,32,25,.42); z-index: 70; transition: transform .16s ease, box-shadow .2s ease; }
 .fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 18px 38px -10px rgba(18,32,25,.5); }
 .fab svg { width: 30px; height: 30px; color: #fff; }
+/* Both launchers share the right rail, stacked. The bot used to sit bottom-left,
+   where it covered body copy at 8 of 32 scroll positions down the home page —
+   the modules heading, the restaurant bullets and the footer line among them.
+   Stacked here it covers text at 2. 94px = 24 (WhatsApp bottom) + 58 (its
+   height) + 12 (gap); the tip and panel offsets below are derived from it. */
 .fab-wa { right: 24px; background: #25d366; }
-.fab-bot { left: 24px; background: linear-gradient(145deg, var(--blue), var(--green)); }
+.fab-bot { right: 24px; bottom: 94px; background: linear-gradient(145deg, var(--blue), var(--green)); }
 .fab .pulse { position: absolute; top: -3px; right: -3px; width: 16px; height: 16px; border-radius: 999px; background: var(--gold); border: 2px solid var(--surface); box-shadow: 0 0 0 0 rgba(240,169,58,.6); animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(240,169,58,.55); } 70% { box-shadow: 0 0 0 10px rgba(240,169,58,0); } 100% { box-shadow: 0 0 0 0 rgba(240,169,58,0); } }
 .fab-tip { position: fixed; bottom: 38px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; padding: 7px 12px; border-radius: 9px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .18s; z-index: 70; }
 .fab-wa:hover ~ .tip-wa, .fab-bot:hover ~ .tip-bot { opacity: 1; }
-.tip-wa { right: 92px; } .tip-bot { left: 92px; }
+.tip-wa { right: 92px; } .tip-bot { right: 92px; bottom: 108px; }
 
 /* chat panel */
-.chat-panel { position: fixed; bottom: 92px; left: 24px; width: 350px; max-width: calc(100vw - 32px); background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--sh-lg); overflow: hidden; z-index: 72; display: flex; flex-direction: column; transform-origin: bottom left; opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+.chat-panel { position: fixed; bottom: 162px; right: 24px; width: 350px; max-width: calc(100vw - 32px); background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--sh-lg); overflow: hidden; z-index: 72; display: flex; flex-direction: column; transform-origin: bottom right; opacity: 0; transform: translateY(12px) scale(.96); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
 .chat-panel.open { opacity: 1; transform: none; pointer-events: auto; }
 .chat-head { background: linear-gradient(135deg, var(--blue-d), var(--green-d)); color: #fff; padding: 15px 16px; display: flex; align-items: center; gap: 11px; }
 .chat-head .ava { width: 40px; height: 40px; border-radius: 999px; background: rgba(255,255,255,.18); display: grid; place-items: center; flex: none; }
@@ -556,7 +561,7 @@ section { position: relative; }
 .chat-input .send { width: 42px; height: 42px; flex: none; border-radius: 999px; border: none; background: var(--green); color: #fff; cursor: pointer; display: grid; place-items: center; }
 .chat-input .send:hover { background: var(--green-d); }
 .chat-input .send svg { width: 18px; height: 18px; }
-@media (max-width: 560px) { .chat-panel { left: 12px; bottom: 88px; } .fab-bot { left: 16px; } .fab-wa { right: 16px; } }
+@media (max-width: 560px) { .chat-panel { left: 12px; right: 12px; width: auto; bottom: 164px; } .fab-bot { right: 16px; bottom: 86px; } .fab-wa { right: 16px; } }
 
 /* Compliance disclaimer — legally load-bearing, keep visible (not a footnote
    buried in the footer). Sits under the standards grid. */
@@ -667,7 +672,7 @@ section { position: relative; }
 .hero-stage .hs-flex {
   position: absolute;
   right: 0; bottom: 64px;
-  width: 340px;
+  --flex-w: 340;
   z-index: 1;
 }
 .hero-stage .hs-flex img { filter: drop-shadow(0 26px 36px rgba(18,32,25,.26)); }
@@ -688,7 +693,6 @@ section { position: relative; }
   /* decoration only — must never intercept a click meant for the CTA */
   pointer-events: none;
 }
-/* 196px, matching the scale baked into .v3-shot .screen-space */
 .hero-stage .hs-term { position: relative; z-index: 2; --v3-w: 174; margin-right: 208px; }
 .hero-stage .hs-term img { filter: drop-shadow(0 30px 40px rgba(18,32,25,.30)); }
 .hero-stage .hs-phone {
@@ -830,32 +834,41 @@ section { position: relative; }
    Flat front elevation, so the screen is axis-aligned: the overlay is
    positioned in percentages rather than a matrix3d. The inset comes from the
    panel's 16mm bezel and lands on a 16:9 active area, matching 1920x1080. */
-.flex-shot { position: relative; width: 300px; }
+/* --flex-w is the drawing's width in px, unitless; --fu is one unit of the
+   screen's own scale, derived from it. Every size inside .flex-screen is a
+   multiple of --fu, so a narrower shot shrinks the tickets with it and one
+   ticket count fills the screen on all three surfaces. Before this the type
+   was fixed px while the screen scaled with the image, so the same grid sat
+   at 86% of one screen and overflowed another by 41px. Set --flex-w, never
+   width. Same reasoning as --v3-w above.
+   The 328 divisor is tuned, not arbitrary: it is the value at which the 12
+   tickets (3 rows of 4) land just inside the screen instead of 7% past it. */
+.flex-shot { --flex-w: 300; --fu: calc(var(--flex-w) / 328 * 1px); position: relative; width: calc(var(--flex-w) * 1px); }
 .flex-shot img { width: 100%; height: auto; display: block; filter: drop-shadow(0 22px 30px rgba(18,32,25,.3)); }
 .flex-shot .flex-screen {
   position: absolute;
   left: 3.71%; top: 6.50%; width: 92.16%; height: 86.85%;
   background: #f7f9fb;
   display: flex; flex-direction: column;
-  padding: 4px 5px 5px;
+  padding: calc(4 * var(--fu)) calc(5 * var(--fu)) calc(5 * var(--fu));
   overflow: hidden;
 }
-.flex-shot .kds-tabs { display: flex; align-items: center; gap: 3px; }
+.flex-shot .kds-tabs { display: flex; align-items: center; gap: calc(3 * var(--fu)); }
 .flex-shot .kds-tabs i {
-  font-style: normal; font-size: 5px; font-weight: 800; padding: 2px 5px; border-radius: 3px;
+  font-style: normal; font-size: calc(5 * var(--fu)); font-weight: 800; padding: calc(2 * var(--fu)) calc(5 * var(--fu)); border-radius: calc(3 * var(--fu));
   background: #e6ebf0; color: var(--ink-3);
 }
 .flex-shot .kds-tabs i.on { background: var(--ink); color: #fff; }
-.flex-shot .kds-tabs span { margin-left: auto; font-size: 4.5px; font-weight: 800; color: var(--green-d); }
-.flex-shot .kds-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin-top: 4px; align-content: start; }
+.flex-shot .kds-tabs span { margin-left: auto; font-size: calc(4.5 * var(--fu)); font-weight: 800; color: var(--green-d); }
+.flex-shot .kds-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: calc(4 * var(--fu)); margin-top: calc(4 * var(--fu)); align-content: start; }
 .flex-shot .kc {
-  background: #fff; border-radius: 3px; padding: 4px; border-top: 2.5px solid;
-  display: flex; flex-direction: column; gap: 1.5px;
+  background: #fff; border-radius: calc(3 * var(--fu)); padding: calc(4 * var(--fu)); border-top: calc(2.5 * var(--fu)) solid;
+  display: flex; flex-direction: column; gap: calc(1.5 * var(--fu));
   box-shadow: 0 1px 2px rgba(18,32,25,.12);
 }
-.flex-shot .kc b { font-size: 5.5px; }
-.flex-shot .kc span { font-size: 4.5px; color: var(--ink-2); }
-.flex-shot .kc em { font-style: normal; margin-top: 2px; font-size: 5.5px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.flex-shot .kc b { font-size: calc(5.5 * var(--fu)); }
+.flex-shot .kc span { font-size: calc(4.5 * var(--fu)); color: var(--ink-2); }
+.flex-shot .kc em { font-style: normal; margin-top: calc(2 * var(--fu)); font-size: calc(5.5 * var(--fu)); font-weight: 800; font-variant-numeric: tabular-nums; }
 .flex-shot .kc.ok { border-color: #2fa84f; } .flex-shot .kc.ok em { color: #2fa84f; }
 .flex-shot .kc.warn { border-color: #e7a52c; } .flex-shot .kc.warn em { color: #b9791a; }
 .flex-shot .kc.late { border-color: #e2574c; } .flex-shot .kc.late em { color: #c7382c; }
@@ -869,20 +882,20 @@ section { position: relative; }
   gap: clamp(24px, 5vw, 64px); flex-wrap: wrap; margin-top: 44px;
 }
 /* FLEX 3 as a counter till rather than a kitchen screen */
-.flex-shot .vflex-till { display: flex; gap: 4px; margin-top: 4px; flex-grow: 1; }
-.flex-shot .vt-rows { flex-grow: 1; display: flex; flex-direction: column; gap: 3px; }
-.flex-shot .vt-rows div { display: flex; justify-content: space-between; font-size: 5px; color: var(--ink-2); }
+.flex-shot .vflex-till { display: flex; gap: calc(4 * var(--fu)); margin-top: calc(4 * var(--fu)); flex-grow: 1; }
+.flex-shot .vt-rows { flex-grow: 1; display: flex; flex-direction: column; gap: calc(3 * var(--fu)); }
+.flex-shot .vt-rows div { display: flex; justify-content: space-between; font-size: calc(5 * var(--fu)); color: var(--ink-2); }
 .flex-shot .vt-rows div b { color: var(--ink); font-weight: 700; }
-.flex-shot .vt-side { width: 38%; display: flex; flex-direction: column; gap: 3px; }
+.flex-shot .vt-side { width: 38%; display: flex; flex-direction: column; gap: calc(3 * var(--fu)); }
 .flex-shot .vt-total, .flex-shot .vt-profit {
-  background: #fff; border-radius: 2.5px; padding: 4px 5px;
-  display: flex; flex-direction: column; gap: 1px;
+  background: #fff; border-radius: calc(2.5 * var(--fu)); padding: calc(4 * var(--fu)) calc(5 * var(--fu));
+  display: flex; flex-direction: column; gap: calc(1 * var(--fu));
 }
-.flex-shot .vt-total span, .flex-shot .vt-profit span { font-size: 4.2px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
-.flex-shot .vt-total b { font-size: 8px; letter-spacing: -.02em; }
+.flex-shot .vt-total span, .flex-shot .vt-profit span { font-size: calc(4.2 * var(--fu)); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.flex-shot .vt-total b { font-size: calc(8 * var(--fu)); letter-spacing: -.02em; }
 .flex-shot .vt-profit { background: var(--green-50); }
 .flex-shot .vt-profit span { color: var(--green-dd); }
-.flex-shot .vt-profit b { font-size: 7px; color: var(--green-dd); }
+.flex-shot .vt-profit b { font-size: calc(7 * var(--fu)); color: var(--green-dd); }
 
 /* Hardware strip under the Industries grid. Smaller than the Devices section's
    stage on purpose — it is a supporting note to the grid, not a second
@@ -897,7 +910,7 @@ section { position: relative; }
 .indev-pair { display: flex; align-items: flex-end; gap: clamp(20px, 3vw, 40px); }
 .indev-one { display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .indev-one .v3-shot { --v3-w: 164; }
-.indev-one .flex-shot { width: 260px; }
+.indev-one .flex-shot { --flex-w: 260; }
 .indev-cap { font-size: 13px; font-weight: 600; color: var(--ink-3); text-align: center; }
 @media (max-width: 900px) {
   .indev { grid-template-columns: 1fr; }
@@ -905,5 +918,5 @@ section { position: relative; }
 }
 @media (max-width: 560px) {
   .indev-pair { flex-direction: column; align-items: center; gap: 30px; }
-  .indev-one .flex-shot { width: min(100%, 280px); }
+  .indev-one .flex-shot { --flex-w: 260; }
 }
