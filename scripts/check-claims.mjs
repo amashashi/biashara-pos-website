@@ -46,9 +46,17 @@ const RULES = [
     instead: 'say nothing about a queue, or describe the till and the per-person sales report',
   },
   {
-    pattern: /book (?:regulars|appointments)|appointment (?:diary|booking|reminders)|SMS reminders cut|colour-coded per barber|color-coded per barber/i,
+    pattern: /book (?:regulars|appointments)|appointment (?:diary|booking|reminders)|SMS reminders cut|colour-coded per barber|color-coded per barber|queue, ?appointments/i,
     why: 'There is no appointment booking and no appointment reminder.',
     instead: 'say nothing about appointments; the Reservations screen is restaurant-only',
+  },
+  {
+    // public/demo/barbershop is a prototype with Queue and Appointments screens.
+    // Its banner called it "the real thing" and "the full barbershop POS" while
+    // the page beside it said those features do not exist.
+    pattern: /the full [a-z]+ POS|click around the real thing|explore the full/i,
+    why: 'The bundled demo is a prototype. It shows screens the product does not have, so it is not "the real thing" or "the full POS".',
+    instead: 'do not present the demo as the product; link the app itself',
   },
   {
     pattern: /TRA[-\s]?compliant|accepted by TRA|approved by TRA|recognis(?:ed|ed) by (?:the )?TRA|recognized by Tanzania Revenue|registered with TRA/i,
