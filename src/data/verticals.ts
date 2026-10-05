@@ -26,9 +26,9 @@ export interface VerticalFeature {
 }
 
 export interface Vertical {
-  slug: 'clothing' | 'retail' | 'restaurant' | 'hospital' | 'pharmacy' | 'barbershop';
+  slug: 'clothing' | 'retail' | 'restaurant' | 'hospital' | 'pharmacy' | 'barbershop' | 'bakery';
   /** Used by Industries badge gradient (.v-cloth / .v-retail / etc.). */
-  badgeKey: 'cloth' | 'retail' | 'resto' | 'hosp' | 'pharm' | 'barber';
+  badgeKey: 'cloth' | 'retail' | 'resto' | 'hosp' | 'pharm' | 'barber' | 'bakery';
   /** English + Swahili display names. */
   name: { en: string; sw: string };
   /** Headline that doubles as the page <h1>. */
@@ -37,6 +37,13 @@ export interface Vertical {
   seoTitle: string;
   /** SEO description (~150 chars). */
   seoDescription: string;
+  /**
+   * The vertical's identity glyph (inline SVG path content, 24x24, stroke
+   * only). Lived as a slug-keyed map inside Industries.astro, where the hero
+   * could not reach it and fell back to the first feature's icon — which is
+   * why a bakery with no photo showed a recipe card.
+   */
+  icon: string;
   /** Short blurb used on the Industries card. */
   shortDesc: { en: string; sw: string };
   /** Hero subhead on the dedicated page (1–2 sentences). */
@@ -45,9 +52,15 @@ export interface Vertical {
   features: VerticalFeature[];
   /** 4 industry-specific FAQs (also rendered as FAQPage JSON-LD). */
   faqs: VerticalFAQ[];
-  /** Hero photo from src/assets/verticals/. */
-  photo: ImageMetadata;
-  /** Alt text for the hero photo. */
+  /**
+   * Hero photo from src/assets/verticals/. Optional: bakery ships without one
+   * because no bakery photo exists in either repo, and a retail shelf standing
+   * in for a bakery would be a picture of the wrong business. The page draws a
+   * branded panel instead — see .vhero-blank. Drop bakery.jpg in beside the
+   * others and add it here to switch over; nothing else needs touching.
+   */
+  photo?: ImageMetadata;
+  /** Alt text for the hero photo — written ahead of the photo for bakery. */
   alt: string;
   /** Three sample till lines, shown on the device screens for this vertical. */
   tillItems: { label: string; price: string }[];
@@ -61,6 +74,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   clothing: {
     slug: 'clothing',
     badgeKey: 'cloth',
+    icon: '<path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/>',
     name: { en: 'Clothing', sw: 'Nguo' },
     headline: { en: 'POS for clothing boutiques in Tanzania', sw: 'POS kwa maduka ya nguo Tanzania' },
     seoTitle: 'POS for Clothing Boutiques in Tanzania | BiasharaPOS',
@@ -99,6 +113,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   retail: {
     slug: 'retail',
     badgeKey: 'retail',
+    icon: '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
     name: { en: 'Retail', sw: 'Rejareja' },
     headline: { en: 'POS for retail shops & supermarkets in Tanzania', sw: 'POS kwa maduka ya rejareja na supermarket Tanzania' },
     seoTitle: 'POS for Retail Shops & Supermarkets in Tanzania | BiasharaPOS',
@@ -136,6 +151,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   restaurant: {
     slug: 'restaurant',
     badgeKey: 'resto',
+    icon: '<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>',
     name: { en: 'Restaurant', sw: 'Mgahawa' },
     headline: { en: 'POS for restaurants & cafés in Tanzania', sw: 'POS kwa migahawa Tanzania' },
     seoTitle: 'POS for Restaurants & Cafés in Tanzania | BiasharaPOS',
@@ -173,6 +189,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   hospital: {
     slug: 'hospital',
     badgeKey: 'hosp',
+    icon: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>',
     name: { en: 'Hospital', sw: 'Hospitali' },
     headline: { en: 'POS & billing for clinics and hospitals in Tanzania', sw: 'POS na bili kwa zahanati na hospitali Tanzania' },
     seoTitle: 'POS & Billing for Clinics & Hospitals in Tanzania | BiasharaPOS',
@@ -209,6 +226,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   pharmacy: {
     slug: 'pharmacy',
     badgeKey: 'pharm',
+    icon: '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/>',
     name: { en: 'Pharmacy', sw: 'Duka la Dawa' },
     headline: { en: 'POS for pharmacies & drug stores in Tanzania', sw: 'POS kwa maduka ya dawa Tanzania' },
     seoTitle: 'POS for Pharmacies & Drug Stores in Tanzania | BiasharaPOS',
@@ -246,6 +264,7 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
   barbershop: {
     slug: 'barbershop',
     badgeKey: 'barber',
+    icon: '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>',
     name: { en: 'Barbershop', sw: 'Kinyozi' },
     headline: { en: 'POS for barbershops & salons in Tanzania', sw: 'POS kwa vinyozi na saluni Tanzania' },
     seoTitle: 'POS for Barbershops & Salons in Tanzania | BiasharaPOS',
@@ -277,6 +296,43 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       { q: 'How are commissions and tips calculated?', a: 'Set a commission percentage per barber. Every service sale is split automatically between shop and barber, and tips are tracked separately per barber.' },
       { q: 'Can I sell products like pomade and beard oil too?', a: 'Yes — services and retail products go on the same audit-ready receipt, and product stock is tracked with low-stock alerts.' },
       { q: 'Does it handle walk-ins and appointments together?', a: 'Yes — walk-ins join the live queue while booked appointments hold their slot. The queue reorders automatically so nobody loses their place.' },
+    ],
+  },
+
+  bakery: {
+    slug: 'bakery',
+    badgeKey: 'bakery',
+    icon: '<path d="M3.5 12.5a8.5 5.5 0 0 1 17 0V17a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2z"/><path d="M9 10.8 7.4 14M12.2 10.3l-1.6 3.2M15.4 10.8l-1.6 3.2"/>',
+    name: { en: 'Bakery', sw: 'Bakeri' },
+    headline: { en: 'POS for bakeries & cake shops in Tanzania', sw: 'POS kwa maduka ya mikate na keki Tanzania' },
+    seoTitle: 'POS for Bakeries & Cake Shops in Tanzania | BiasharaPOS',
+    seoDescription:
+      'BiasharaPOS — the POS for Tanzanian bakeries and cake shops. Cost and margin per loaf, a use-by date on every batch, a counter that sells offline, and online orders.',
+    shortDesc: { en: 'Recipe cost, batches & delivery.', sw: 'Gharama za mapishi, bechi na usafirishaji.' },
+    heroSubhead: {
+      en: 'Know the cost and the margin of every loaf and cake, carry a use-by date on each batch, and sell at the counter or from an online shop with pickup and delivery.',
+      sw: 'Jua gharama na faida ya kila mkate na keki, fuatilia kila bechi na tarehe yake ya mwisho ya matumizi, na uuze kaunta au mtandaoni — mteja achukue mwenyewe au umpelekee.',
+    },
+    alt: 'Fresh bread and cakes on the counter of a Tanzanian bakery',
+    tillItems: [
+      { label: 'Mkate wa ngano', price: '2,500' },
+      { label: 'Maandazi ×6', price: '3,000' },
+      { label: 'Keki ya ndizi', price: '12,000' },
+    ],
+    sampleNet: '+TZS 1,900',
+    sampleSales: 'TZS 318,000',
+    sampleTx: '64',
+    features: [
+      { icon: '<path d="M6 2h12v20H6z"/><path d="M9 7h6M9 11h6M9 15h4"/>', title: 'Cost and margin per item', desc: 'Enter a recipe once — flour, sugar, yeast, gas — and every loaf, bun and cake shows what it costs you and what it earns. Selling one draws its ingredients out of stock.' },
+      { icon: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18M8 15h2M13 15h3"/>', title: 'A use-by date on every batch', desc: 'Each batch carries its own date, and the earliest date is the one sold first at the counter. Low-stock alerts warn you before the shelf is empty.' },
+      { icon: '<rect x="2" y="7" width="20" height="12" rx="2"/><path d="M6 11h6M6 15h3M17 11v4"/>', title: 'The counter sells without the network', desc: 'The till keeps taking sales when the connection drops and syncs them when it returns. Every sale is issued with a fiscal receipt number.' },
+      { icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18-3-3-3-15 0-18"/>', title: 'An online shop, pickup or delivery', desc: 'Put the same stock online. Customers order for collection, or pick a delivery area that carries its own fee and its own minimum order.' },
+    ],
+    faqs: [
+      { q: 'Can I see what a loaf actually costs me?', a: 'Yes. Enter the recipe once and every item shows its cost and its margin. Selling one draws its flour, sugar and butter out of stock, so the figure moves with your real ingredient prices.' },
+      { q: 'Can I put a use-by date on each batch?', a: 'Yes. Every batch carries its own use-by date, and the batch expiring first is the one sold first at the counter. Low-stock alerts tell you before you run out.' },
+      { q: 'Does it plan my daily production or record what I threw away?', a: 'No, and that is worth saying plainly. BiasharaPOS does not plan production runs and does not record end-of-day wastage. What it gives you is the cost, the margin and the stock movement on everything you do sell.' },
+      { q: 'Can customers order a cake from me online?', a: 'Yes, through your own online shop — for collection at the counter, or for delivery in an area you draw yourself, with the fee and the minimum order you set.' },
     ],
   },
 };

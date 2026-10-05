@@ -33,6 +33,13 @@ const breadcrumbJsonLd = {
 };
 
 const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => verticals[s]);
+
+/**
+ * A vertical without a photo draws a branded panel instead (.vhero-blank).
+ * Only bakery is in that state: no bakery photo exists in either repo, and
+ * borrowing the retail shelf would put the wrong business on the page. Adding
+ * src/assets/verticals/bakery.jpg and its `photo` entry switches it over.
+ */
 ---
 <Layout
   title={v.seoTitle}
@@ -65,17 +72,25 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
             <span class="tick"><span class="ic">✓</span><span data-en="Free up to 1,000 sales/mo" data-sw="Bure hadi mauzo 1,000/mwezi">Free up to 1,000 sales/mo</span></span>
           </div>
         </div>
-        <div class="vhero-photo reveal">
-          <Image
-            src={v.photo}
-            alt={v.alt}
-            widths={[480, 720, 960]}
-            sizes="(max-width: 880px) 100vw, 480px"
-            loading="eager"
-          />
-          <span class={`vbadge v-${v.badgeKey}`} aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={v.features[0].icon} />
-          </span>
+        <div class:list={['vhero-photo', 'reveal', !v.photo && 'vhero-blank']}>
+          {v.photo ? (
+            <Image
+              src={v.photo}
+              alt={v.alt}
+              widths={[480, 720, 960]}
+              sizes="(max-width: 880px) 100vw, 480px"
+              loading="eager"
+            />
+          ) : (
+            <div class={`vhero-mark v-${v.badgeKey}`} role="img" aria-label={v.alt}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" set:html={v.icon} />
+            </div>
+          )}
+          {v.photo && (
+            <span class={`vbadge v-${v.badgeKey}`} aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={v.icon} />
+            </span>
+          )}
         </div>
       </div>
     </section>
@@ -231,6 +246,23 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
     box-shadow: var(--sh-lg); aspect-ratio: 4 / 3; background: var(--green-50);
   }
   .vhero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* A vertical with no photo yet. Deliberately not a grey box with a broken
+     image in it: the panel carries the vertical's own badge colour and its
+     icon, so the page reads as finished while the photograph is outstanding.
+     Delete nothing here when the photo lands — .vhero-blank simply stops
+     being applied. */
+  .vhero-blank { background: var(--surface); border: 1px solid var(--line); }
+  .vhero-blank .vhero-mark {
+    width: 100%; height: 100%; display: grid; place-items: center; color: #fff;
+    -webkit-mask-image: none;
+  }
+  .vhero-blank .vhero-mark svg { width: 34%; height: 34%; opacity: .92; }
+  .vhero-blank .vhero-mark::after {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(70% 60% at 50% 0%, rgba(255,255,255,.22), transparent 70%);
+    pointer-events: none;
+  }
   .vhero-photo .vbadge {
     position: absolute; top: 18px; left: 18px;
     width: 44px; height: 44px; border-radius: 12px;

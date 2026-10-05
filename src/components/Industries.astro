@@ -9,14 +9,6 @@ import { kdsTickets, kdsVisible } from '../data/kds-tickets';
  *  from the number of cards drawn — it already had. */
 const tix = kdsTickets.slice(0, kdsVisible);
 
-const cardIcons: Record<string, string> = {
-  clothing:  '<path d="M16 3l4 4-3 2v10H7V9L4 7l4-4 2 2h4l2-2z"/>',
-  retail:    '<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
-  restaurant:'<path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 0-3 2-3 5s1 4 3 4v9"/>',
-  hospital:  '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/>',
-  pharmacy:  '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M12 11v5M9.5 13.5h5"/>',
-  barbershop:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/>',
-};
 
 /**
  * Hardware strip. Deliberately not another "every device" line — the
@@ -40,15 +32,20 @@ const cardIcons: Record<string, string> = {
         const v = verticals[slug];
         return (
           <a class="vcard reveal" href={`/pos-for-${v.slug}`} aria-label={`${v.name.en} POS — learn more`}>
-            <div class="vimg">
-              <Image
-                src={v.photo}
-                alt={v.alt}
-                widths={[320, 480, 640, 800]}
-                sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, (max-width: 1080px) 33vw, 220px"
-                loading="lazy"
-              />
-              <span class={`vbadge v-${v.badgeKey}`} set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${cardIcons[v.slug]}</svg>`}></span>
+            <div class:list={['vimg', !v.photo && 'vimg-blank']}>
+              {v.photo ? (
+                <Image
+                  src={v.photo}
+                  alt={v.alt}
+                  widths={[320, 480, 640, 800]}
+                  sizes="(max-width: 560px) 100vw, (max-width: 880px) 50vw, (max-width: 1080px) 33vw, 220px"
+                  loading="lazy"
+                />
+              ) : (
+                <span class={`vimg-mark v-${v.badgeKey}`} role="img" aria-label={v.alt}
+                  set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">${v.icon}</svg>`}></span>
+              )}
+              <span class={`vbadge v-${v.badgeKey}`} set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${v.icon}</svg>`}></span>
             </div>
             <div class="vbody">
               <h3 data-en={v.name.en} data-sw={v.name.sw}>{v.name.en}</h3>

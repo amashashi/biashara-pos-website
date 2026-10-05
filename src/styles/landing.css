@@ -243,7 +243,10 @@ section { position: relative; }
 .pay img.pay-mixx { max-height: 34px; border-radius: 6px; }
 
 /* ---------- vertical cards ---------- */
-.vgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+/* auto-fit, not a fixed 6: the grid was hard-coded to six columns and the
+   seventh vertical (bakery) landed alone on a second row. This fills the row
+   and reflows at every width instead of orphaning whatever comes last. */
+.vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(138px, 1fr)); gap: 16px; }
 .vcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; transition: transform .18s, box-shadow .22s; display: flex; flex-direction: column; }
 .vcard:hover { transform: translateY(-5px); box-shadow: var(--sh-lg); }
 .vcard .vimg { aspect-ratio: 4/3; position: relative; overflow: hidden; background: var(--green-50); }
@@ -257,6 +260,15 @@ section { position: relative; }
 .v-hosp  { background: linear-gradient(140deg, #10977c, #2faee4); }
 .v-pharm { background: linear-gradient(140deg, #0c4a85, #239b46); }
 .v-barber { background: linear-gradient(140deg, #047857, #e7a52c); }
+.v-bakery { background: linear-gradient(140deg, #b45309, #e7a52c); }
+
+/* Industry card for a vertical with no photograph yet (bakery). The tile keeps
+   the grid's shape and takes the vertical's own badge colour, so one missing
+   photo does not leave a hole in a row of six. */
+.vimg-blank .vimg-mark { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; }
+.vimg-blank .vimg-mark svg { width: 38%; height: 38%; opacity: .92; }
+/* the corner badge is the same glyph as the mark — one of them is enough */
+.vimg-blank .vbadge { display: none; }
 .vcard .vbody { padding: 16px 18px 18px; }
 .vcard h3 { font-size: 18px; }
 .vcard p { font-size: 13.5px; color: var(--ink-3); margin-top: 4px; }
