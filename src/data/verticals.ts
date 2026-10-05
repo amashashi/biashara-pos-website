@@ -313,6 +313,9 @@ export const verticals: Record<Vertical['slug'], Vertical> = {
       en: 'Know the cost and the margin of every loaf and cake, carry a use-by date on each batch, and sell at the counter or from an online shop with pickup and delivery.',
       sw: 'Jua gharama na faida ya kila mkate na keki, fuatilia kila bechi na tarehe yake ya mwisho ya matumizi, na uuze kaunta au mtandaoni — mteja achukue mwenyewe au umpelekee.',
     },
+    // Stock photography — no release needed for the faces or the apron
+    // branding in it, confirmed 2026-10-05. The other six verticals'
+    // photos have not been checked.
     photo: bakery,
     alt: 'A baker handing a bag of pastries across the counter of a Tanzanian bakery',
     tillItems: [
