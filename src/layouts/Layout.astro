@@ -272,6 +272,31 @@ const faqPageJsonLd = {
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
 
+        /* ---------- fragment fallback ---------- */
+        /* A link to /#pricing has to land on the pricing section. The browser
+           normally does this itself, but when smooth scrolling is turned off in
+           the engine the scroll request is dropped rather than falling back to
+           an instant jump — reproduced on a six-div page whose only extra style
+           was html{scroll-behavior:smooth}, so it is not something in our
+           markup. This only steps in when the browser has not moved on its own,
+           which leaves normal scrolling and back/forward restoration alone. */
+        function settleHash() {
+          var id = decodeURIComponent((location.hash || '').slice(1));
+          if (!id) return;
+          var el = document.getElementById(id);
+          if (!el) return;
+          var before = window.scrollY;
+          setTimeout(function () {
+            if (Math.abs(window.scrollY - before) > 4) return;
+            if (Math.abs(el.getBoundingClientRect().top) < 4) return;
+            /* instant, not the inherited smooth: smooth is exactly what the
+               engine dropped, so asking for it again would do nothing. */
+            el.scrollIntoView({ behavior: 'instant', block: 'start' });
+          }, 250);
+        }
+        window.addEventListener('hashchange', settleHash);
+        settleHash();
+
         /* ---------- mobile nav menu ---------- */
         var burger = document.getElementById('navBurger');
         var menu = document.getElementById('navMenu');

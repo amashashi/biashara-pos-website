@@ -1,4 +1,4 @@
-name: Claim guard
+name: Content guards
 
 # BiasharaPOS holds none of the TRA VFD / NF525 / ISO 27001 / PCI DSS
 # certifications, does not process payments, and is offline-capable only at the
@@ -35,3 +35,20 @@ jobs:
       # No dependencies — the guard is plain Node with no imports beyond node:fs.
       - name: Check marketing claims
         run: node scripts/check-claims.mjs
+
+  links:
+    name: No dead links or unreachable pages
+    runs-on: ubuntu-latest
+    # The nav and footer section links were bare #fragments, so on every page
+    # that is not the home page most of the primary nav scrolled nowhere.
+    # This builds the site and walks what actually ships.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Check links
+        run: node scripts/check-links.mjs
