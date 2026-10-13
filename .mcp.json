@@ -9,7 +9,8 @@
         "--header",
         "Api-Token:${ICECAT_API_TOKEN:-}",
         "--header",
-        "Lang-Code:en"
+        "Lang-Code:en",
+        "--enable-proxy"
       ]
     }
   }
