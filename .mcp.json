@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "icecat-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.icecat.biz",
+        "--header",
+        "Api-Token:${ICECAT_API_TOKEN:-}",
+        "--header",
+        "Lang-Code:en"
+      ]
+    }
+  }
+}

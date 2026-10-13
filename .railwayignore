@@ -19,6 +19,7 @@
 .git/
 .github/
 .claude/
+.mcp.json
 .astro/
 .snapshots/
 .vscode/
