@@ -1,84 +1,36 @@
 ---
 import { Image } from 'astro:assets';
-import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
-import flex3 from '../assets/devices/sunmi-flex3.webp';
-import { kdsTickets, kdsVisible } from '../data/kds-tickets';
-
-/** Kitchen tickets come from one list so the "N live" counter cannot drift
- *  from the number of cards drawn — it already had. */
-const tix = kdsTickets.slice(0, kdsVisible);
-
-const appUrl = 'https://app.biashara-pos.com';
-
-/**
- * Device cluster. Reuses the mock styling from the Devices section
- * (.dev-term/.dev-phone/.scrn) rather than duplicating it, and shows a
- * tighter three-device composition so the full stage further down the page
- * still has something of its own to say. No image assets involved.
- */
+import retail from '../assets/verticals/retail.jpg';
+import restaurant from '../assets/verticals/restaurant.jpg';
+import pharmacy from '../assets/verticals/pharmacy.jpg';
+const scenes = [
+ {key:'retail',label:'Retail',sw:'Maduka',photo:retail,title:'Every item. Every sale.',titleSw:'Kila bidhaa. Kila mauzo.',desc:'Barcodes, stock and your real profit — together.',descSw:'Misimbopau, stoki na faida yako halisi — pamoja.'},
+ {key:'restaurant',label:'Restaurants',sw:'Migahawa',photo:restaurant,title:'From table to kitchen.',titleSw:'Kutoka mezani hadi jikoni.',desc:'Tables, kitchen tickets and recipe costs in one place.',descSw:'Meza, oda za jikoni na gharama za mapishi sehemu moja.'},
+ {key:'pharmacy',label:'Pharmacies',sw:'Maduka ya dawa',photo:pharmacy,title:'Stay ahead of expiry.',titleSw:'Fuatilia muda wa dawa.',desc:'Track batches, expiry dates and stock with confidence.',descSw:'Fuatilia bechi, tarehe za mwisho na stoki kwa uhakika.'},
+];
 ---
-<section class="hero hero-vision">
-  <div class="wrap hero-center">
-    <div class="brand-lockup reveal"><b>Biashara</b><i>POS</i></div>
-    <div class="tagline reveal" data-en="Smart Business · Seamless Sales" data-sw="Biashara Bora · Mauzo Rahisi">Smart Business · Seamless Sales</div>
-    <h1 class="reveal" data-en='One POS. <span class="grad">Every vertical.</span>' data-sw='POS moja. <span class="grad">Kila sekta.</span>'>One POS. <span class="grad">Every vertical.</span></h1>
-    <p
-      class="hero-sub reveal"
-      data-en='A restaurant runs tables, a kitchen screen and recipe costs. A boutique runs variants and an online shop with delivery. A pharmacy runs batches and expiry. <b>Same system, same stock, same books.</b> <span class="sw">Biashara zako, mfumo mmoja.</span>'
-      data-sw='Mgahawa unaendesha meza, skrini ya jikoni na gharama za mapishi. Boutique inaendesha saizi na rangi, pamoja na duka la mtandaoni lenye usafirishaji. Duka la dawa linaendesha bechi na tarehe za kuisha kwa dawa. <b>Mfumo mmoja, stoki moja, vitabu vilevile.</b> <span class="sw">Biashara zako, mfumo mmoja.</span>'
-    >A restaurant runs tables, a kitchen screen and recipe costs. A boutique runs variants and an online shop with delivery. A pharmacy runs batches and expiry. <b>Same system, same stock, same books.</b> <span class="sw">Biashara zako, mfumo mmoja.</span></p>
-    <div class="hero-cta reveal">
-      <a class="btn btn-primary btn-lg" href={appUrl} data-en="Start for Free →" data-sw="Anza Bila Malipo →">Start for Free →</a>
-      <a class="btn btn-ghost btn-lg" href="#modules" data-en="See the modules" data-sw="Ona moduli">See the modules</a>
-    </div>
-    <div class="hero-stage reveal" aria-hidden="true">
-      <div class="hs-flex flex-shot">
-        <Image src={flex3} alt="" widths={[300, 600]} sizes="300px" loading="eager" />
-        <div class="flex-screen">
-          <div class="kds-tabs"><i class="on">Jikoni</i><i>Grill</i><i>Bar</i><span>{tix.length} live</span></div>
-          <div class="kds-cards">
-            {tix.map((t) => (
-              <div class={`kc ${t.state}`}><b>{t.table}</b>{t.items.map((i) => <span>{i}</span>)}<em>{t.elapsed}</em></div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div class="hs-term v3-shot">
-        <Image src={v3Front} alt="" widths={[196, 392]} sizes="196px" loading="eager" />
-        <div class="screen-space">
-          <div class="screen-ui">
-            <div class="su-bar"><b>Kaunta 1</b><span>live</span></div>
-            <div class="su-rows">
-              <div><span>Sukari 1kg</span><b>6,400</b></div>
-              <div><span>Mafuta 2L</span><b>9,500</b></div>
-              <div><span>Mchele 5kg</span><b>22,000</b></div>
-            </div>
-            <div class="su-total"><span>JUMLA</span><b>37,900</b></div>
-            <div class="su-profit">Faida +5,180</div>
-            <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hs-phone">
-        <div class="dev-phone">
-          <div class="scrn">
-            <div class="mini-bar"><div class="md"><i style="background:#ec6a5e"></i><i style="background:#f4bf4f"></i><i style="background:#61c454"></i></div><span class="mt">BiasharaPOS</span><span class="mst">● live</span></div>
-            <div class="mini-profit"><div class="l" data-en="Net profit · this sale" data-sw="Faida halisi · mauzo haya">Net profit · this sale</div><div class="v">+TZS 4,200</div></div>
-            <div class="mini-row"><span class="ic" style="background:linear-gradient(135deg,#dbe7fb,#fff)"></span><span class="nm">Cooking Oil 2L</span><span class="pr">9,500</span></div>
-            <div class="mini-row"><span class="ic" style="background:linear-gradient(135deg,#e6f6ea,#fff)"></span><span class="nm">Rice 5kg</span><span class="pr">22,000</span></div>
-            <div class="mini-btn" data-en="Charge sale" data-sw="Toza mauzo">Charge sale</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-ticks reveal">
-      <span class="tick"><span class="ic">✓</span><span data-en="Phone, POS terminal & computer" data-sw="Simu, terminal ya POS &amp; kompyuta">Phone, POS terminal &amp; computer</span></span>
-      <span class="tick"><span class="ic">✓</span><span data-en="Counter sells without the network" data-sw="Kaunta inauza bila mtandao">Counter sells without the network</span></span>
-      <span class="tick"><span class="ic">✓</span><span data-en="Real net profit per sale" data-sw="Faida halisi kwa kila mauzo">Real net profit per sale</span></span>
-      <span class="tick"><span class="ic">✓</span><span data-en="Free up to 1,000 sales/mo" data-sw="Bure hadi mauzo 1,000/mwezi">Free up to 1,000 sales/mo</span></span>
-    </div>
+<section class="refresh-hero" aria-labelledby="hero-title">
+ <div class="wrap refresh-hero-grid">
+  <div class="refresh-copy">
+   <div class="refresh-kicker"><span></span><span data-en="BUILT FOR BUSINESS IN TANZANIA" data-sw="KWA BIASHARA ZA TANZANIA">BUILT FOR BUSINESS IN TANZANIA</span></div>
+   <h1 id="hero-title" data-en='Your business.<br/>One <em>clear view.</em>' data-sw='Biashara yako.<br/><em>Mfumo mmoja.</em>'>Your business.<br/>One <em>clear view.</em></h1>
+   <p class="refresh-intro" data-en="Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch." data-sw="Unganisha mauzo, stoki na faida halisi. Mfumo wa POS unaoielewa biashara yako — kutoka mteja wa kwanza hadi tawi linalofuata.">Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch.</p>
+   <div class="refresh-actions"><a class="btn btn-primary btn-lg" href="https://app.biashara-pos.com" data-en="Start your free account ↗" data-sw="Fungua akaunti bure ↗">Start your free account ↗</a><a class="refresh-link" href="#industries" data-en="Find your business type ↓" data-sw="Chagua aina ya biashara ↓">Find your business type ↓</a></div>
+   <p class="refresh-note" data-en="Free up to 1,000 sales / month. No credit card." data-sw="Bure hadi mauzo 1,000 / mwezi. Hakuna kadi ya benki.">Free up to 1,000 sales / month. No credit card.</p>
+   <div class="refresh-promise"><span>01</span><p data-en="Smart business. Seamless sales." data-sw="Biashara bora. Mauzo rahisi.">Smart business. Seamless sales.</p></div>
   </div>
+  <div class="refresh-visual">
+   <div class="refresh-tabs" role="tablist" aria-label="Explore your industry">
+    {scenes.map((s,i)=><button id={`tab-${s.key}`} role="tab" aria-selected={i===0?'true':'false'} aria-controls={`scene-${s.key}`} tabindex={i===0?0:-1} data-scene={s.key} data-en={s.label} data-sw={s.sw}>{s.label}</button>)}
+   </div>
+   {scenes.map((s,i)=><div class="refresh-scene" id={`scene-${s.key}`} role="tabpanel" aria-labelledby={`tab-${s.key}`} hidden={i!==0}><Image src={s.photo} alt={`${s.label} business interior`} widths={[600,900]} sizes="(max-width: 800px) 100vw, 50vw" loading={i===0?'eager':'lazy'}/><div class="refresh-scene-caption"><span class="refresh-caption-icon">↗</span><div><strong data-en={s.title} data-sw={s.titleSw}>{s.title}</strong><p data-en={s.desc} data-sw={s.descSw}>{s.desc}</p></div></div></div>)}
+   <div class="refresh-visual-foot"><span data-en="YOUR FLOOR. YOUR FLOW." data-sw="BIASHARA YAKO. MFUMO WAKO.">YOUR FLOOR. YOUR FLOW.</span><span>Biashara<span class="gold">POS</span></span></div>
+  </div>
+ </div>
+ <div class="wrap refresh-proof"><div><b>01 /</b><span data-en="Sell on phone, POS or computer" data-sw="Uza kwa simu, POS au kompyuta">Sell on phone, POS or computer</span></div><div><b>02 /</b><span data-en="Keep counter sales moving offline" data-sw="Endelea kuuza kauntani bila mtandao">Keep counter sales moving offline</span></div><div><b>03 /</b><span data-en="Know your real profit per sale" data-sw="Jua faida halisi kwa kila mauzo">Know your real profit per sale</span></div></div>
 </section>
+<script>
+const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-scene]'));
+function selectTab(tab:HTMLButtonElement){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;const panel=document.getElementById('scene-'+t.dataset.scene);if(panel)panel.hidden=!active;});}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectTab(tab));tab.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();let next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;selectTab(tabs[next]);tabs[next].focus();}});});
+</script>
