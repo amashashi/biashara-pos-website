@@ -13,7 +13,7 @@ const scenes = [
  <div class="wrap refresh-hero-grid">
   <div class="refresh-copy">
    <div class="refresh-kicker"><span></span><span data-en="BUILT FOR BUSINESS IN TANZANIA" data-sw="KWA BIASHARA ZA TANZANIA">BUILT FOR BUSINESS IN TANZANIA</span></div>
-   <h1 id="hero-title" data-en='Your business.<br/>One <em>clear view.</em>' data-sw='Biashara yako.<br/><em>Mfumo mmoja.</em>'>Your business.<br/>One <em>clear view.</em></h1>
+   <h1 id="hero-title" data-en='One POS.<br/><em>Business in sync.</em>' data-sw='POS moja.<br/><em>Biashara pamoja.</em>'>Your business.<br/>One <em>clear view.</em></h1>
    <p class="refresh-intro" data-en="Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch." data-sw="Unganisha mauzo, stoki na faida halisi. Mfumo wa POS unaoielewa biashara yako — kutoka mteja wa kwanza hadi tawi linalofuata.">Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch.</p>
    <div class="refresh-actions"><a class="btn btn-primary btn-lg" href="https://app.biashara-pos.com" data-en="Start your free account ↗" data-sw="Fungua akaunti bure ↗">Start your free account ↗</a><a class="refresh-link" href="#industries" data-en="Find your business type ↓" data-sw="Chagua aina ya biashara ↓">Find your business type ↓</a></div>
    <p class="refresh-note" data-en="Free up to 1,000 sales / month. No credit card." data-sw="Bure hadi mauzo 1,000 / mwezi. Hakuna kadi ya benki.">Free up to 1,000 sales / month. No credit card.</p>
@@ -23,7 +23,7 @@ const scenes = [
    <div class="refresh-tabs" role="tablist" aria-label="Explore your industry">
     {scenes.map((s,i)=><button id={`tab-${s.key}`} role="tab" aria-selected={i===0?'true':'false'} aria-controls={`scene-${s.key}`} tabindex={i===0?0:-1} data-scene={s.key} data-en={s.label} data-sw={s.sw}>{s.label}</button>)}
    </div>
-   {scenes.map((s,i)=><div class="refresh-scene" id={`scene-${s.key}`} role="tabpanel" aria-labelledby={`tab-${s.key}`} hidden={i!==0}><Image src={s.photo} alt={`${s.label} business interior`} widths={[600,900]} sizes="(max-width: 800px) 100vw, 50vw" loading={i===0?'eager':'lazy'}/><div class="refresh-scene-caption"><span class="refresh-caption-icon">↗</span><div><strong data-en={s.title} data-sw={s.titleSw}>{s.title}</strong><p data-en={s.desc} data-sw={s.descSw}>{s.desc}</p></div></div></div>)}
+   {scenes.map((s,i)=><div class="refresh-scene" id={`scene-${s.key}`} role="tabpanel" aria-labelledby={`tab-${s.key}`} hidden={i!==0}><Image src={s.photo} alt={`${s.label} business interior`} widths={[400,600,800]} sizes="(max-width: 800px) 100vw, 50vw" loading={i===0?'eager':'lazy'} fetchpriority={i===0?'high':'low'}/><div class="refresh-scene-caption"><span class="refresh-caption-icon">↗</span><div><strong data-en={s.title} data-sw={s.titleSw}>{s.title}</strong><p data-en={s.desc} data-sw={s.descSw}>{s.desc}</p></div></div></div>)}
    <div class="refresh-visual-foot"><span data-en="YOUR FLOOR. YOUR FLOW." data-sw="BIASHARA YAKO. MFUMO WAKO.">YOUR FLOOR. YOUR FLOW.</span><span>Biashara<span class="gold">POS</span></span></div>
   </div>
  </div>
