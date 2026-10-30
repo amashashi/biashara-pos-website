@@ -35,6 +35,8 @@ jobs:
       # No dependencies — the guard is plain Node with no imports beyond node:fs.
       - name: Check marketing claims
         run: node scripts/check-claims.mjs
+      - name: Check bot pricing and plan knowledge
+        run: node scripts/check-bot-knowledge.mjs
 
   links:
     name: No dead links or unreachable pages

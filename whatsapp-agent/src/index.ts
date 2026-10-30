@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { extractTwilioMessage, sendTwilioMessage, TwilioWebhookBody, validateTwilioSignature } from './whatsapp.js';
 import { handleMessage, streamMessage } from './agent.js';
+import { KNOWLEDGE_VERSION } from './knowledge.js';
 
 const {
   TWILIO_ACCOUNT_SID,
@@ -101,7 +102,7 @@ app.post('/webhook/twilio', (req: Request, res: Response) => {
 
 // ── Health ────────────────────────────────────────────────────────────────────
 
-app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+app.get('/health', (_req, res) => res.json({ status: 'ok', knowledgeVersion: KNOWLEDGE_VERSION }));
 
 app.listen(parseInt(PORT), () => {
   console.log(`Biashara POS agent listening on port ${PORT}`);
