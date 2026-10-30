@@ -20,8 +20,8 @@ const homepageFaqs: FAQItem[] = [
   // NOTE: these feed FAQPage JSON-LD, so they are what search engines quote.
   // Keep identical in substance to src/components/TestimonialFAQ.astro, and keep
   // compliance answers in the "built to the spec, not certified" register.
-  { q: 'Is BiasharaPOS really free?', a: 'Yes — free for businesses doing up to 1,000 sales a month, with every feature included. No trial that expires, no credit card, no hidden fees. Above 1,000 sales a month there is one simple plan: TZS 200,000/month, unlimited.' },
-  { q: 'What happens if I pass 1,000 sales in a month?', a: 'It means your business is growing — you will be asked to move to the Unlimited plan (TZS 200,000/month). Your products, sales history and settings stay exactly as they are.' },
+  { q: 'How does the free trial work?', a: 'Every plan starts with 30 days free. After that, Starter costs TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro costs TZS 150,000/month. No card needed.' },
+  { q: 'Can I change my plan?', a: 'Yes. Contact us to change your plan. Starter costs TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro costs TZS 150,000/month.' },
   { q: 'What happens when the internet goes down?', a: 'Counter sales keep working — they queue on the device and sync themselves the moment you are back online. Restaurant table service, the kitchen screen and online orders do need a connection, since several devices have to stay in step with each other.' },
   { q: 'How does BiasharaPOS handle TRA receipts?', a: 'Every sale is issued a fiscal receipt number and queued for TRA submission, following the VFD specification, and your sales records export as an audit-ready PDF. BiasharaPOS itself is not certified by the TRA — you stay responsible for your own fiscalisation obligations.' },
   { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
@@ -31,7 +31,7 @@ const homepageFaqs: FAQItem[] = [
 
 const {
   title = 'BiasharaPOS — One POS for Every Business in Tanzania',
-  description = "One POS for every business vertical — retail, restaurants, pharmacies, clinics, boutiques & barbershops. Real net profit after every sale, an online shop with delivery, and free up to 1,000 sales a month.",
+  description = "One POS for every business vertical — retail, restaurants, pharmacies, clinics, boutiques & barbershops. Real net profit after every sale, an online shop with delivery, and a 30-day free trial, then from TZS 60,000 a month.",
   path = '/',
   faqs = homepageFaqs,
   extraJsonLd = [],
@@ -52,8 +52,9 @@ const softwareApplicationJsonLd = {
   url: siteUrl,
   inLanguage: ['en', 'sw'],
   offers: [
-    { '@type': 'Offer', name: 'Free',      price: '0',      priceCurrency: 'TZS', description: 'Free for up to 1,000 sales per month — all features included.' },
-    { '@type': 'Offer', name: 'Unlimited', price: '200000', priceCurrency: 'TZS', priceSpecification: { '@type': 'UnitPriceSpecification', price: '200000', priceCurrency: 'TZS', billingDuration: 'P1M' } },
+    { '@type': 'Offer', name: 'Starter', price: '60000', priceCurrency: 'TZS', description: '30-day free trial, then from TZS 60,000 per month.' },
+    { '@type': 'Offer', name: 'Growth', price: '60000', priceCurrency: 'TZS', description: '30-day free trial, then from TZS 60,000 per month.' },
+    { '@type': 'Offer', name: 'Pro', price: '150000', priceCurrency: 'TZS', description: '30-day free trial, then TZS 150,000 per month.' },
   ],
 };
 
