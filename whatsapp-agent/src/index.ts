@@ -35,9 +35,13 @@ app.use((req, res, next) => {
 // ── Web Chat ──────────────────────────────────────────────────────────────────
 
 app.post('/chat/stream', async (req: Request, res: Response) => {
-  const { sessionId, message } = req.body as { sessionId?: string; message?: string };
+  const { sessionId, message, market = 'GLOBAL' } = req.body as { sessionId?: string; message?: string; market?: string };
+  if (!['KE', 'TZ', 'GLOBAL'].includes(market)) {
+    res.status(400).json({ error: 'Unsupported market' });
+    return;
+  }
 
-  if (!sessionId || !message?.trim()) {
+  if (typeof sessionId !== "string" || !sessionId || typeof message !== "string" || !message.trim()) {
     res.status(400).json({ error: 'sessionId and message are required' });
     return;
   }
@@ -48,7 +52,7 @@ app.post('/chat/stream', async (req: Request, res: Response) => {
   res.flushHeaders();
 
   try {
-    for await (const chunk of streamMessage(sessionId, message.trim())) {
+    for await (const chunk of streamMessage(sessionId, message.trim(), market as 'KE' | 'TZ' | 'GLOBAL')) {
       res.write(`data: ${JSON.stringify({ text: chunk })}\n\n`);
     }
     res.write('data: [DONE]\n\n');

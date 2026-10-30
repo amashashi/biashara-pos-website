@@ -3,6 +3,11 @@ import { Image } from 'astro:assets';
 import retail from '../assets/verticals/retail.jpg';
 import restaurant from '../assets/verticals/restaurant.jpg';
 import pharmacy from '../assets/verticals/pharmacy.jpg';
+import { marketFor, priceFor } from "../data/markets";
+const market = marketFor(Astro.url);
+const kenya = market === "KE";
+const noteEn = market === "GLOBAL" ? "30 days free · Choose your country for pricing · No card needed" : `30 days free · Then from ${priceFor(market,0)}/month · No card needed`;
+const noteSw = market === "GLOBAL" ? "Siku 30 bure · Chagua nchi kuona bei · Huhitaji kadi" : `Siku 30 bure · Kisha kuanzia ${priceFor(market,0)}/mwezi · Huhitaji kadi`;
 const scenes = [
  {key:'retail',label:'Retail',sw:'Maduka',photo:retail,title:'Every item. Every sale.',titleSw:'Kila bidhaa. Kila mauzo.',desc:'Barcodes, stock and your real profit — together.',descSw:'Misimbopau, stoki na faida yako halisi — pamoja.'},
  {key:'restaurant',label:'Restaurants',sw:'Migahawa',photo:restaurant,title:'From table to kitchen.',titleSw:'Kutoka mezani hadi jikoni.',desc:'Tables, kitchen tickets and recipe costs in one place.',descSw:'Meza, oda za jikoni na gharama za mapishi sehemu moja.'},
@@ -12,11 +17,11 @@ const scenes = [
 <section class="refresh-hero" aria-labelledby="hero-title">
  <div class="wrap refresh-hero-grid">
   <div class="refresh-copy">
-   <div class="refresh-kicker"><span></span><span data-en="BUILT FOR BUSINESS IN TANZANIA" data-sw="KWA BIASHARA ZA TANZANIA">BUILT FOR BUSINESS IN TANZANIA</span></div>
+   <div class="refresh-kicker"><span></span><span data-en={kenya ? "BUILT FOR BUSINESS IN KENYA" : "BUILT FOR YOUR BUSINESS"} data-sw={kenya ? "KWA BIASHARA ZA KENYA" : "KWA BIASHARA YAKO"}>{kenya ? "BUILT FOR BUSINESS IN KENYA" : "BUILT FOR YOUR BUSINESS"}</span></div>
    <h1 id="hero-title" data-en='One POS.<br/><em>Business in sync.</em>' data-sw='POS moja.<br/><em>Biashara pamoja.</em>'>One POS.<br/><em>Business in sync.</em></h1>
    <p class="refresh-intro" data-en="Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch." data-sw="Unganisha mauzo, stoki na faida halisi. Mfumo wa POS unaoielewa biashara yako — kutoka mteja wa kwanza hadi tawi linalofuata.">Bring sales, stock and real profit together. A point of sale that understands your business — from your first customer to your next branch.</p>
    <div class="refresh-actions"><a class="btn btn-primary btn-lg" href="https://app.biashara-pos.com" data-en="Start free 30-day trial ↗" data-sw="Jaribu bure siku 30 ↗">Start free 30-day trial ↗</a><a class="refresh-link" href="#industries" data-en="Find your business type ↓" data-sw="Chagua aina ya biashara ↓">Find your business type ↓</a></div>
-   <p class="refresh-note" data-en="30 days free · Then from TZS 60,000/month · No card needed" data-sw="Siku 30 bure · Kisha kuanzia TZS 60,000/mwezi · Huhitaji kadi">30 days free · Then from TZS 60,000/month · No card needed</p>
+   <p class="refresh-note" data-en={noteEn} data-sw={noteSw}>{noteEn}</p>
    <div class="refresh-promise"><span>01</span><p data-en="Smart business. Seamless sales." data-sw="Biashara bora. Mauzo rahisi.">Smart business. Seamless sales.</p></div>
   </div>
   <div class="refresh-visual">
@@ -27,7 +32,7 @@ const scenes = [
    <div class="refresh-visual-foot"><span data-en="YOUR FLOOR. YOUR FLOW." data-sw="BIASHARA YAKO. MFUMO WAKO.">YOUR FLOOR. YOUR FLOW.</span><span>Biashara<span class="gold">POS</span></span></div>
   </div>
  </div>
- <div class="wrap refresh-proof"><div><b>01 /</b><span data-en="Sell on phone, POS or computer" data-sw="Uza kwa simu, POS au kompyuta">Sell on phone, POS or computer</span></div><div><b>02 /</b><span data-en="Keep counter sales moving offline" data-sw="Endelea kuuza kauntani bila mtandao">Keep counter sales moving offline</span></div><div><b>03 /</b><span data-en="Know your real profit per sale" data-sw="Jua faida halisi kwa kila mauzo">Know your real profit per sale</span></div></div>
+ <div class="wrap refresh-proof"><div><b>01 /</b><span data-en="Sell on phone, POS or computer" data-sw="Uza kwa simu, POS au kompyuta">Sell on phone, POS or computer</span></div><div><b>02 /</b><span data-en="Track stock across your branches" data-sw="Fuatilia stoki kwenye matawi yako">Track stock across your branches</span></div><div><b>03 /</b><span data-en="Know your real profit per sale" data-sw="Jua faida halisi kwa kila mauzo">Know your real profit per sale</span></div></div>
 </section>
 <script>
 const tabs=Array.from(document.querySelectorAll<HTMLButtonElement>('[data-scene]'));

@@ -46,15 +46,15 @@ export async function handleMessage(id: string, userText: string): Promise<strin
 }
 
 // Used by web chat widget — yields text chunks as they stream
-export async function* streamMessage(id: string, userText: string): AsyncGenerator<string> {
-  const history = getHistory(id);
+export async function* streamMessage(id: string, userText: string, market: 'KE' | 'TZ' | 'GLOBAL' = 'GLOBAL'): AsyncGenerator<string> {
+  const history = getHistory(`${id}:${market}`);
   history.push({ role: 'user', content: userText });
   trimHistory(history);
 
   const stream = client.messages.stream({
     model: 'claude-opus-4-7',
     max_tokens: 1024,
-    system: systemBlock,
+    system: [{ type: 'text', text: SYSTEM_PROMPT + `\n\nSelected website market: ${market}. Use its country pricing table.`, cache_control: { type: 'ephemeral' } }],
     messages: history,
   });
 

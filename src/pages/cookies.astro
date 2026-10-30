@@ -1,4 +1,6 @@
 ---
+import { marketPrefix } from '../data/markets';
+const prefix = marketPrefix(Astro.url);
 import LegalLayout from '../layouts/LegalLayout.astro';
 ---
 <LegalLayout
@@ -29,4 +31,6 @@ import LegalLayout from '../layouts/LegalLayout.astro';
 
   <h2 data-en="Contact us" data-sw="Wasiliana nasi">Contact us</h2>
   <p data-en={'Questions about cookies? Email us at <a href="mailto:hello@biashara-pos.com">hello@biashara-pos.com</a>.'} data-sw={'Maswali kuhusu cookie? Tutumie barua pepe <a href="mailto:hello@biashara-pos.com">hello@biashara-pos.com</a>.'}>Questions about cookies? Email us at <a href="mailto:hello@biashara-pos.com">hello@biashara-pos.com</a>.</p>
+  <h2 data-en="Country preference" data-sw="Nchi uliyochagua">Country preference</h2>
+  <p data-en="We save your country selection in local storage so it is remembered on future visits. Automatic country results are cached for 24 hours. Choose Automatic in the country menu to clear your manual override." data-sw="Tunahifadhi nchi uliyochagua kwenye kivinjari ili ikumbukwe utakaporejea. Matokeo ya utambuzi wa nchi huhifadhiwa kwa saa 24. Chagua Automatic kwenye menyu ya nchi kufuta chaguo lako la awali.">We save your country selection in local storage so it is remembered on future visits. Automatic country results are cached for 24 hours. Choose Automatic in the country menu to clear your manual override.</p>
 </LegalLayout>

@@ -1,34 +1,7 @@
 ---
-const faqs = [
-  {"en": {"q": "How does the free trial work?", "a": "You get 30 days with everything your plan includes. No card needed. After the trial, Starter costs TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro costs TZS 150,000/month."}, "sw": {"q": "Siku 30 za bure zinafanyaje kazi?", "a": "Unapata siku 30 za kutumia kila kitu kwenye kifurushi chako. Huhitaji kadi. Baada ya hapo, Starter ni TZS 60,000/mwezi; Growth ina ofa ya TZS 60,000/mwezi (bei ya kawaida TZS 90,000); Pro ni TZS 150,000/mwezi."}},
-  {"en": {"q": "Can I change my plan?", "a": "Yes. Contact us to change your plan. Starter costs TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro costs TZS 150,000/month."}, "sw": {"q": "Naweza kubadilisha kifurushi?", "a": "Ndiyo. Wasiliana nasi kubadilisha kifurushi. Starter ni TZS 60,000/mwezi; Growth ina ofa ya TZS 60,000/mwezi (bei ya kawaida TZS 90,000); Pro ni TZS 150,000/mwezi."}},
-  {
-    en: { q: 'What happens when the internet goes down?', a: 'Counter sales keep working — they queue on the device and sync themselves the moment you are back online. Restaurant table service, the kitchen screen and online orders do need a connection, since several devices have to stay in step with each other.' },
-    sw: { q: 'Nini kinatokea mtandao ukikatika?', a: 'Mauzo ya kaunta yanaendelea — yanahifadhiwa kwenye kifaa na kujisawazisha mara unaporejea mtandaoni. Huduma ya meza, skrini ya jikoni na oda za mtandaoni zinahitaji mtandao, kwa sababu vifaa kadhaa vinapaswa kuwa sambamba.' },
-  },
-  {
-    en: { q: 'How does BiasharaPOS handle TRA receipts?', a: 'Every sale is issued a fiscal receipt number and queued for TRA submission, following the VFD specification, and your sales records export as an audit-ready PDF. BiasharaPOS itself is not certified by the TRA — you stay responsible for your own fiscalisation obligations.' },
-    sw: { q: 'BiasharaPOS inashughulikiaje risiti za TRA?', a: 'Kila mauzo hupewa namba ya risiti ya kodi na kuwekwa kwenye foleni ya kutumwa TRA, kufuata maelekezo ya VFD, na kumbukumbu zako za mauzo husafirishwa kama PDF tayari kwa ukaguzi. BiasharaPOS yenyewe haijathibitishwa na TRA — wewe unabaki na jukumu la wajibu wako wa kodi.' },
-  },
-  {
-    en: { q: 'Is there a mobile app?', a: 'Yes — BiasharaPOS runs on any phone, tablet or computer, with no special hardware required.' },
-    sw: { q: 'Je, kuna app ya simu?', a: 'Ndio — BiasharaPOS inafanya kazi kwenye simu yoyote, tableti au kompyuta, bila vifaa maalumu.' },
-  },
-  {
-    en: { q: 'Can I use it for my pharmacy / restaurant / supermarket?', a: 'Absolutely. Dedicated modes handle expiry & batches for pharmacies, tables & kitchen tickets for restaurants, and barcodes & bulk for retail.' },
-    sw: { q: 'Je, naweza kuitumia kwa duka langu la dawa / mgahawa / soko?', a: 'Bila shaka. Hali maalumu zinashughulikia mwisho wa muda na bechi kwa maduka ya dawa, meza na tiketi za jikoni kwa migahawa, na misimbo na mauzo ya jumla kwa rejareja.' },
-  },
-  {
-    en: { q: 'How are payments recorded?', a: 'You keep taking payment the way you already do — M-Pesa, Mixx by Yas, Airtel Money, cash or card — and record it against the sale, with the confirmation code if you want it. BiasharaPOS does not sit between you and your money, which is why there are no per-transaction charges.' },
-    sw: { q: 'Malipo yanarekodiwaje?', a: 'Unaendelea kupokea malipo jinsi unavyofanya sasa — M-Pesa, Mixx by Yas, Airtel Money, pesa taslimu au kadi — na kuyarekodi kwenye mauzo, pamoja na namba ya uthibitisho ukitaka. BiasharaPOS haiingii kati yako na pesa yako, ndiyo maana hakuna ada za kila muamala.' },
-  },
-];
-
-/**
- * Customer testimonial removed: we do not hold permission to name or quote
- * the business it was attributed to. Do not reinstate a named quote, a
- * photo or a star rating without written permission from that customer.
- */
+import { homepageFaqs } from "../data/faqs";
+import { marketFor } from "../data/markets";
+const faqs = homepageFaqs(marketFor(Astro.url));
 ---
 <section class="sec sec-white" id="faq">
   <div class="wrap tf tf-solo">

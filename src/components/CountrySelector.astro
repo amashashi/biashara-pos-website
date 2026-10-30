@@ -1,0 +1,9 @@
+---
+import { marketFor } from '../data/markets';
+const market = marketFor(Astro.url);
+---
+<div class="country-control"><label for="countrySelector" data-en="Country" data-sw="Nchi">Country</label><select id="countrySelector" aria-label="Choose your country" title="Your selection overrides location detection">
+ <option value="GLOBAL" selected={market === 'GLOBAL'}>International</option><option value="KE" selected={market === 'KE'}>Kenya · KES</option><option value="TZ" selected={market === 'TZ'}>Tanzania · TZS</option>
+<option value="AUTO">Automatic</option>
+</select></div>
+<style>.country-control{display:flex;flex-direction:column;gap:2px;flex-shrink:0}.country-control label{font-size:10px;font-weight:700;color:var(--ink-3)}select{font:inherit;font-size:12px;max-width:145px;border:1px solid var(--line,#dce5df);border-radius:8px;background:white;color:var(--ink);padding:6px;cursor:pointer}@media(max-width:600px){select{font-size:11px;max-width:125px;padding:5px}.country-control label{font-size:9px}}</style>

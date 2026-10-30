@@ -1,0 +1,7 @@
+---
+import Page from '../pos-for-[vertical].astro';
+import { verticals, verticalSlugs } from '../../data/verticals';
+export function getStaticPaths() { return ['ke','tz'].flatMap(market => verticalSlugs.map(vertical => ({params:{market,vertical},props:{v:verticals[vertical]}}))); }
+const {v} = Astro.props;
+---
+<Page v={v} />

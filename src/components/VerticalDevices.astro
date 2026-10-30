@@ -63,7 +63,7 @@ const total = v.tillItems
                 ))}
               </div>
               <div class="su-total"><span>JUMLA</span><b>{total}</b></div>
-              <div class="su-profit">{v.sampleNet.replace('+TZS ', 'Faida +')}</div>
+              <div class="su-profit">{v.sampleNet.replace('+', 'Faida +')}</div>
               <div class="su-pay"><i class="on">M-Pesa</i><i>Cash</i></div>
             </div>
           </div>
@@ -94,7 +94,7 @@ const total = v.tillItems
                     ))}
                   </div>
                   <div class="vt-side">
-                    <div class="vt-total"><span data-en="Total" data-sw="Jumla">Total</span><b>TZS {total}</b></div>
+                    <div class="vt-total"><span data-en="Total" data-sw="Jumla">Total</span><b>{total}</b></div>
                     <div class="vt-profit"><span data-en="Net profit" data-sw="Faida halisi">Net profit</span><b>{v.sampleNet}</b></div>
                   </div>
                 </div>

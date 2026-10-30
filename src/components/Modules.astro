@@ -13,6 +13,8 @@
  *   · offline restaurant service          — ordering, KDS and settlement need the network
  * claims-guard-allow-end
  */
+import { marketPrefix } from '../data/markets';
+const prefix = marketPrefix(Astro.url);
 const appUrl = 'https://app.biashara-pos.com';
 
 const modules = [
@@ -109,7 +111,7 @@ const modules = [
               <p class="mod-note" data-en={m.note.en} data-sw={m.note.sw}>{m.note.en}</p>
             )}
 
-            <a class="mod-link" href={m.href} data-en="See how it works →" data-sw="Ona inavyofanya kazi →">See how it works →</a>
+            <a class="mod-link" href={m.href.startsWith("/") ? prefix + m.href : m.href} data-en="See how it works →" data-sw="Ona inavyofanya kazi →">See how it works →</a>
           </div>
 
           <div class="mod-art">
@@ -145,10 +147,10 @@ const modules = [
                   <span class="sf-lang">SW</span>
                 </div>
                 <div class="sf-grid">
-                  <div class="sf-card"><span class="sf-img sf-a"></span><b>Kitenge Dress</b><span>TZS 48,000</span></div>
-                  <div class="sf-card"><span class="sf-img sf-b"></span><b>Linen Shirt</b><span>TZS 32,000</span></div>
-                  <div class="sf-card"><span class="sf-img sf-c"></span><b>Denim Jacket</b><span>TZS 65,000</span></div>
-                  <div class="sf-card"><span class="sf-img sf-d"></span><b>Leather Sandals</b><span>TZS 28,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-a"></span><b>Kitenge Dress</b><span>48,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-b"></span><b>Linen Shirt</b><span>32,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-c"></span><b>Denim Jacket</b><span>65,000</span></div>
+                  <div class="sf-card"><span class="sf-img sf-d"></span><b>Leather Sandals</b><span>28,000</span></div>
                 </div>
                 <div class="sf-foot">Agiza bila akaunti · Chukua au uletewe</div>
               </div>

@@ -52,5 +52,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Check country selection and localised pages
+        run: node scripts/check-markets.mjs
       - name: Check links
         run: node scripts/check-links.mjs

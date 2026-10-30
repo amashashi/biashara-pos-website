@@ -1,4 +1,6 @@
 ---
+import { marketPrefix } from '../data/markets';
+const prefix = marketPrefix(Astro.url);
 import { Image } from 'astro:assets';
 import VerticalDevices from '../components/VerticalDevices.astro';
 import Layout from '../layouts/Layout.astro';
@@ -26,9 +28,9 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://biashara-pos.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://biashara-pos.com/#industries' },
-    { '@type': 'ListItem', position: 3, name: v.name.en, item: `https://biashara-pos.com${path}` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `https://biashara-pos.com${prefix}/` },
+    { '@type': 'ListItem', position: 2, name: 'Industries', item: `https://biashara-pos.com${prefix}/#industries` },
+    { '@type': 'ListItem', position: 3, name: v.name.en, item: `https://biashara-pos.com${prefix}${path}` },
   ],
 };
 
@@ -63,9 +65,9 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
             <a class="btn btn-ghost btn-lg" href="#features" data-en="See features" data-sw="Tazama vipengele">See features</a>
           </div>
           <div class="hero-ticks">
-            <span class="tick"><span class="ic">✓</span><span data-en="Audit-ready fiscal receipts" data-sw="Risiti za kodi tayari kwa ukaguzi">Audit-ready fiscal receipts</span></span>
-            <span class="tick"><span class="ic">✓</span><span data-en="Counter sells without the network" data-sw="Kaunta inauza bila mtandao">Counter sells without the network</span></span>
-            <span class="tick"><span class="ic">✓</span><span data-en="30 days free · Then from TZS 60,000/month" data-sw="Siku 30 bure · Kisha kuanzia TZS 60,000/mwezi">30 days free · Then from TZS 60,000/month</span></span>
+            <span class="tick"><span class="ic">✓</span><span data-en="Organised sales records" data-sw="Kumbukumbu za mauzo zilizopangwa">Organised sales records</span></span>
+            <span class="tick"><span class="ic">✓</span><span data-en="Staff access and sales reports" data-sw="Ufikiaji na ripoti za mauzo">Staff access and sales reports</span></span>
+            <span class="tick"><span class="ic">✓</span><span data-en="30 days free · Choose your country for pricing" data-sw="Siku 30 bure · Chagua nchi kuona bei">30 days free · Choose your country for pricing</span></span>
           </div>
         </div>
         <div class:list={['vhero-photo', 'reveal', !v.photo && 'vhero-blank']}>
@@ -197,7 +199,7 @@ const otherVerticals = verticalSlugs.filter((s) => s !== v.slug).map((s) => vert
         </div>
         <div class="xlinks">
           {otherVerticals.map((o) => (
-            <a class={`xlink reveal v-${o.badgeKey}`} href={`/pos-for-${o.slug}`}>
+            <a class={`xlink reveal v-${o.badgeKey}`} href={`${prefix}/pos-for-${o.slug}`}>
               <span class="xlink-name">{o.name.en}</span>
               <span class="xlink-desc">{o.shortDesc.en}</span>
               <span class="xlink-arrow">→</span>

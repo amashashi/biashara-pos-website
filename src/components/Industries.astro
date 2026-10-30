@@ -1,4 +1,6 @@
 ---
+import { marketPrefix } from '../data/markets';
+const prefix = marketPrefix(Astro.url);
 import { Image } from 'astro:assets';
 import { verticals, verticalSlugs } from '../data/verticals';
 import v3Front from '../assets/devices/sunmi-v3-plus-front.webp';
@@ -31,7 +33,7 @@ const tix = kdsTickets.slice(0, kdsVisible);
       {verticalSlugs.map((slug) => {
         const v = verticals[slug];
         return (
-          <a class="vcard reveal" href={`/pos-for-${v.slug}`} aria-label={`${v.name.en} POS — learn more`}>
+          <a class="vcard reveal" href={`${prefix}/pos-for-${v.slug}`} aria-label={`${v.name.en} POS — learn more`}>
             <div class:list={['vimg', !v.photo && 'vimg-blank']}>
               {v.photo ? (
                 <Image

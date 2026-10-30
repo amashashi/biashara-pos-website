@@ -181,7 +181,7 @@ const WA = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%2
         const res = await fetch(`${CHAT_API_URL}/chat/stream`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId, message: text }),
+          body: JSON.stringify({ sessionId, message: text, market: document.documentElement.dataset.market || 'GLOBAL' }),
         });
         if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
         hideTyping();

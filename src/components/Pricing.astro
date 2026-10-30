@@ -1,4 +1,6 @@
 ---
+import { marketFor, priceFor, pricingSummary } from "../data/markets";
+const market = marketFor(Astro.url);
 const appUrl = "https://app.biashara-pos.com";
 const plans = [{"pop": false, "btn": "btn-ghost", "en": {"name": "Starter", "price": "TZS 60,000", "per": "/month", "meta": "For one shop with a small team.", "features": ["1 branch", "2 users", "Cash, mobile money and bank payment records; split bills", "Live stock, low-stock alerts, suppliers and purchase orders", "Tamper-evident receipt chain", "Shifts, cash counts and daily Z-report"], "cta": "Start free 30-day trial"}, "sw": {"name": "Starter", "price": "TZS 60,000", "per": "/mwezi", "meta": "Kwa duka moja lenye wafanyakazi wachache.", "features": ["Tawi 1", "Watumiaji 2", "Rekodi za taslimu, pesa za simu na benki; kugawa bili", "Stoo papo hapo, tahadhari, wasambazaji na oda za ununuzi", "Mnyororo wa risiti unaoonyesha mabadiliko", "Zamu, hesabu ya droo na ripoti ya Z"], "cta": "Jaribu bure siku 30"}}, {"pop": true, "btn": "btn-primary", "en": {"name": "Growth", "price": "TZS 60,000", "per": "/month", "meta": "For a growing business with more staff or a second shop.", "features": ["Up to 5 branches", "Unlimited staff", "Unlimited products", "Unlimited transactions", "Everything in Starter", "Basket analysis", "Reports with Excel exports", "Online shop with product links and QR codes", "Automatic promotions", "Buy now, pay later / credit sales", "Pay mdogo mdogo: partial payments and outstanding balance tracking", "Loyalty program"], "cta": "Start free 30-day trial"}, "sw": {"name": "Growth", "price": "TZS 60,000", "per": "/mwezi", "meta": "Kwa biashara inayokua, yenye wafanyakazi zaidi au duka la pili.", "features": ["Hadi matawi 5", "Wafanyakazi bila kikomo", "Bidhaa bila kikomo", "Miamala bila kikomo", "Vyote vya Starter", "Uchambuzi wa bidhaa zinazonunuliwa pamoja", "Ripoti na kupakua Excel", "Duka la mtandaoni lenye link na QR za bidhaa", "Ofa zinazojiweka zenyewe", "Nunua sasa, lipa baadaye / mauzo kwa mkopo", "Lipa mdogo mdogo: malipo ya sehemu na ufuatiliaji wa salio", "Programu ya uaminifu na zawadi kwa wateja"], "cta": "Jaribu bure siku 30"}}, {"pop": false, "btn": "btn-ghost", "en": {"name": "Pro", "price": "TZS 150,000", "per": "/month", "meta": "For high-volume businesses, wholesalers and growing supply chains.", "features": ["More than 5 branches", "Everything in Growth", "White label branding", "Fleet management", "High-volume business operations", "Wholesale and supply chain management", "Customer value management", "Delivery zones and riders with delivery confirmation codes", "Priority support"], "cta": "Start free 30-day trial"}, "sw": {"name": "Pro", "price": "TZS 150,000", "per": "/mwezi", "meta": "Kwa biashara zenye mauzo mengi, wauzaji wa jumla na minyororo ya ugavi inayokua.", "features": ["Zaidi ya matawi 5", "Vyote vya Growth", "Mfumo wenye chapa yako (white label)", "Usimamizi wa magari ya biashara", "Uendeshaji wa biashara zenye mauzo mengi", "Usimamizi wa biashara ya jumla na mnyororo wa ugavi", "Usimamizi wa thamani ya wateja", "Maeneo ya usafirishaji, madereva na namba za kuthibitisha kupokea", "Huduma ya kipaumbele"], "cta": "Jaribu bure siku 30"}}];
 ---
@@ -7,17 +9,17 @@ const plans = [{"pop": false, "btn": "btn-ghost", "en": {"name": "Starter", "pri
     <div class="sec-head reveal">
       <span class="eyebrow center" data-en="Launch pricing" data-sw="Bei za uzinduzi">Launch pricing</span>
       <h2 data-en="Pick the plan that fits your business." data-sw="Chagua kifurushi kinachofaa biashara yako.">Pick the plan that fits your business.</h2>
-      <p data-en="Every plan starts with 30 days free. After that, Starter is TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro is TZS 150,000/month." data-sw="Kila kifurushi kinaanza na siku 30 bure. Baada ya hapo, Starter ni TZS 60,000/mwezi; Growth ina ofa ya TZS 60,000/mwezi (bei ya kawaida TZS 90,000); Pro ni TZS 150,000/mwezi.">Every plan starts with 30 days free. After that, Starter is TZS 60,000/month; Growth is on promotion at TZS 60,000/month (regularly TZS 90,000); Pro is TZS 150,000/month.</p>
+      <p data-en={pricingSummary(market)} data-sw={pricingSummary(market,true)}>{pricingSummary(market)}</p>
     </div>
     <div class="price-grid launch">
-      {plans.map((p) => (
+      {plans.map((p, index) => (
         <div class={`plan reveal ${p.pop ? 'pop' : ''}`}>
-          {p.pop && (<span class="tagpop" data-en="Launch promotion · Save 33%" data-sw="Ofa ya uzinduzi · Okoa 33%">Launch promotion · Save 33%</span>)}
+          {p.pop && (<span class="tagpop" data-en={market === "TZ" ? "Launch promotion · Save 33%" : "Built for growth"} data-sw={market === "TZ" ? "Ofa ya uzinduzi · Okoa 33%" : "Kwa biashara inayokua"}>{market === "TZ" ? "Launch promotion · Save 33%" : "Built for growth"}</span>)}
           <div>
             <div class="pname" data-en={p.en.name} data-sw={p.sw.name}>{p.en.name}</div>
-            {p.pop && (<div class="regular-price"><span data-en="Regular price" data-sw="Bei ya kawaida">Regular price</span> <s>TZS 90,000</s><span data-en="/month" data-sw="/mwezi">/month</span></div>)}
-            <div class="pprice">
-              <span data-en={p.en.price} data-sw={p.sw.price}>{p.en.price}</span><small data-en={p.en.per} data-sw={p.sw.per}>{p.en.per}</small>
+            {p.pop && market === "TZ" && (<div class="regular-price"><span data-en="Regular price" data-sw="Bei ya kawaida">Regular price</span> <s>TZS 90,000</s><span data-en="/month" data-sw="/mwezi">/month</span></div>)}
+            <div class:list={["pprice", {"country-price":market === "GLOBAL"}]}>
+              <span data-en={priceFor(market,index)} data-sw={market === "GLOBAL" ? "Chagua nchi" : priceFor(market,index)}>{priceFor(market,index)}</span>{market !== "GLOBAL" && <small data-en={p.en.per} data-sw={p.sw.per}>{p.en.per}</small>}
             </div>
           </div>
           <div class="pmeta" data-en={p.en.meta} data-sw={p.sw.meta}>{p.en.meta}</div>
@@ -33,9 +35,9 @@ const plans = [{"pop": false, "btn": "btn-ghost", "en": {"name": "Starter", "pri
     <p
       class="reveal"
       style="text-align:center;margin-top:22px;font-size:14px;color:var(--ink-3);font-weight:600;"
-      data-en="No card needed · No fee per sale · Change plan any time"
-      data-sw="Huhitaji kadi · Hakuna ada kwa kila mauzo · Badilisha kifurushi wakati wowote"
-    >No card needed · No fee per sale · Change plan any time</p>
+      data-en="No card needed · No BiasharaPOS fee per sale · Change plan any time"
+      data-sw="Huhitaji kadi · Hakuna ada ya BiasharaPOS kwa kila mauzo · Badilisha kifurushi wakati wowote"
+    >No card needed · No BiasharaPOS fee per sale · Change plan any time</p>
   </div>
 </section>
-<style>.regular-price{font-size:14px;color:var(--ink-3);margin-top:12px;} .regular-price s{margin-left:6px;} .price-grid.launch {grid-template-columns:repeat(3,minmax(0,1fr));} @media(max-width:900px){.price-grid.launch{grid-template-columns:1fr;}}</style>
+<style>.country-price{font-size:27px!important}.regular-price{font-size:14px;color:var(--ink-3);margin-top:12px;} .regular-price s{margin-left:6px;} .price-grid.launch {grid-template-columns:repeat(3,minmax(0,1fr));} @media(max-width:900px){.price-grid.launch{grid-template-columns:1fr;}}</style>

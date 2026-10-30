@@ -1,4 +1,6 @@
 ---
+import { marketPrefix } from '../data/markets';
+const prefix = marketPrefix(Astro.url);
 import { Image } from 'astro:assets';
 import logo from '../assets/biashara-logo-trim.png';
 
@@ -9,47 +11,47 @@ const WA = 'https://wa.me/255754711960?text=Hello%2C%20I%27m%20interested%20in%2
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <a class="brand" href="/#top" aria-label="BiasharaPOS home">
+        <a class="brand" href={prefix + "/#top"} aria-label="BiasharaPOS home">
           <Image src={logo} alt="BiasharaPOS" width={128} height={128} loading="lazy" />
         </a>
         <p
           class="fdesc"
-          data-en="One POS for every vertical — with real net profit after every sale. An online shop with delivery, built for TRA audits, a 30-day free trial, then from TZS 60,000 a month."
-          data-sw="POS moja kwa kila sekta — yenye faida halisi baada ya kila mauzo. Duka la mtandaoni na usafirishaji, imejengwa kwa ukaguzi wa TRA, siku 30 bure, kisha kuanzia TZS 60,000 kwa mwezi."
-        >One POS for every vertical — with real net profit after every sale. An online shop with delivery, built for TRA audits, a 30-day free trial, then from TZS 60,000 a month.</p>
+          data-en="One POS for every vertical — with real net profit after every sale. An online shop with delivery, with clear sales records, a 30-day free trial and plans for your business."
+          data-sw="POS moja kwa kila sekta — yenye faida halisi baada ya kila mauzo. Duka la mtandaoni na usafirishaji, yenye kumbukumbu za mauzo, siku 30 bure na vifurushi kwa biashara yako."
+        >One POS for every vertical — with real net profit after every sale. An online shop with delivery, with clear sales records, a 30-day free trial and plans for your business.</p>
         <a class="wa" href={WA} data-en="WhatsApp us" data-sw="Tutumie WhatsApp">WhatsApp us</a>
       </div>
       <div>
         <h4 data-en="Product" data-sw="Bidhaa">Product</h4>
         <ul>
-          <li><a href="/#why" data-en="Features" data-sw="Vipengele">Features</a></li>
-          <li><a href="/#pricing" data-en="Pricing" data-sw="Bei">Pricing</a></li>
-          <li><a href="/#compliance" data-en="Compliance" data-sw="Utii">Compliance</a></li>
-          <li><a href="/#demo" data-en="Demo" data-sw="Onyesho">Demo</a></li>
+          <li><a href={prefix + "/#why"} data-en="Features" data-sw="Vipengele">Features</a></li>
+          <li><a href={prefix + "/#pricing"} data-en="Pricing" data-sw="Bei">Pricing</a></li>
+          <li><a href={prefix + "/#compliance"} data-en="Compliance" data-sw="Utii">Compliance</a></li>
+          <li><a href={prefix + "/#demo"} data-en="Demo" data-sw="Onyesho">Demo</a></li>
           <li><a href={appUrl} data-en="Launch app ↗" data-sw="Fungua app ↗">Launch app ↗</a></li>
         </ul>
       </div>
       <div>
         <h4 data-en="Company" data-sw="Kampuni">Company</h4>
         <ul>
-          <li><a href="/#top" data-en="About" data-sw="Kuhusu">About</a></li>
+          <li><a href={prefix + "/#top"} data-en="About" data-sw="Kuhusu">About</a></li>
           <li><a href={appUrl} data-en="Launch app ↗" data-sw="Fungua app ↗">Launch app ↗</a></li>
           <li><a href="mailto:hello@biashara-pos.com" data-en="Contact" data-sw="Wasiliana">Contact</a></li>
-          <li><a href="/#faq">FAQ</a></li>
+          <li><a href={prefix + "/#faq"}>FAQ</a></li>
         </ul>
       </div>
       <div>
         <h4 data-en="Legal" data-sw="Sheria">Legal</h4>
         <ul>
-          <li><a href="/privacy" data-en="Privacy Policy" data-sw="Sera ya Faragha">Privacy Policy</a></li>
-          <li><a href="/terms" data-en="Terms of Service" data-sw="Masharti ya Huduma">Terms of Service</a></li>
-          <li><a href="/cookies" data-en="Cookie Policy" data-sw="Sera ya Cookie">Cookie Policy</a></li>
-          <li><a href="/#compliance" data-en="Compliance" data-sw="Utii">Compliance</a></li>
+          <li><a href={prefix + "/privacy"} data-en="Privacy Policy" data-sw="Sera ya Faragha">Privacy Policy</a></li>
+          <li><a href={prefix + "/terms"} data-en="Terms of Service" data-sw="Masharti ya Huduma">Terms of Service</a></li>
+          <li><a href={prefix + "/cookies"} data-en="Cookie Policy" data-sw="Sera ya Cookie">Cookie Policy</a></li>
+          <li><a href={prefix + "/#compliance"} data-en="Compliance" data-sw="Utii">Compliance</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bot">
-      <span data-en="© 2026 BiasharaPOS · Tanzania. All rights reserved." data-sw="© 2026 BiasharaPOS · Tanzania. Haki zote zimehifadhiwa.">© 2026 BiasharaPOS · Tanzania. All rights reserved.</span>
+      <span data-en="© 2026 BiasharaPOS · All rights reserved." data-sw="© 2026 BiasharaPOS · Haki zote zimehifadhiwa.">© 2026 BiasharaPOS · All rights reserved.</span>
       <span data-en="Smart Business. Seamless Sales." data-sw="Biashara Bora. Mauzo Rahisi.">Smart Business. Seamless Sales.</span>
     </div>
   </div>

@@ -47,7 +47,7 @@ const appUrl = 'https://app.biashara-pos.com';
         <div class="pos-bar">
           <div class="pos-dots"><i style="background:#ec6a5e"></i><i style="background:#f4bf4f"></i><i style="background:#61c454"></i></div>
           <div class="pos-title">BiasharaPOS · Point of Sale</div>
-          <div class="pos-status"><span class="live"></span> <span data-en="Fiscal receipt sealed" data-sw="Risiti ya kodi imehifadhiwa">Fiscal receipt sealed</span></div>
+          <div class="pos-status"><span class="live"></span> <span data-en="Receipt recorded" data-sw="Risiti ya mauzo imehifadhiwa">Receipt recorded</span></div>
         </div>
         <div class="pos-body">
           <div class="pos-main">
@@ -60,26 +60,26 @@ const appUrl = 'https://app.biashara-pos.com';
           <div class="pos-side">
             <div class="profit-card">
               <div class="lbl" data-en="Net profit · this sale" data-sw="Faida halisi · mauzo haya">Net profit · this sale</div>
-              <div class="amt" id="netAmt">+TZS 4,200</div>
+              <div class="amt" id="netAmt">+4,200</div>
               <div class="sub" data-en="after COGS · expenses · VAT" data-sw="baada ya gharama · matumizi · VAT">after COGS · expenses · VAT</div>
               <div class="spark"><i style="height:40%"></i><i style="height:60%"></i><i style="height:48%"></i><i style="height:75%"></i><i style="height:62%"></i><i class="hi" style="height:92%"></i></div>
             </div>
             <div class="sum-card">
-              <div class="sum-row"><span class="sum-k" data-en="Sales today" data-sw="Mauzo ya leo">Sales today</span><span class="sum-v" id="sumSales">TZS 847,500</span></div>
+              <div class="sum-row"><span class="sum-k" data-en="Sales today" data-sw="Mauzo ya leo">Sales today</span><span class="sum-v" id="sumSales">847,500</span></div>
               <div class="sum-row"><span class="sum-k" data-en="Transactions" data-sw="Miamala">Transactions</span><span class="sum-v" id="sumTx">24</span></div>
             </div>
-            <div class="sum-card"><div class="vfd"><span class="c">✓</span> <span data-en="Fiscal receipt issued · queued for TRA" data-sw="Risiti ya kodi imetolewa · imepangwa kwenda TRA">Fiscal receipt issued · queued for TRA</span></div></div>
+            <div class="sum-card"><div class="vfd"><span class="c">✓</span> <span data-en="Sale recorded · receipt ready" data-sw="Mauzo yamerekodiwa · risiti tayari">Sale recorded · receipt ready</span></div></div>
             <a class="btn btn-primary charge-btn" href={appUrl} data-en="Charge sale" data-sw="Toza mauzo">Charge sale</a>
           </div>
         </div>
       </div>
     </div>
 
+    <p style="font-size:12px;color:var(--ink-3);text-align:center" data-en="Illustrative product screens and sample figures." data-sw="Mifano ya skrini za bidhaa na takwimu za maonyesho.">Illustrative product screens and sample figures.</p>
     <!-- payment strip -->
     <div class="pay-strip reveal">
-      <span class="pl" data-en="Accepts" data-sw="Inakubali">Accepts</span>
+      <span class="pl" data-en="Record customer payments" data-sw="Rekodi malipo ya wateja">Record customer payments</span>
       <span class="pay"><img src="/logos/mpesa.png" alt="M-Pesa" loading="lazy" decoding="async" width="120" height="100" /></span>
-      <span class="pay"><img class="pay-mixx" src="/logos/mixx.webp" alt="Mixx by Yas" loading="lazy" decoding="async" width="100" height="100" /></span>
       <span class="pay"><img src="/logos/airtel.png" alt="Airtel Money" loading="lazy" decoding="async" width="160" height="80" /></span>
       <span class="pay"><img src="/logos/visa.png" alt="Visa" loading="lazy" decoding="async" width="120" height="86" /></span>
       <span class="pay"><img src="/logos/mastercard.png" alt="Mastercard" loading="lazy" decoding="async" width="128" height="72" /></span>

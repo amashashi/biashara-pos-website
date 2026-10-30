@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://biashara-pos.com',
   output: 'static',
+  vite: { server: { allowedHosts: ['terminal.local'] } },
   // Inline ALL stylesheets into each HTML page. This kills the stale-hash
   // FOUC: GitHub Pages caches HTML for 10 min, so after a deploy old cached
   // HTML used to reference a now-deleted /_astro/index.<oldhash>.css → 404

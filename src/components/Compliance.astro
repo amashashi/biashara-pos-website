@@ -1,77 +1,13 @@
 ---
-/**
- * Compliance section.
- *
- * IMPORTANT — read before editing. BiasharaPOS holds NONE of these certifications.
- * What we have is engineering built to follow each standard's approach. Every status
- * chip here must therefore stay in the "aligned / not certified" register, the
- * disclaimer below the grid must stay on the page, and image alt text must never
- * contain the words "certified" or "compliant" — the logos identify the standard
- * being followed, they do not indicate endorsement by the body that owns them.
- */
 const cards = [
-  {
-    status: { en: 'Aligned', sw: 'Inafuata viwango' },
-    cls: 'on',
-    logo: '/logos/tra.jpg',
-    logoAlt: 'Tanzania Revenue Authority',
-    en: { title: 'Built to TRA VFD', desc: 'Fiscal receipt numbers are issued on every sale and queued for TRA submission, following the VFD specification.' },
-    sw: { title: 'Imejengwa kwa TRA VFD', desc: 'Namba za risiti za kodi hutolewa kwa kila mauzo na kuwekwa kwenye foleni ya kutumwa TRA, kufuata maelekezo ya VFD.' },
-  },
-  {
-    status: { en: 'Aligned', sw: 'Inafuata viwango' },
-    cls: 'on',
-    logo: '/logos/nf525.jpg',
-    logoAlt: 'NF525 standard',
-    en: { title: 'NF525-style receipt chain', desc: 'Each receipt is cryptographically chained to the one before it, so a changed or deleted sale is detectable.' },
-    sw: { title: 'Mnyororo wa risiti wa mtindo wa NF525', desc: 'Kila risiti imefungamanishwa kwa msimbo na iliyotangulia, hivyo mauzo yaliyobadilishwa au kufutwa yanagundulika.' },
-  },
-  {
-    status: { en: 'Aligned', sw: 'Inafuata viwango' },
-    cls: 'on',
-    logo: '/logos/ISO.png',
-    logoAlt: 'ISO/IEC 27001 standard',
-    en: { title: 'ISO 27001 practices', desc: 'Audit logging, role-based access control and tenant data isolation enforced in the database itself.' },
-    sw: { title: 'Taratibu za ISO 27001', desc: 'Kumbukumbu za ukaguzi, udhibiti wa ufikiaji kwa majukumu na utenganishaji wa data ya kila biashara ndani ya hifadhidata yenyewe.' },
-  },
-  {
-    status: { en: 'Aligned', sw: 'Inafuata viwango' },
-    cls: 'on',
-    logo: '/logos/pci-dss.png',
-    logoAlt: 'PCI DSS standard',
-    en: { title: 'PCI DSS practices', desc: 'We never store, process or transmit card data. Card payments are recorded as a tender type only.' },
-    sw: { title: 'Taratibu za PCI DSS', desc: 'Hatuhifadhi, hatushughulikii wala hatutumi data ya kadi. Malipo ya kadi yanarekodiwa kama aina ya malipo tu.' },
-  },
+ {en:{title:'Clear sales records',desc:'Keep receipts, sales history and reports together for your business reviews.'},sw:{title:'Kumbukumbu za mauzo',desc:'Hifadhi risiti, historia ya mauzo na ripoti sehemu moja kwa ukaguzi wa biashara.'}},
+ {en:{title:'Control staff access',desc:'Give staff access according to their role and responsibilities.'},sw:{title:'Dhibiti ufikiaji',desc:'Wape wafanyakazi ufikiaji kulingana na majukumu yao.'}},
+ {en:{title:'Your payment accounts',desc:'Record payment references while customers pay through your existing arrangements.'},sw:{title:'Akaunti zako za malipo',desc:'Rekodi namba za malipo huku wateja wakilipa kupitia huduma zako zilizopo.'}},
+ {en:{title:'Check local requirements',desc:'Ask us about your country’s tax-invoice requirements before choosing a plan.'},sw:{title:'Mahitaji ya nchi yako',desc:'Tuulize kuhusu mahitaji ya ankara za kodi nchini kwako kabla ya kuchagua kifurushi.'}}
 ];
 ---
-<section class="sec" id="compliance">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow center" data-en="Built on standards" data-sw="Imejengwa kwa viwango">Built on standards</span>
-      <h2 data-en="Engineered to be audit-ready" data-sw="Imejengwa kuwa tayari kwa ukaguzi">Engineered to be audit-ready</h2>
-      <p
-        data-en="We build to the TRA VFD, NF525, ISO 27001 and PCI DSS standards — so your records stand up when someone asks for them."
-        data-sw="Tunajenga kwa viwango vya TRA VFD, NF525, ISO 27001 na PCI DSS — ili kumbukumbu zako ziwe imara mtu anapoziomba."
-      >We build to the TRA VFD, NF525, ISO 27001 and PCI DSS standards — so your records stand up when someone asks for them.</p>
-    </div>
-
-    <div class="comp-grid">
-      {cards.map((c) => (
-        <div class="comp-card reveal">
-          <div class="ch">
-            <div class="clogo"><img src={c.logo} alt={c.logoAlt} loading="lazy" decoding="async" /></div>
-            <span class={`status ${c.cls}`} data-en={c.status.en} data-sw={c.status.sw}>{c.status.en}</span>
-          </div>
-          <h3 data-en={c.en.title} data-sw={c.sw.title}>{c.en.title}</h3>
-          <p data-en={c.en.desc} data-sw={c.sw.desc}>{c.en.desc}</p>
-        </div>
-      ))}
-    </div>
-
-    <p
-      class="comp-note reveal"
-      data-en="BiasharaPOS is not certified or accredited by the Tanzania Revenue Authority, Infocert/LNE (NF525), ISO or the PCI Security Standards Council. These logos identify the standards our system is built to follow; they do not indicate endorsement. You remain responsible for your own tax and regulatory obligations."
-      data-sw="BiasharaPOS haijathibitishwa wala kuidhinishwa na Mamlaka ya Mapato Tanzania, Infocert/LNE (NF525), ISO au PCI Security Standards Council. Nembo hizi zinaonyesha viwango ambavyo mfumo wetu umejengwa kufuata; hazimaanishi kuwa tumeidhinishwa. Wewe unabaki na jukumu la kutimiza wajibu wako wa kodi na kanuni."
-    >BiasharaPOS is not certified or accredited by the Tanzania Revenue Authority, Infocert/LNE (NF525), ISO or the PCI Security Standards Council. These logos identify the standards our system is built to follow; they do not indicate endorsement. You remain responsible for your own tax and regulatory obligations.</p>
-  </div>
-</section>
+<section class="sec" id="compliance"><div class="wrap">
+ <div class="sec-head reveal"><span class="eyebrow center" data-en="Records and control" data-sw="Kumbukumbu na udhibiti">Records and control</span><h2 data-en="Stay in control of your business." data-sw="Dhibiti biashara yako.">Stay in control of your business.</h2><p data-en="Keep your sales organised, manage access and review your business with confidence." data-sw="Panga mauzo, dhibiti ufikiaji na pitia biashara yako kwa uhakika.">Keep your sales organised, manage access and review your business with confidence.</p></div>
+ <div class="comp-grid">{cards.map(c => <div class="comp-card reveal"><h3 data-en={c.en.title} data-sw={c.sw.title}>{c.en.title}</h3><p data-en={c.en.desc} data-sw={c.sw.desc}>{c.en.desc}</p></div>)}</div>
+ <p class="comp-note" data-en="Tax-authority integrations are not currently live. A sales receipt is not a substitute for a tax invoice where one is required." data-sw="Miunganisho ya mamlaka ya kodi bado haifanyi kazi moja kwa moja. Risiti ya mauzo si mbadala wa ankara ya kodi inapohitajika.">Tax-authority integrations are not currently live. A sales receipt is not a substitute for a tax invoice where one is required.</p>
+</div></section>
