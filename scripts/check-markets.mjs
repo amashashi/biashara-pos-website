@@ -28,7 +28,7 @@ assert.deepEqual((await visit({cache:{country:'TZ',time:0},country:'KE'})).route
 assert.deepEqual((await visit({path:'/ke/',saved:'KE',choose:'AUTO'})).routes,['/?ref=partner#pricing']);
 console.log('Country selection: 15 checks passed (detection, override, travel URLs, storage, races, failure and reset).');
 // Validate rendered country pages, including invisible SEO/FAQ data that can expose stale pricing.
-for(const [path,market,prices] of [['ke','KE',['KES 2,499','KES 4,999','KES 10,000']],['tz','TZ',['TZS 60,000','TZS 150,000','TZS 90,000']],['','GLOBAL',[]]]){
+for(const [path,market,prices] of [['ke','KE',['KES 2,499','KES 4,999','KES 9,999']],['tz','TZ',['TZS 60,000','TZS 150,000','TZS 90,000']],['','GLOBAL',[]]]){
  const html=readFileSync(`dist/${path ? path+'/' : ''}index.html`,'utf8');
  assert.ok(html.includes(`data-market="${market}"`));
  for(const price of prices)assert.ok(html.includes(price),`Missing ${market} price ${price}`);

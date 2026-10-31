@@ -4,7 +4,7 @@ The international marketing site is `/`. Country-specific, statically rendered p
 
 ## Commercial content
 
-`src/data/markets.ts` defines monthly prices. Kenya: Starter KES 2,499; Growth KES 4,999; Pro KES 10,000. Tanzania retains Starter TZS 60,000; promotional Growth TZS 60,000 (regular TZS 90,000); Pro TZS 150,000. The international site asks visitors to choose a country and publishes no assumed currency. Features and the 30-day trial are shared. Tanzania's promotion never appears on the Kenya site.
+`src/data/markets.ts` defines monthly prices. Kenya: Starter KES 2,499; Growth KES 4,999; Pro KES 9,999. Tanzania retains Starter TZS 60,000; promotional Growth TZS 60,000 (regular TZS 90,000); Pro TZS 150,000. The international site asks visitors to choose a country and publishes no assumed currency. Features and the 30-day trial are shared. Tanzania's promotion never appears on the Kenya site.
 
 Keep `whatsapp-agent/src/knowledge.ts` consistent when changing prices. `check-bot-knowledge.mjs` verifies both offers. The website sends its selected market to the web-chat endpoint. Histories are isolated by session and market; unknown-market conversations ask for a country before quoting. WhatsApp does not infer market from a phone number. Subscription payment instructions remain private.
 

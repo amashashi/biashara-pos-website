@@ -8,7 +8,7 @@ export function marketPrefix(url: URL): string {
   return market === 'GLOBAL' ? '' : '/' + market.toLowerCase();
 }
 export const marketPrices = {
-  KE: { currency: 'KES', prices: [2499, 4999, 10000], regularGrowth: null },
+  KE: { currency: 'KES', prices: [2499, 4999, 9999], regularGrowth: null },
   TZ: { currency: 'TZS', prices: [60000, 60000, 150000], regularGrowth: 90000 },
 } as const;
 export function priceFor(market: Market, index: number): string {
