@@ -28,6 +28,35 @@ const SCAN_EXT = new Set(['.astro', '.ts', '.tsx', '.js', '.mjs', '.md', '.html'
  * `why` says what is untrue. `instead` gives the wording that is defensible.
  */
 const RULES = [
+  // ── pricing-card claims (added 4 Nov 2026) ──────────────────────────────
+  // The Growth and Pro cards, and the WhatsApp bot, sold these from 31 Oct 2026.
+  // None is in the app (searched apps/web/src and backend/src). "Basket" there is
+  // only the online shop's cart, and till credit is on dine-in bills only.
+  {
+    pattern: /white[- ]?label|fleet management|usimamizi wa magari/i,
+    why: 'Receipts always print "Powered by Biashara POS", and the app has no fleet or vehicle feature.',
+    instead: 'remove the claim, or quote it as custom work once it exists',
+  },
+  {
+    pattern: /supply[- ]chain|mnyororo wa ugavi|minyororo ya ugavi|wholesale (?:and|&) /i,
+    why: 'There are no wholesale price lists and no stock transfers between branches. Suppliers and purchase orders are real.',
+    instead: '"suppliers and purchase orders"',
+  },
+  {
+    pattern: /customer value management|thamani ya wateja|basket analysis|bidhaa zinazonunuliwa pamoja/i,
+    why: 'The app has no report of products bought together, and no customer value analysis beyond loyalty tiers on lifetime spend.',
+    instead: 'remove the claim',
+  },
+  {
+    pattern: /high-volume business operations|biashara zenye mauzo mengi/i,
+    why: 'This names no feature, so nothing can be checked against it.',
+    instead: 'name what the customer gets, such as "more than 5 branches"',
+  },
+  {
+    pattern: /buy now,? pay later|nunua sasa,? lipa baadaye/i,
+    why: 'Credit is on restaurant dine-in bills only, and the Credit screen is in the restaurant menu.',
+    instead: '"for restaurants: credit sales, part-payments and balance tracking"',
+  },
   // ── staff-management claims (added 5 Oct 2026) ──────────────────────────
   // The barbershop page sold a walk-in queue, per-barber commissions and tips,
   // and appointments with SMS reminders, for months. `commission`, `tips`,
